@@ -6,12 +6,12 @@ using namespace std;
 
 void cashier();
 
-int main()
+/*int main()
 {
 	cashier();
 
 	return 0;
-}
+}*/
 
 void cashier()
 {
