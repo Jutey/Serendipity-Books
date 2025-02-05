@@ -10,7 +10,8 @@ int main() {
 	//cout << setfill("█") << setw(80) << "#" << endl;
 	cout << left;
 	cout << "████████████████████████████████████████████████████████████████████████████████";
-	cout << "█" << setw(78) << " " << "█";
+	cout << endl;
+	cout << "█" << setw(24) << " " << setw(54) << " " << "█" << endl;
 	cout << "█" << setw(78) << " " << "█" << endl;
 	cout << "█" << setw(28) << " " << setw(51) << "Serendipity Book Sellers" << "█" << endl;
 	cout << "█" << setw(35) << " " << setw(44) << "Main Menu" << "█" << endl;
@@ -29,12 +30,10 @@ int main() {
 
 	cout << "████████████████████████████████████████████████████████████████████████████████";
 	cout << endl << endl << endl;
-	
-//	choice = toupper(choice);
+
 do{
 	cout << "Enter Your Choice: ";
 	cin >> choice;
-	cin.ignore(10000, '\n');
 
 	    if (cin.fail()) {
             cin.clear();  
@@ -56,7 +55,6 @@ do{
 			cout << "Press ENTER to continue ...";
 			cin.ignore(10000, '\n');
 			exit(0);
-			break;
 		case 3:
 			cout << "You selected item 3." << endl;
 			cout << "Press ENTER to continue ...";
@@ -64,7 +62,6 @@ do{
 			exit(0);
 		case 4:
 			exit(0);
-			break;
 		default:
 			cout << "Please enter a number from the range of 1-4" << endl;
 
