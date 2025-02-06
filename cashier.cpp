@@ -1,17 +1,6 @@
 // Author: Cade Coxon || Awesomoose
-#include <string>
-#include <iomanip>
-#include <iostream>
+#include "cashier.h"
 using namespace std;
-
-void cashier();
-
-/*int main()
-{
-	cashier();
-
-	return 0;
-}*/
 
 void cashier()
 {
