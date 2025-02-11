@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
 	int choice;
-	
+	do{
 	cout << endl << endl;
 	//cout << setfill("█") << setw(80) << "#" << endl;
 	cout << left;
@@ -35,7 +35,7 @@ int main() {
 	cout << endl << endl << endl;
 
 
-do{
+
 	cout << "Enter Your Choice: ";
 	cin >> choice;
 	cin.ignore(10000, '\n');
@@ -54,42 +54,42 @@ do{
 			cout << "You selected item 1." << endl;
 			cout << "Press ENTER to continue ...";
 			cin.ignore(10000, '\n');
-			exit(0);
+			break;
 
 		case 2:
 			cout << "You selected item 2." << endl;
 			cout << "Press ENTER to continue ...";
 			cin.ignore(10000, '\n');
-			exit(0);
+			break;
 
 		case 3:
 			cout << "You selected item 3." << endl;
 			cout << "Press ENTER to continue ...";
 			cin.ignore(10000, '\n');
-			exit(0);
+			break;
 
 		case 4:
 			cout << "You selected item 4." << endl;
 			cout << "Press ENTER to continue ...";
 			cin.ignore(10000, '\n');
-			exit(0);
+			break;
 		case 5:
 			cout << "You selected item 5." << endl;
 			cout << "Press ENTER to continue ...";
 			cin.ignore(10000, '\n');
-			exit(0);
+			break;
 		case 6:
 			cout << "You selected item 6." << endl;
 			cout << "Press ENTER to continue ...";
 			cin.ignore(10000, '\n');
-			exit(0);
+			break;
 		case 7:
 			exit(0);
 		default:
 			cout << "Please enter a number from the range of 1-7" << endl;
 
 	}
-
+	system("clear");
 
   }while(choice != 7);
 
