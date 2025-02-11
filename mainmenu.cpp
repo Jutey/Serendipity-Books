@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
 	int choice;
-	
+	do{
 	cout << endl << endl;
 	//cout << setfill("█") << setw(80) << "#" << endl;
 	cout << left;
@@ -13,8 +13,8 @@ int main() {
 	cout << endl;
 	cout << "█" << setw(24) << " " << setw(54) << " " << "█" << endl;
 	cout << "█" << setw(78) << " " << "█" << endl;
-	cout << "█" << setw(28) << " " << setw(51) << "Serendipity Book Sellers" << "█" << endl;
-	cout << "█" << setw(35) << " " << setw(44) << "Main Menu" << "█" << endl;
+	cout << "█" << setw(28) << " " << setw(50) << "Serendipity Book Sellers" << "█" << endl;
+	cout << "█" << setw(35) << " " << setw(43) << "Main Menu" << "█" << endl;
 
 	cout << "█" << setw(78) << " " << "█" << endl;
 
@@ -31,13 +31,15 @@ int main() {
 	cout << "████████████████████████████████████████████████████████████████████████████████";
 	cout << endl << endl << endl;
 
-do{
+
 	cout << "Enter Your Choice: ";
 	cin >> choice;
+   cin.ignore(10000, '\n');
+
 
 	    if (cin.fail()) {
             cin.clear();  
-            cin.ignore(10000, '\n');  
+            cin.ignore(10000, '\n');
             cout << "Please enter a valid number from the range of 1-4." << endl;
             continue;
         }
@@ -49,17 +51,17 @@ do{
 			cout << "You selected item 1." << endl;
 			cout << "Press ENTER to continue ...";
 			cin.ignore(10000, '\n');
-			exit(0);
+			break;
 		case 2:
 			cout << "You selected item 2." << endl;
 			cout << "Press ENTER to continue ...";
 			cin.ignore(10000, '\n');
-			exit(0);
+			break;
 		case 3:
 			cout << "You selected item 3." << endl;
 			cout << "Press ENTER to continue ...";
 			cin.ignore(10000, '\n');
-			exit(0);
+			break;
 		case 4:
 			exit(0);
 		default:
@@ -67,6 +69,7 @@ do{
 
 	}
 
+	system("clear");
 
   }while(choice != 4);
 

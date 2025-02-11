@@ -6,6 +6,8 @@ bookinfo: bookinfo.cpp
         g++ -std=c++20 -Wall -Werror -o bookinfo bookinfo.cpp
 invmenu: invmenu.cpp
         g++ -std=c++20 -Wall -Werror -o invmenu invmenu.cpp
+cashier: cashier.cpp
+        g++ -std=c++20 -Wall -Werror -o cashier.cpp
 
 clean:
         -rm *.o run-test
