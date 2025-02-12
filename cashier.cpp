@@ -7,12 +7,12 @@ using namespace std;
 
 // Testing the function
 /*--------------------*
- |	int main()         |
- |	{                  |
- |		cashier();      |
+ |int main()          |
+ |{                   |
+ |	cashier();    |
  |                    |
- |		return 0;       |
- |	}                  |
+ |	return 0;     |
+ |}                   |
  *--------------------*/
 void cashier()
 {
