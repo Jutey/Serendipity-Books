@@ -1,11 +1,15 @@
 #include <iostream>
 #include <iomanip>
+#include "invmenu.h"
+#include "cashier.h"
+#include "reports.h"
 
 using namespace std;
 
 int main() {
 	int choice;
 	do{
+	cout << "\033[2J\033[1;1H";
 	cout << endl << endl;
 	//cout << setfill("█") << setw(80) << "#" << endl;
 	cout << left;
@@ -51,25 +55,31 @@ int main() {
 			cout << "You selected item 1." << endl;
 			cout << "Press ENTER to continue ...";
 			cin.ignore(10000, '\n');
+			cashier();
+			cout << "\033[2J\033[1;1H";
 			break;
 		case 2:
 			cout << "You selected item 2." << endl;
 			cout << "Press ENTER to continue ...";
 			cin.ignore(10000, '\n');
+			invmenu();
+			cout << "\033[2J\033[1;1H";
 			break;
 		case 3:
 			cout << "You selected item 3." << endl;
 			cout << "Press ENTER to continue ...";
 			cin.ignore(10000, '\n');
+			reports();
+			cout << "\033[2J\033[1;1H";
 			break;
 		case 4:
-			exit(0);
+			break;
 		default:
 			cout << "Please enter a number from the range of 1-4" << endl;
 
 	}
 
-	system("clear");
+	cout << "\033[2J\033[1;1H";
 
   }while(choice != 4);
 

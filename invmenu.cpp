@@ -18,7 +18,7 @@ void invmenu()
 	
 	int userChoice;
 	userChoice = 0;
-
+	cout << "\033[2J\033[1;1H";
 	do
 	{
 
@@ -89,10 +89,10 @@ void invmenu()
 		cout << "█" << setw(24) << " " << "Press ENTER to continue ..." << setw(28) << "█" << endl;
 		cout << "██████████████████████████████████████████████████████████████████████████████";
 		cin.ignore(10000,'\n');
-		system("clear");
+		cout << "\033[2J\033[1;1H";
 
 	}while(userChoice != 5);
 
 
-	return 0;
+
 }

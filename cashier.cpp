@@ -102,7 +102,7 @@ void cashier()
 		cout << "████████████████████████████████████████████████████████████████████████████████\n";
 
 		// ask the user if they would like to make another purchase
-		cout << "Would you like to make another purchase? (Y/N): ";
+		cout << "Would you like to make another purchase? (\033[32mY\033[0m/\033[31mN\033[0m): ";
 		getline(cin, userChoice);
 
 	} while (toupper(userChoice[0]) == 'Y');

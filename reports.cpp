@@ -1,11 +1,13 @@
 #include <iostream>
 #include <iomanip>
+#include "reports.h"
 
 using namespace std;
 
-int main() {
+void reports() {
 	int choice;
 	do{
+	cout << "\033[2J\033[1;1H";
 	cout << endl << endl;
 	//cout << setfill("█") << setw(80) << "#" << endl;
 	cout << left;
@@ -84,16 +86,15 @@ int main() {
 			cin.ignore(10000, '\n');
 			break;
 		case 7:
-			exit(0);
+			break;
 		default:
 			cout << "Please enter a number from the range of 1-7" << endl;
 
 	}
-	system("clear");
+	cout << "\033[2J\033[1;1H";
 
   }while(choice != 7);
 
-  return 0;
 
 }
 
