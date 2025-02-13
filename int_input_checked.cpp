@@ -1,6 +1,6 @@
 /************************************************
-* Assignment: A6
-* Purpose: Structs
+* Assignment: G4
+* Purpose: Serendipity Structs
 * Author: Kenny Strawn
 * Due Date: 2/9/2025
 ************************************************/
