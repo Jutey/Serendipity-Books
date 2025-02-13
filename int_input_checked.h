@@ -8,6 +8,7 @@
 #ifndef __INT_INPUT_CHECKED_H__
 #define __INT_INPUT_CHECKED_H__
 
+#include <iostream>
 #include <limits>
 
 int intInputChecked(string prompt);
