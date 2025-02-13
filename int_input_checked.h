@@ -8,7 +8,7 @@
 #ifndef __INT_INPUT_CHECKED_H__
 #define __INT_INPUT_CHECKED_H__
 
-#include "player.h"
+#include <limits>
 
 int intInputChecked(string prompt);
 long long intInputCheckedLong(string prompt);
