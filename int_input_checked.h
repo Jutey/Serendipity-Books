@@ -2,7 +2,7 @@
 * Assignment: G4
 * Purpose: Serendipity Structs
 * Author: Kenny Strawn
-* Due Date: 2/9/2025
+* Due Date: 2/17/2025
 ************************************************/
 
 #ifndef __INT_INPUT_CHECKED_H__
