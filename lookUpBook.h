@@ -16,6 +16,6 @@
 
 using namespace std;
 
-vector<string> lookUpBook(vector<bookType> db, string query, const int DBSIZE);
+vector<string> lookUpBook(vector<bookType> db, string query);
 
 #endif

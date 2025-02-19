@@ -9,13 +9,13 @@
 
 using namespace std;
 
-vector<string> lookUpBook(vector<bookType> db, string query, const int DBSIZE)
+vector<string> lookUpBook(vector<bookType> db, string query)
 {
   // `std::binary_search` sucks with arrays of structs,
   // so copying titles into temporary array of strings to make things easier
   vector<string> titles;
   
-  // Also use a string vector for the results, since we'll need to call .find() more than once
+  // Also use a string vector for the results, since we'll need to call `find()` more than once
   vector<string> res;
   
   for (bookType book : db)
