@@ -23,31 +23,31 @@ void invmenu()
 	{
 
 		cout << "██████████████████████████████████████████████████████████████████████████████" << endl;
-		cout << "█" << setfill(' ') << setw(49) << "Serendipity Book Sellers" << setw(30) << "█" << endl;
-		cout << "█" << setw(45) << "Inventory Database" << setw(34) << "█" << endl;
+		cout << "█" << setw(24) << " " << setw(52) << "Serendipity Book Sellers"  << "█" << endl;
+		cout << "█" << setw(28) << " " << setw(48) << "Inventory Database"        << "█" << endl;
 
-		cout << "█" << setw(79) << "█" << endl;
+		cout << "█" << setw(76) << " " << "█" << endl;
 
-		cout << "█" << setw(24) << " " << "1. Look Up a Book" << setw(38) << "█" << endl;
-		cout << "█" << setw(24) << " " << "2. Add a Book" << setw(42) << "█" << endl;
-		cout << "█" << setw(24) << " " << "3. Edit a Book\'s Record" << setw(32) << "█" << endl;
-		cout << "█" << setw(24) << " " << "4. Delete a Book" << setw(39) << "█" << endl;
-		cout << "█" << setw(24) << " " << "5. Return to the Main Menu" << setw(29) << "█" << endl;
-		cout << "█" << setw(79) << "█" << endl;
+		cout << "█" << setw(24) << " " << setw(52) << "1. Look Up a Book"         << "█" << endl;
+		cout << "█" << setw(24) << " " << setw(52) << "2. Add a Book"             << "█" << endl;
+		cout << "█" << setw(24) << " " << setw(52) << "3. Edit a Book\'s Record"  << "█" << endl;
+		cout << "█" << setw(24) << " " << setw(52) << "4. Delete a Book"          << "█" << endl;
+		cout << "█" << setw(24) << " " << setw(61) << "\033[31m5. Return to the Main Menu\033[0m" << "█" << endl;
+		cout << "█" << setw(76) << " " << "█" << endl;
+		cout << "██████████████████████████████████████████████████████████████████████████████" << endl << endl;
 	
 		// error checking
 		
-			cout << "█" << setw(24) << " " << "Enter Your Choice: ";
+			cout << "Enter Your Choice: ";
 			cin  >> userChoice;
 			cin.ignore(10000,'\n');
 			if(cin.fail())
 			{
 				cin.clear();
 				cin.ignore(10000,'\n');
-				cout << "█" << setw(79) << "█" << endl;
-				cout << "█" << setw(24) << " " << "Please enter a number in the range 1 - 5" << setw(15) << "█" << endl;
-				cout << "█" << setw(24) << " " << "Press ENTER to continue ..." << setw(28) << "█" << endl;
-				cout << "██████████████████████████████████████████████████████████████████████████████";
+				cout << endl;
+				cout << "Please enter a number in the range 1 - 5" << endl;
+				cout << "Press ENTER to continue ..." << endl;
 				cin.get();
 				system("clear");
 				continue;
@@ -59,36 +59,33 @@ void invmenu()
 		{
 
 		case 1:
-			cout << "█" << setw(24) << " " << "You selected item 1." << setw(35) << "█" << endl;
+			cout << "You selected item 1." << endl;
 
 			break;
 		case 2:
-			cout << "█" << setw(24) << " " << "You selected item 2." << setw(35) << "█" << endl;
+			cout << "You selected item 2." << endl;
 
 			break;
 		case 3:
-			cout << "█" << setw(24) << " " << "You selected item 3." << setw(35) << "█" << endl;
+			cout << "You selected item 3." << endl;
 
 			break;
 		case 4:
-			cout << "█" << setw(24) << " " << "You selected item 4." << setw(35) << "█" << endl;
+			cout << "You selected item 4." << endl;
 
 			break;
 		case 5:
-			cout << "█" << setw(24) << " " << "You selected item 5." << setw(35) << "█" << endl;
+			cout << "You selected item 5." << endl;
 			
 			break;
 
 		default:
-			cout << "█" << setw(79) << "█" << endl;
-			cout << "█" << setw(24) << " " << "Please enter a number in the range 1 - 5" << setw(15) << "█" << endl;
+			cout << endl;
+			cout << "Please enter a number in the range 1 - 5" << endl;
 
 
 		}
 
-		cout << "█" << setw(24) << " " << "Press ENTER to continue ..." << setw(28) << "█" << endl;
-		cout << "██████████████████████████████████████████████████████████████████████████████";
-		cin.ignore(10000,'\n');
 		cout << "\033[2J\033[1;1H";
 
 	}while(userChoice != 5);
