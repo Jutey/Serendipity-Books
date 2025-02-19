@@ -75,10 +75,10 @@ void lookUpBook(vector<bookType> db)
         cin >> editResponse;
         break;
       case 'n':
-        break;
+        continue;
       default:
         cout << "Error: invalid response. Please enter either y or n." << endl;
-        break;
+        continue;
     }
   }
 }
