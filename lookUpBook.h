@@ -9,13 +9,16 @@
 #define __LOOK_UP_BOOK_H__
 
 #include <iostream>
+#include <cstdlib>
 #include <string>
 #include <algorithm>
 #include <vector>
+#include <limits>
 #include "bookType.h"
 
 using namespace std;
 
-vector<string> lookUpBook(vector<bookType> db, string query);
+void cls();
+void lookUpBook(vector<bookType> db);
 
 #endif

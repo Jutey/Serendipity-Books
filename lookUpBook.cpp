@@ -9,14 +9,32 @@
 
 using namespace std;
 
-vector<string> lookUpBook(vector<bookType> db, string query)
+void cls()
 {
-  // `std::binary_search` sucks with arrays of structs,
+  #ifdef _WIN32
+    system("cls");
+  #else
+    system("clear");
+  #endif
+}
+
+void lookUpBook(vector<bookType> db)
+{
+  // `std::find` sucks with arrays of structs,
   // so copying titles into temporary array of strings to make things easier
   vector<string> titles;
   
-  // Also use a string vector for the results, since we'll need to call `find()` more than once
+  // Results storage
   vector<string> res;
+  
+  // User input
+  string query;
+  char foundResponse;
+  char editResponse;
+  
+  cls();
+  cout << "Search: " << endl;
+  getline(cin, query);
   
   for (bookType book : db)
   {
@@ -43,6 +61,24 @@ vector<string> lookUpBook(vector<bookType> db, string query)
     iter = next(iter);
   }
   
-  // Return the vector of search results -- the UI will take care of formatting them
-  return res;
+  for (string found : res)
+  {
+    cout << "Found title: " << found << endl;
+    cout << "Is this the book you're looking for? (y/n) ";
+    cin.get(foundResponse);
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    
+    switch(foundResponse)
+    {
+      case 'y':
+        cout << "Edit? (y/n) ";
+        cin >> editResponse;
+        break;
+      case 'n':
+        break;
+      default:
+        cout << "Error: invalid response. Please enter either y or n." << endl;
+        break;
+    }
+  }
 }
