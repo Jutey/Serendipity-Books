@@ -5,9 +5,14 @@
 #include "reports.h"
 
 using namespace std;
+const int DBSIZE = 20;	
 
 int main() {
+
 	int choice;
+	vector<bookType> bookInfo;
+	int bookCount = 0;
+
 	do{
 	cout << "\033[2J\033[1;1H";
 	cout << endl << endl;
@@ -53,22 +58,16 @@ int main() {
 
 		case 1:
 			cout << "You selected item 1." << endl;
-			cout << "Press ENTER to continue ...";
-			cin.ignore(10000, '\n');
 			cashier();
 			cout << "\033[2J\033[1;1H";
 			break;
 		case 2:
 			cout << "You selected item 2." << endl;
-			cout << "Press ENTER to continue ...";
-			cin.ignore(10000, '\n');
-			invmenu();
+			invmenu(bookInfo, bookCount, DBSIZE);
 			cout << "\033[2J\033[1;1H";
 			break;
 		case 3:
 			cout << "You selected item 3." << endl;
-			cout << "Press ENTER to continue ...";
-			cin.ignore(10000, '\n');
 			reports();
 			cout << "\033[2J\033[1;1H";
 			break;
