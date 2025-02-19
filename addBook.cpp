@@ -49,22 +49,22 @@ void addBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE) {
 
 	cout << left;
 
-	cout << "█" << setw(1)  << " " << setw(36) << "<1> Enter Book Title"              << ">  --"
+	cout << "█" << setw(1)  << " " << setw(34) << "<1> Enter Book Title"              << ">  --"
 					<< setw(38) <<tempBook.bookTitle << "█" << endl;
-	cout << "█" << setw(1)  << " " << setw(36) << "<2> Enter ISBN"                    << ">  --"
+	cout << "█" << setw(1)  << " " << setw(34) << "<2> Enter ISBN"                    << ">  --"
 					<< setw(38) << tempBook.isbn      << "█" << endl;
-	cout << "█" << setw(1)  << " " << setw(36) << "<3> Enter Author"                  << ">  --"
+	cout << "█" << setw(1)  << " " << setw(34) << "<3> Enter Author"                  << ">  --"
 					<< setw(38) << tempBook.author    << "█" << endl;
-	cout << "█" << setw(1)  << " " << setw(36) << "<4> Enter Publisher"               << ">  --"
+	cout << "█" << setw(1)  << " " << setw(34) << "<4> Enter Publisher"               << ">  --"
 					<< setw(38) << tempBook.publisher << "█" << endl;
-	cout << "█" << setw(1)  << " " << setw(36) << "<5> Enter Date Added <mm/dd/yyyy>" << ">  --"
+	cout << "█" << setw(1)  << " " << setw(34) << "<5> Enter Date Added <mm/dd/yyyy>" << ">  --"
 					<< setw(38) << tempBook.dateAdded << "█" << endl;
-	cout << "█" << setw(1)  << " " << setw(36) << "<6> Enter Quantity on Hand"        << ">  --"
+	cout << "█" << setw(1)  << " " << setw(34) << "<6> Enter Quantity on Hand"        << ">  --"
 					<< setw(38) << tempBook.qtyOnHand << "█" << endl;
 	cout << fixed << setprecision(2);
-	cout << "█" << setw(1)  << " " << setw(36) << "<7> Enter Wholesale Cost"          << ">  --$"
+	cout << "█" << setw(1)  << " " << setw(34) << "<7> Enter Wholesale Cost"          << ">  --$"
 					<< setw(37) << tempBook.wholesale << "█" << endl;
-	cout << "█" << setw(1)  << " " << setw(36) << "<8> Enter Retail Price"            << ">  --$"
+	cout << "█" << setw(1)  << " " << setw(34) << "<8> Enter Retail Price"            << ">  --$"
 					<< setw(37) << tempBook.retail    << "█" << endl;
 	cout.unsetf(ios::fixed);
 	cout << setprecision(6);
