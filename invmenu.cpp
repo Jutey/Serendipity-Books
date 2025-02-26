@@ -15,6 +15,7 @@
 #include "lookUpBook.h"
 #include "int_input_checked.h"
 #include "editBook.h"
+#include "deleteBook.h"
 
 using namespace std;
 
@@ -72,6 +73,7 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
             editBook(bookInfo, bookCount, DBSIZE);
             break;
         case 4:
+            deleteBook(bookInfo, bookCount);
             break;
         case 5:
             break;
