@@ -40,6 +40,8 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
             cout << "█" << setw(24) << " " << setw(54) << "2. Add a Book" << "█" << endl;
         } else {
             cout << "█" << setw(24) << " " << setw(54) << "2. Add a Book\033[38;5;244m(DISABLED)\033[0m\n" << "█" << endl;
+        		cout << "█" << setw(24) << " " << setw(54) << " " << "█" << endl;
+
         }
         cout << "█" << setw(24) << " " << setw(54) << "3. Edit a Book\'s Record" << "█" << endl;
         cout << "█" << setw(24) << " " << setw(54) << "4. Delete a Book" << "█" << endl;
@@ -74,7 +76,6 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
             break;
         case 4:
             deleteBook(bookInfo, bookCount);
-				cout << "deleteboook";
             break;
         case 5:
             break;
