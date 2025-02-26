@@ -29,12 +29,12 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
     {
         cout << left;
 
-        cout << "██████████████████████████████████████████████████████████████████████████████" << endl;
+        cout << "████████████████████████████████████████████████████████████████████████████████" << endl;
 
         cout << "█" << setw(24) << " " << setw(54) << " " << "█" << endl;
         cout << "█" << setw(78) << " " << "█" << endl;
         cout << "█" << setw(28) << " " << setw(50) << "Serendipity Book Sellers" << "█" << endl;
-        cout << "█" << setw(35) << " " << setw(43) << "Inventory Database" << "█" << endl;
+        cout << "█" << setw(31) << " " << setw(47) << "Inventory Database" << "█" << endl;
         cout << "█" << setw(24) << " " << setw(54) << "1. Look Up a Book" << "█" << endl;
         if (bookCount < DBSIZE){
             cout << "█" << setw(24) << " " << setw(54) << "2. Add a Book" << "█" << endl;
@@ -50,7 +50,8 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
         cout << "█" << setw(78) << " " << "█" << endl;
         cout << "█" << setw(78) << " " << "█" << endl;
         cout << "█" << setw(78) << " " << "█" << endl;
-    
+        cout << "████████████████████████████████████████████████████████████████████████████████" << endl << endl;
+
         // error checking
         userChoice = intInputChecked("Enter Your Choice", 1, 5);
         
@@ -86,9 +87,6 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
             continue;
         }
 
-        cout << "█" << setw(24) << " " << "Press ENTER to continue ..." << setw(28) << "█" << endl;
-        cout << "██████████████████████████████████████████████████████████████████████████████";
-        cin.ignore(numeric_limits<streamsize>::max(),'\n');
         cout << "\033[2J\033[1;1H";
 
     }while(userChoice != 5);
