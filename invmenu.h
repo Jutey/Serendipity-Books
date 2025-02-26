@@ -7,6 +7,8 @@
 #include <iostream>
 #include <iomanip>
 #include <vector>
+#include <limits>
+
 using namespace std;
 
 void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE);

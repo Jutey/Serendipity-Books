@@ -6,6 +6,7 @@
 ************************************************/
 
 #include "lookUpBook.h"
+#include "editBook.h"
 
 using namespace std;
 
@@ -23,62 +24,95 @@ void lookUpBook(vector<bookType> db)
   // `std::find` sucks with arrays of structs,
   // so copying titles into temporary array of strings to make things easier
   vector<string> titles;
-  
-  // Results storage
-  vector<string> res;
+  vector<string> fixedTitles;
   
   // User input
   string query;
   char foundResponse;
   char editResponse;
+
+  int currentBookCount = db.size();
   
   cls();
-  cout << "Search: " << endl;
+  cout << "Search: ";
   getline(cin, query);
   
   for (bookType book : db)
   {
-    titles.push_back(book.bookTitle);
+    titles.push_back(book.getBookTitle());
   }
-  
-  // Sort temporary vector of titles for later searching
-  sort(titles.begin(), titles.end());
-  
-  // Case-desensitize titles using `std::transform`
+
+  // Case-desensitize search query
+  transform(query.begin(), query.end(), query.begin(), ::tolower);
+
+  // Case-desensitize titles
   for (string title : titles)
   {
     transform(title.begin(), title.end(), title.begin(), ::tolower);
+    fixedTitles.push_back(title);
   }
   
-  // Case-desensitize search query using `std::transform`
-  transform(query.begin(), query.end(), query.begin(), ::tolower);
+  titles = fixedTitles;
+  fixedTitles.clear();
   
-  // Iterate through all matches
-  auto iter = titles.begin();
-  while ((iter = find(iter, titles.end(), query)) != titles.end())
+  // Loop through titles, find results, and ask user if they found the book they were looking for
+  for (string title : titles)
   {
-    res.push_back(*iter);
-    iter = next(iter);
-  }
-  
-  for (string found : res)
-  {
-    cout << "Found title: " << found << endl;
-    cout << "Is this the book you're looking for? (y/n) ";
-    cin.get(foundResponse);
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    
-    switch(foundResponse)
+    if (title.find(query) != title.npos)
     {
-      case 'y':
-        cout << "Edit? (y/n) ";
-        cin >> editResponse;
+      cout << "Found title: " << title << endl;
+      cout << "Is this the book you're looking for? (y/n) ";
+      cin.get(foundResponse);
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      foundResponse = tolower(foundResponse);
+      
+      switch(foundResponse)
+      {
+        case 'y':
+          // Match found title with the title of the book in the database, then print all of the book's fields
+          for (bookType book : db)
+          {
+            string bookTitleLowered = book.getBookTitle();
+            transform(bookTitleLowered.begin(), bookTitleLowered.end(), bookTitleLowered.begin(), ::tolower);
+
+            if (bookTitleLowered == title)
+            {
+              book.print();
+              cout << endl;
+              cout << "Would you like to edit this book? (y/n) ";
+              cin.get(editResponse);
+              cin.ignore(numeric_limits<streamsize>::max(), '\n');
+              editResponse = tolower(editResponse);
+              
+              switch(editResponse)
+              {
+                case 'y':
+                  editBook(book.getBookTitle(), currentBookCount, db, DBSIZE);
+                  break;
+                case 'n':
+                  break;
+                default:
+                  cout << "Error: invalid response. Please enter either y or n." << endl;
+                  break;
+              }
+            }
+          }
+          break;
+        case 'n':
+          continue;
+        default:
+          cout << "Error: invalid response. Please enter either y or n." << endl;
+          continue;
+      }
+
+      if (foundResponse == 'y')
+      {
         break;
-      case 'n':
-        continue;
-      default:
-        cout << "Error: invalid response. Please enter either y or n." << endl;
-        continue;
+      }
+    }
+    else {
+      cout << "No results found." << endl;
+      break;
     }
   }
 }
