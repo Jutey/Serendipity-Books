@@ -14,7 +14,6 @@ using namespace std;
 //Default array/vector name is bookInfo if that's easiest, otherwise update lines 138-145
 //Also, make sure this vvvvvvvv filler parameter gets updated, wasn't sure what we were using
 void editBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE) {
-    bookType tempBook;
 	 int i = lookUpBook(bookInfo);
     int choice;
     string tmpTitle;

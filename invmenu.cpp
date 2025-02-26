@@ -74,6 +74,7 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
             break;
         case 4:
             deleteBook(bookInfo, bookCount);
+				cout << "deleteboook";
             break;
         case 5:
             break;

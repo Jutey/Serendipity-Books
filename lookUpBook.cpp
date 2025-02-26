@@ -65,6 +65,13 @@ int lookUpBook(vector<bookType> db)
   // Loop through titles, find results, and ask user if they found the book they were looking for
  for (int i = 0; i < titles.size(); i++)
     {
+     if (cin.fail()) {
+            cin.clear();  
+            cin.ignore(10000, '\n');  
+            cout << "Not Found, try searching for a different book." << endl;
+            continue;
+        }
+
         if (titles[i].find(query) != string::npos)  // If query is found within the title
         {
             cout << "Found title: " << db[i].getBookTitle() << endl;  // Display original title

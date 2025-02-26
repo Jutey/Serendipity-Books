@@ -148,7 +148,8 @@ void addBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE) {
                 //clear screen
                 cout << "\033[2J\033[1;1H";
                 break;
-            case 0:
+				case 0: 
+                cout << "\033[2J\033[1;1H";
                 break;
             default:
                 cout << "Please enter a number from the range of 0-9" << endl;
