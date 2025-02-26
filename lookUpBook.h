@@ -19,6 +19,6 @@
 using namespace std;
 
 void cls();
-void lookUpBook(vector<bookType> db);
+int lookUpBook(vector<bookType> db);
 
 #endif

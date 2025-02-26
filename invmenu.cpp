@@ -38,7 +38,7 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
         if (bookCount < DBSIZE){
             cout << "█" << setw(24) << " " << setw(54) << "2. Add a Book" << "█" << endl;
         } else {
-            cout << "█" << setw(24) << " " << setw(54) << "2. Add a Book\033[38;5;244m(DISABLED)\033[0m\n--\033[38;5;238m(20 books in inventory)\033[0m\n" << "█" << endl;
+            cout << "█" << setw(24) << " " << setw(54) << "2. Add a Book\033[38;5;244m(DISABLED)\033[0m\n" << "█" << endl;
         }
         cout << "█" << setw(24) << " " << setw(54) << "3. Edit a Book\'s Record" << "█" << endl;
         cout << "█" << setw(24) << " " << setw(54) << "4. Delete a Book" << "█" << endl;

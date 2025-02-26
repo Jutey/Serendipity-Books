@@ -6,7 +6,6 @@
 ************************************************/
 
 #include "lookUpBook.h"
-#include "editBook.h"
 
 using namespace std;
 
@@ -19,7 +18,7 @@ void cls()
   #endif
 }
 
-void lookUpBook(vector<bookType> db)
+int lookUpBook(vector<bookType> db)
 {
   // `std::find` sucks with arrays of structs,
   // so copying titles into temporary array of strings to make things easier
@@ -34,16 +33,21 @@ void lookUpBook(vector<bookType> db)
   int currentBookCount = db.size();
   
   cls();
+
   cout << "Search: ";
   getline(cin, query);
   
+	//copies book titles into the titles vectors
+
   for (bookType book : db)
   {
     titles.push_back(book.getBookTitle());
   }
 
-  // Case-desensitize search query
+
+  // Converts query to a Case-desensitize search query
   transform(query.begin(), query.end(), query.begin(), ::tolower);
+
 
   // Case-desensitize titles
   for (string title : titles)
@@ -52,67 +56,45 @@ void lookUpBook(vector<bookType> db)
     fixedTitles.push_back(title);
   }
   
+	//replace original title with lowercase option
   titles = fixedTitles;
+	
   fixedTitles.clear();
   
+
   // Loop through titles, find results, and ask user if they found the book they were looking for
-  for (string title : titles)
-  {
-    if (title.find(query) != title.npos)
+ for (int i = 0; i < titles.size(); i++)
     {
-      cout << "Found title: " << title << endl;
-      cout << "Is this the book you're looking for? (y/n) ";
-      cin.get(foundResponse);
-      cin.ignore(numeric_limits<streamsize>::max(), '\n');
-      foundResponse = tolower(foundResponse);
-      
-      switch(foundResponse)
-      {
-        case 'y':
-          // Match found title with the title of the book in the database, then print all of the book's fields
-          for (bookType book : db)
-          {
-            string bookTitleLowered = book.getBookTitle();
-            transform(bookTitleLowered.begin(), bookTitleLowered.end(), bookTitleLowered.begin(), ::tolower);
+        if (titles[i].find(query) != string::npos)  // If query is found within the title
+        {
+            cout << "Found title: " << db[i].getBookTitle() << endl;  // Display original title
+            cout << "Is this the book you're looking for? (y/n) ";
+            cin.get(foundResponse);
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');  
+            foundResponse = tolower(foundResponse);  
 
-            if (bookTitleLowered == title)
+            switch (foundResponse)
             {
-              book.print();
-              cout << endl;
-              cout << "Would you like to edit this book? (y/n) ";
-              cin.get(editResponse);
-              cin.ignore(numeric_limits<streamsize>::max(), '\n');
-              editResponse = tolower(editResponse);
-              
-              switch(editResponse)
-              {
                 case 'y':
-                  editBook(book.getBookTitle(), currentBookCount, db, DBSIZE);
-                  break;
+                    // Print book details
+                    db[i].print();
+                    cout << endl;
+						  break;
                 case 'n':
-                  break;
+                    continue; // Continue searching
                 default:
-                  cout << "Error: invalid response. Please enter either y or n." << endl;
-                  break;
-              }
+                    cout << "Error: invalid response. Please enter either y or n." << endl;
+                    continue;
             }
-          }
-          break;
-        case 'n':
-          continue;
-        default:
-          cout << "Error: invalid response. Please enter either y or n." << endl;
-          continue;
-      }
 
-      if (foundResponse == 'y')
-      {
-        break;
-      }
+            if (foundResponse == 'y')  
+            {
+					 return i;
+                break;  // Exit loop after finding the book
+            }
+        }
     }
-    else {
-      cout << "No results found." << endl;
-      break;
-    }
-  }
+
+    cout << "No results found." << endl;  
+    return -1;  // Return -1 if no book was found
 }
