@@ -23,4 +23,4 @@ deletebook: deletebook.cpp
 asm: mainmenu.cpp
 	g++ -std=c++20 -Wall -Werror -S mainmenu.cpp
 clean:
-	rm -f *.o *.s main-menu
+	rm -f *.o *.s main-menu invmenu bookinfo reports

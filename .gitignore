@@ -1,5 +1,8 @@
 /*.s
 /*.o
-/run-test
+/main-menu
+/invmenu
+/bookinfo
+/reports
 /nohup.out
 /.vscode
