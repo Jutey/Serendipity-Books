@@ -73,6 +73,20 @@ void addBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE) {
 
         choice = intInputChecked("        Choice<0-9>", 0, 9);
 
+//        cout << "        Choice<0-9>";
+//        cin >> choice;
+//        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//
+//        if (cin.fail())
+//        {
+//          cin.clear();
+//          cout << "Invalid entry. Please enter a number." << endl;
+
+//          cout << "        Choice<0-9>";
+//          cin >> choice;
+//          cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//        }
+
         // Temporary variables to pass to setter methods
         string tmpTitle;
         string tmpIsbn;
@@ -148,12 +162,9 @@ void addBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE) {
                 //clear screen
                 cout << "\033[2J\033[1;1H";
                 break;
-				case 0: 
+            default:
                 cout << "\033[2J\033[1;1H";
                 break;
-            default:
-                cout << "Please enter a number from the range of 0-9" << endl;
-
         }
 
         cout << "\033[2J\033[1;1H";

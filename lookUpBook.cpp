@@ -30,6 +30,9 @@ int lookUpBook(vector<bookType> db)
   char foundResponse;
   char editResponse;
 
+  // Return value
+  int out;
+
   int currentBookCount = db.size();
   
   cls();
@@ -77,8 +80,8 @@ int lookUpBook(vector<bookType> db)
             cout << "Found title: " << db[i].getBookTitle() << endl;  // Display original title
             cout << "Is this the book you're looking for? (y/n) ";
             cin.get(foundResponse);
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');  
-            foundResponse = tolower(foundResponse);  
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            foundResponse = tolower(foundResponse);
 
             switch (foundResponse)
             {
@@ -86,6 +89,7 @@ int lookUpBook(vector<bookType> db)
                     // Print book details
                     db[i].print();
                     cout << endl;
+						  out = i;
 						  break;
                 case 'n':
                     continue; // Continue searching
@@ -94,14 +98,18 @@ int lookUpBook(vector<bookType> db)
                     continue;
             }
 
-            if (foundResponse == 'y')  
-            {
-					 return i;
-                break;  // Exit loop after finding the book
-            }
-        }
-    }
+      }else{
+			cout << "Result not found";
+			out = -1;
+		}
 
-    cout << "No results found." << endl;  
-    return -1;  // Return -1 if no book was found
+      if (foundResponse == 'y')
+      {
+        cout << "Press Enter to continue ..." << endl;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        break;
+      }
+    }
+  return out;
 }

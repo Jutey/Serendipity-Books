@@ -86,7 +86,9 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
             cout << "█" << setw(24) << " " << "Please enter a number in the range 1 - 5" << setw(15) << "█" << endl;
             continue;
         }
-
+		  cout << "█" << setw(24) << " " << "Press ENTER to continue ..." << setw(28) << "█" << endl;
+        cout << "██████████████████████████████████████████████████████████████████████████████";
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
         cout << "\033[2J\033[1;1H";
 
     }while(userChoice != 5);
