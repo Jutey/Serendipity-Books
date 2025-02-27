@@ -161,7 +161,6 @@ void bookType::print() const
   cout << "█" << setw(WINDOW_INNER) << " "           << "█"    << endl;
   cout << "█" << setw(WINDOW_INNER) << " "           << "█"    << endl;
 
-
   cout << "████████████████████████████████████████████████████████████████████████████████";
   cout << endl << endl << endl;
 }
