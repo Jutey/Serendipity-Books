@@ -34,7 +34,7 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
 
     cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << " " << "█" << endl;
     cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
-    cout << "█" << setw(MENU_HEAD_PADDING) << " " << setw(MENU_HEAD_WIDTH) << "Serendipity Book Sellers" << "█" << endl;
+    cout << "█" << setw(MENU_HEAD_PADDING - 6) << " " << setw(MENU_HEAD_WIDTH + 6) << "Serendipity Book Sellers" << "█" << endl;
     cout << "█" << setw(MENU_SUBHEAD_PADDING) << " " << setw(MENU_SUBHEAD_WIDTH) << "Inventory Database" << "█" << endl;
     cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "1. Look Up a Book" << "█" << endl;
 
@@ -44,8 +44,8 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
     }
     else
     {
-      cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "2. Add a Book\033[38;5;244m(DISABLED)\033[0m\n" << "█" << endl;
-      cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << " " << "█" << endl;
+      cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(BOOK_ADD_DISABLED_PADDING) << "2. Add a Book\033[38;5;244m(DISABLED)\033[0m" << "█" << endl;
+      cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
 
     }
     cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "3. Edit a Book\'s Record" << "█" << endl;
