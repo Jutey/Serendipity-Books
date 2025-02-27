@@ -126,6 +126,7 @@ void bookType::print() const
   string retailFmt = retailOss.str();
 
   string fixedTitle = bookTitle;
+  
   // Check if the book title is too long
   if (bookTitle.length() > BOOK_INFO_BODY_WIDTH)
   {
