@@ -65,7 +65,10 @@ int main()
       case 4:
         break;
       default:
-        cout << "Please enter a number from the range of 1-4" << endl;
+        cout << "Error: number out of the 1-4 range" << endl;
+        cout << "Press Enter to try again with a valid choice...";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "\033[2J\033[1;1H";
     }
 
   cout << "\033[2J\033[1;1H";
