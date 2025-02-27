@@ -54,22 +54,22 @@ void editBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
 
     cout << left;
 
-    cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)           << "<1> Update Book Title"        << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getBookTitle() << "█" << endl;
-    cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)           << "<2> Update ISBN"          << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getIsbn()    << "█" << endl;
-    cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)           << "<3> Update Author"          << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getAuthor()  << "█" << endl;
-    cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)           << "<4> Update Publisher"         << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getPublisher() << "█" << endl;
-    cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)           << "<5> Date Last Updated <mm/dd/yyyy>" << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getDateAdded() << "█" << endl;
-    cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)           << "<6> Update Quantity on Hand"    << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getQtyOnHand() << "█" << endl;
+    cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)               << "<1> Update Book Title"        << ">  --"
+          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getBookTitle()     << "█" << endl;
+    cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)               << "<2> Update ISBN"          << ">  --"
+          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getIsbn()          << "█" << endl;
+    cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)               << "<3> Update Author"          << ">  --"
+          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getAuthor()        << "█" << endl;
+    cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)               << "<4> Update Publisher"         << ">  --"
+          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getPublisher()     << "█" << endl;
+    cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)               << "<5> Date Last Updated <mm/dd/yyyy>" << ">  --"
+          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getDateAdded()     << "█" << endl;
+    cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)               << "<6> Update Quantity on Hand"    << ">  --"
+          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getQtyOnHand()     << "█" << endl;
     cout << fixed << setprecision(2);
-    cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)           << "<7> Update Wholesale Cost"      << ">  --$"
+    cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)               << "<7> Update Wholesale Cost"      << ">  --$"
           << setw(BOOK_EDITOR_BODY_WIDTH - 1)     << bookInfo[i].getWholesale() << "█" << endl;
-    cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)           << "<8> Update Retail Price"      << ">  --$"
+    cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)               << "<8> Update Retail Price"      << ">  --$"
             << setw(BOOK_EDITOR_BODY_WIDTH - 1)     << bookInfo[i].getRetail()  << "█" << endl;
 
     cout.unsetf(ios::fixed);
