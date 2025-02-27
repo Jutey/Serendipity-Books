@@ -122,11 +122,11 @@ void bookType::print() const
   cout << "████████████████████████████████████████████████████████████████████████████████";
   cout << endl;
   cout << "█" << setw(TITLE_PADDING) << " " << setw(TITLE_WIDTH) << " "                        << "█" << endl;
-  cout << "█" << setw(WINDOW_WIDTH) << " " << "█"      << endl;
+  cout << "█" << setw(WINDOW_INNER) << " " << "█"      << endl;
   cout << "█" << setw(TITLE_PADDING) << " " << setw(TITLE_WIDTH) << "Serendipity Book Sellers" << "█" << endl;
   cout << "█" << setw(SUBTITLE_PADDING) << " " << setw(SUBTITLE_WIDTH) << "Book Information"         << "█" << endl;
 
-  cout << "█" << setw(WINDOW_WIDTH) << " " << "█"      << endl;
+  cout << "█" << setw(WINDOW_INNER) << " " << "█"      << endl;
 
   cout << "█" << setw(BODY_PADDING) << " ISBN: "               << setw(BODY_WIDTH) << isbn      << "█" << endl;
   cout << "█" << setw(BODY_PADDING) << " Title: "              << setw(BODY_WIDTH) << bookTitle << "█" << endl;
@@ -136,10 +136,10 @@ void bookType::print() const
   cout << "█" << setw(BODY_PADDING) << " Quantity-On-Hand: "   << setw(BODY_WIDTH) << qtyOnHand << "█" << endl;
   cout << "█" << setw(BODY_PADDING) << " Wholesale Cost: $"    << setw(BODY_WIDTH) << wholesale << "█" << endl;
   cout << "█" << setw(BODY_PADDING) << " Retail Price: $"      << setw(BODY_WIDTH) << retail    << "█" << endl;
-  cout << "█" << setw(WINDOW_WIDTH) << " "           << "█"    << endl;
-  cout << "█" << setw(WINDOW_WIDTH) << " "           << "█"    << endl;
-  cout << "█" << setw(WINDOW_WIDTH) << " "           << "█"    << endl;
-  cout << "█" << setw(WINDOW_WIDTH) << " "           << "█"    << endl;
+  cout << "█" << setw(WINDOW_INNER) << " "           << "█"    << endl;
+  cout << "█" << setw(WINDOW_INNER) << " "           << "█"    << endl;
+  cout << "█" << setw(WINDOW_INNER) << " "           << "█"    << endl;
+  cout << "█" << setw(WINDOW_INNER) << " "           << "█"    << endl;
 
 
   cout << "████████████████████████████████████████████████████████████████████████████████";
