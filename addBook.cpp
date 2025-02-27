@@ -168,7 +168,7 @@ void addBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
       default:
         break;
     }
-
+    cout << "\033[2J\033[1;1H";
   }
 
   return;

@@ -145,9 +145,7 @@ void editBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
         cout << "Please enter a number from the range of 1-9" << endl;
 
     }
-
     cout << "\033[2J\033[1;1H";
-
   }
 
   return;
