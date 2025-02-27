@@ -16,6 +16,7 @@
 #include "int_input_checked.h"
 #include "editBook.h"
 #include "deleteBook.h"
+#include "setw_consts.h"
 
 using namespace std;
 
@@ -31,29 +32,29 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
 
     cout << "████████████████████████████████████████████████████████████████████████████████" << endl;
 
-    cout << "█" << setw(24) << " " << setw(54) << " " << "█" << endl;
-    cout << "█" << setw(78) << " " << "█" << endl;
-    cout << "█" << setw(28) << " " << setw(50) << "Serendipity Book Sellers" << "█" << endl;
-    cout << "█" << setw(31) << " " << setw(47) << "Inventory Database" << "█" << endl;
-    cout << "█" << setw(24) << " " << setw(54) << "1. Look Up a Book" << "█" << endl;
+    cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << " " << "█" << endl;
+    cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
+    cout << "█" << setw(MENU_HEAD_PADDING) << " " << setw(MENU_HEAD_WIDTH) << "Serendipity Book Sellers" << "█" << endl;
+    cout << "█" << setw(MENU_SUBHEAD_PADDING) << " " << setw(MENU_SUBHEAD_WIDTH) << "Inventory Database" << "█" << endl;
+    cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "1. Look Up a Book" << "█" << endl;
 
     if (bookCount < DBSIZE)
     {
-      cout << "█" << setw(24) << " " << setw(54) << "2. Add a Book" << "█" << endl;
+      cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "2. Add a Book" << "█" << endl;
     }
     else
     {
-      cout << "█" << setw(24) << " " << setw(54) << "2. Add a Book\033[38;5;244m(DISABLED)\033[0m\n" << "█" << endl;
-      cout << "█" << setw(24) << " " << setw(54) << " " << "█" << endl;
+      cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "2. Add a Book\033[38;5;244m(DISABLED)\033[0m\n" << "█" << endl;
+      cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << " " << "█" << endl;
 
     }
-    cout << "█" << setw(24) << " " << setw(54) << "3. Edit a Book\'s Record" << "█" << endl;
-    cout << "█" << setw(24) << " " << setw(54) << "4. Delete a Book" << "█" << endl;
-    cout << "█" << setw(24) << " " << setw(63) << "\033[32m5. Return to Main Menu\033[0m " << "█" << endl;
-    cout << "█" << setw(78) << " " << "█" << endl;
-    cout << "█" << setw(78) << " " << "█" << endl;
-    cout << "█" << setw(78) << " " << "█" << endl;
-    cout << "█" << setw(78) << " " << "█" << endl;
+    cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "3. Edit a Book\'s Record" << "█" << endl;
+    cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "4. Delete a Book" << "█" << endl;
+    cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(63) << "\033[32m5. Return to Main Menu\033[0m " << "█" << endl;
+    cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
+    cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
+    cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
+    cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
     cout << "████████████████████████████████████████████████████████████████████████████████" << endl << endl;
 
     // error checking
@@ -63,7 +64,7 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
     switch(userChoice)
     {
       case 1:
-        cout << "█" << setw(24) << " " << "You selected item 1." << setw(35) << "█" << endl;
+        cout << "█" << setw(MENU_BODY_PADDING) << " " << "You selected item 1." << setw(35) << "█" << endl;
         lookUpBook(bookInfo);
         break;
       case 2:
@@ -89,11 +90,11 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
 
       default:
         cout << "█" << setw(79) << "█" << endl;
-        cout << "█" << setw(24) << " " << "Please enter a number in the range 1 - 5" << setw(15) << "█" << endl;
+        cout << "█" << setw(MENU_BODY_PADDING) << " " << "Please enter a number in the range 1 - 5" << setw(15) << "█" << endl;
         continue;
     }
 
-    cout << "█" << setw(24) << " " << "Press ENTER to continue ..." << setw(28) << "█" << endl;
+    cout << "█" << setw(MENU_BODY_PADDING) << " " << "Press ENTER to continue ..." << setw(28) << "█" << endl;
     cout << "██████████████████████████████████████████████████████████████████████████████";
     cin.ignore(numeric_limits<streamsize>::max(),'\n');
     cout << "\033[2J\033[1;1H";

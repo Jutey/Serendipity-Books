@@ -121,21 +121,21 @@ void bookType::print() const
   cout << left;
   cout << "████████████████████████████████████████████████████████████████████████████████";
   cout << endl;
-  cout << "█" << setw(TITLE_PADDING) << " " << setw(TITLE_WIDTH) << " "                        << "█" << endl;
+  cout << "█" << setw(BOOK_INFO_TITLE_PADDING) << " " << setw(BOOK_INFO_TITLE_WIDTH) << " "                        << "█" << endl;
   cout << "█" << setw(WINDOW_INNER) << " " << "█"      << endl;
-  cout << "█" << setw(TITLE_PADDING) << " " << setw(TITLE_WIDTH) << "Serendipity Book Sellers" << "█" << endl;
-  cout << "█" << setw(SUBTITLE_PADDING) << " " << setw(SUBTITLE_WIDTH) << "Book Information"         << "█" << endl;
+  cout << "█" << setw(BOOK_INFO_TITLE_PADDING) << " " << setw(BOOK_INFO_TITLE_WIDTH) << "Serendipity Book Sellers" << "█" << endl;
+  cout << "█" << setw(BOOK_INFO_SUBTITLE_PADDING) << " " << setw(BOOK_INFO_SUBTITLE_WIDTH) << "Book Information"         << "█" << endl;
 
   cout << "█" << setw(WINDOW_INNER) << " " << "█"      << endl;
 
-  cout << "█" << setw(BODY_PADDING) << " ISBN: "               << setw(BODY_WIDTH) << isbn      << "█" << endl;
-  cout << "█" << setw(BODY_PADDING) << " Title: "              << setw(BODY_WIDTH) << bookTitle << "█" << endl;
-  cout << "█" << setw(BODY_PADDING) << " Author: "             << setw(BODY_WIDTH) << author    << "█" << endl;
-  cout << "█" << setw(BODY_PADDING) << " Publisher: "          << setw(BODY_WIDTH) << publisher << "█" << endl;
-  cout << "█" << setw(BODY_PADDING) << " Date Added: "         << setw(BODY_WIDTH) << dateAdded << "█" << endl;
-  cout << "█" << setw(BODY_PADDING) << " Quantity-On-Hand: "   << setw(BODY_WIDTH) << qtyOnHand << "█" << endl;
-  cout << "█" << setw(BODY_PADDING) << " Wholesale Cost: $"    << setw(BODY_WIDTH) << wholesale << "█" << endl;
-  cout << "█" << setw(BODY_PADDING) << " Retail Price: $"      << setw(BODY_WIDTH) << retail    << "█" << endl;
+  cout << "█" << setw(BOOK_INFO_BODY_PADDING) << " ISBN: "               << setw(BOOK_INFO_BODY_WIDTH) << isbn      << "█" << endl;
+  cout << "█" << setw(BOOK_INFO_BODY_PADDING) << " Title: "              << setw(BOOK_INFO_BODY_WIDTH) << bookTitle << "█" << endl;
+  cout << "█" << setw(BOOK_INFO_BODY_PADDING) << " Author: "             << setw(BOOK_INFO_BODY_WIDTH) << author    << "█" << endl;
+  cout << "█" << setw(BOOK_INFO_BODY_PADDING) << " Publisher: "          << setw(BOOK_INFO_BODY_WIDTH) << publisher << "█" << endl;
+  cout << "█" << setw(BOOK_INFO_BODY_PADDING) << " Date Added: "         << setw(BOOK_INFO_BODY_WIDTH) << dateAdded << "█" << endl;
+  cout << "█" << setw(BOOK_INFO_BODY_PADDING) << " Quantity-On-Hand: "   << setw(BOOK_INFO_BODY_WIDTH) << qtyOnHand << "█" << endl;
+  cout << "█" << setw(BOOK_INFO_BODY_PADDING) << " Wholesale Cost: $"    << setw(BOOK_INFO_BODY_WIDTH) << wholesale << "█" << endl;
+  cout << "█" << setw(BOOK_INFO_BODY_PADDING) << " Retail Price: $"      << setw(BOOK_INFO_BODY_WIDTH) << retail    << "█" << endl;
   cout << "█" << setw(WINDOW_INNER) << " "           << "█"    << endl;
   cout << "█" << setw(WINDOW_INNER) << " "           << "█"    << endl;
   cout << "█" << setw(WINDOW_INNER) << " "           << "█"    << endl;

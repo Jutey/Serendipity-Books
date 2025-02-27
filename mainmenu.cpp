@@ -1,12 +1,13 @@
 #include <iostream>
 #include <iomanip>
 #include <limits>
+
 #include "invmenu.h"
 #include "cashier.h"
 #include "reports.h"
-
 #include "bookType.h" // DBSIZE
 #include "int_input_checked.h"
+#include "setw_consts.h"
 
 using namespace std;  
 
@@ -25,21 +26,21 @@ int main()
     cout << left;
     cout << "████████████████████████████████████████████████████████████████████████████████";
     cout << endl;
-    cout << "█" << setw(24) << " " << setw(54) << " " << "█" << endl;
-    cout << "█" << setw(78) << " " << "█" << endl;
-    cout << "█" << setw(28) << " " << setw(50) << "Serendipity Book Sellers" << "█" << endl;
-    cout << "█" << setw(35) << " " << setw(43) << "Main Menu" << "█" << endl;
+    cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << " " << "█" << endl;
+    cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
+    cout << "█" << setw(MENU_HEAD_PADDING) << " " << setw(MENU_HEAD_WIDTH) << "Serendipity Book Sellers" << "█" << endl;
+    cout << "█" << setw(BOOK_INFO_SUBTITLE_PADDING) << " " << setw(BOOK_INFO_SUBTITLE_WIDTH) << "Main Menu" << "█" << endl;
 
-    cout << "█" << setw(78) << " " << "█" << endl;
+    cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
 
-    cout << "█" << setw(24) << " " << setw(54) << "1. Cashier Module" << "█" << endl;
-    cout << "█" << setw(24) << " " << setw(54) << "2. Inventory Database Module" << "█" << endl;
-    cout << "█" << setw(24) << " " << setw(54) << "3. Report Module" << "█" << endl;
-    cout << "█" << setw(24) << " " << setw(63) << "\033[31m4. Exit\033[0m " << "█" << endl;
-    cout << "█" << setw(78) << " " << "█" << endl;
-    cout << "█" << setw(78) << " " << "█" << endl;
-    cout << "█" << setw(78) << " " << "█" << endl;
-    cout << "█" << setw(78) << " " << "█" << endl;
+    cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "1. Cashier Module" << "█" << endl;
+    cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "2. Inventory Database Module" << "█" << endl;
+    cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "3. Report Module" << "█" << endl;
+    cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(63) << "\033[31m4. Exit\033[0m " << "█" << endl;
+    cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
+    cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
+    cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
+    cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
 
 
     cout << "████████████████████████████████████████████████████████████████████████████████";
