@@ -23,7 +23,6 @@ void addBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
     return;
   }
 
-
   //initialize all filler variables
   tempBook = bookType();
 

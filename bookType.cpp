@@ -1,4 +1,5 @@
 #include "bookType.h"
+#include "setw_consts.h"
 
 using namespace std;
 
@@ -120,25 +121,25 @@ void bookType::print() const
   cout << left;
   cout << "████████████████████████████████████████████████████████████████████████████████";
   cout << endl;
-  cout << "█" << setw(24) << " " << setw(54) << " "                        << "█" << endl;
-  cout << "█" << setw(78) << " " << "█"      << endl;
-  cout << "█" << setw(28) << " " << setw(50) << "Serendipity Book Sellers" << "█" << endl;
-  cout << "█" << setw(35) << " " << setw(43) << "Book Information"         << "█" << endl;
+  cout << "█" << setw(TITLE_PADDING) << " " << setw(TITLE_WIDTH) << " "                        << "█" << endl;
+  cout << "█" << setw(WINDOW_WIDTH) << " " << "█"      << endl;
+  cout << "█" << setw(TITLE_PADDING) << " " << setw(TITLE_WIDTH) << "Serendipity Book Sellers" << "█" << endl;
+  cout << "█" << setw(SUBTITLE_PADDING) << " " << setw(SUBTITLE_WIDTH) << "Book Information"         << "█" << endl;
 
-  cout << "█" << setw(78) << " " << "█"      << endl;
+  cout << "█" << setw(WINDOW_WIDTH) << " " << "█"      << endl;
 
-  cout << "█" << setw(38) << " ISBN: "               << setw(40) << isbn      << "█" << endl;
-  cout << "█" << setw(38) << " Title: "              << setw(40) << bookTitle << "█" << endl;
-  cout << "█" << setw(38) << " Author: "             << setw(40) << author    << "█" << endl;
-  cout << "█" << setw(38) << " Publisher: "          << setw(40) << publisher << "█" << endl;
-  cout << "█" << setw(38) << " Date Added: "         << setw(40) << dateAdded << "█" << endl;
-  cout << "█" << setw(38) << " Quantity-On-Hand: "   << setw(40) << qtyOnHand << "█" << endl;
-  cout << "█" << setw(38) << " Wholesale Cost: $"    << setw(40) << wholesale << "█" << endl;
-  cout << "█" << setw(38) << " Retail Price: $"      << setw(40) << retail    << "█" << endl;
-  cout << "█" << setw(78) << " "           << "█"    << endl;
-  cout << "█" << setw(78) << " "           << "█"    << endl;
-  cout << "█" << setw(78) << " "           << "█"    << endl;
-  cout << "█" << setw(78) << " "           << "█"    << endl;
+  cout << "█" << setw(BODY_PADDING) << " ISBN: "               << setw(BODY_WIDTH) << isbn      << "█" << endl;
+  cout << "█" << setw(BODY_PADDING) << " Title: "              << setw(BODY_WIDTH) << bookTitle << "█" << endl;
+  cout << "█" << setw(BODY_PADDING) << " Author: "             << setw(BODY_WIDTH) << author    << "█" << endl;
+  cout << "█" << setw(BODY_PADDING) << " Publisher: "          << setw(BODY_WIDTH) << publisher << "█" << endl;
+  cout << "█" << setw(BODY_PADDING) << " Date Added: "         << setw(BODY_WIDTH) << dateAdded << "█" << endl;
+  cout << "█" << setw(BODY_PADDING) << " Quantity-On-Hand: "   << setw(BODY_WIDTH) << qtyOnHand << "█" << endl;
+  cout << "█" << setw(BODY_PADDING) << " Wholesale Cost: $"    << setw(BODY_WIDTH) << wholesale << "█" << endl;
+  cout << "█" << setw(BODY_PADDING) << " Retail Price: $"      << setw(BODY_WIDTH) << retail    << "█" << endl;
+  cout << "█" << setw(WINDOW_WIDTH) << " "           << "█"    << endl;
+  cout << "█" << setw(WINDOW_WIDTH) << " "           << "█"    << endl;
+  cout << "█" << setw(WINDOW_WIDTH) << " "           << "█"    << endl;
+  cout << "█" << setw(WINDOW_WIDTH) << " "           << "█"    << endl;
 
 
   cout << "████████████████████████████████████████████████████████████████████████████████";
