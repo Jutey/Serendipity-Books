@@ -125,6 +125,17 @@ void bookType::print() const
   string wholesaleFmt = wholesaleOss.str();
   string retailFmt = retailOss.str();
 
+  string fixedTitle = bookTitle;
+  // Check if the book title is too long
+  if (bookTitle.length() > BOOK_INFO_BODY_WIDTH)
+  {
+    fixedTitle = bookTitle.substr(0, BOOK_INFO_BODY_WIDTH - 3) + "...";
+  }
+  else
+  {
+    fixedTitle = bookTitle;
+  }
+
   cout << endl << endl;
   //cout << setfill("█") << setw(80) << "#" << endl;
   cout << left;
@@ -138,7 +149,7 @@ void bookType::print() const
   cout << "█" << setw(WINDOW_INNER) << " " << "█"      << endl;
 
   cout << "█" << setw(BOOK_INFO_BODY_PADDING) << " ISBN: "               << setw(BOOK_INFO_BODY_WIDTH) << isbn         << "█" << endl;
-  cout << "█" << setw(BOOK_INFO_BODY_PADDING) << " Title: "              << setw(BOOK_INFO_BODY_WIDTH) << bookTitle    << "█" << endl;
+  cout << "█" << setw(BOOK_INFO_BODY_PADDING) << " Title: "              << setw(BOOK_INFO_BODY_WIDTH) << fixedTitle    << "█" << endl;
   cout << "█" << setw(BOOK_INFO_BODY_PADDING) << " Author: "             << setw(BOOK_INFO_BODY_WIDTH) << author       << "█" << endl;
   cout << "█" << setw(BOOK_INFO_BODY_PADDING) << " Publisher: "          << setw(BOOK_INFO_BODY_WIDTH) << publisher    << "█" << endl;
   cout << "█" << setw(BOOK_INFO_BODY_PADDING) << " Date Added: "         << setw(BOOK_INFO_BODY_WIDTH) << dateAdded    << "█" << endl;
