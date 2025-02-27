@@ -50,7 +50,7 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
     }
     cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "3. Edit a Book\'s Record" << "█" << endl;
     cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "4. Delete a Book" << "█" << endl;
-    cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(63) << "\033[32m5. Return to Main Menu\033[0m " << "█" << endl;
+    cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_EXIT_PADDING) << "\033[32m5. Return to Main Menu\033[0m " << "█" << endl;
     cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
     cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
     cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
