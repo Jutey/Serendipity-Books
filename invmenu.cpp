@@ -46,7 +46,6 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
     {
       cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(BOOK_ADD_DISABLED_PADDING) << "2. Add a Book\033[38;5;244m(DISABLED)\033[0m" << "█" << endl;
       cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
-
     }
     cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "3. Edit a Book\'s Record" << "█" << endl;
     cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "4. Delete a Book" << "█" << endl;
