@@ -111,6 +111,9 @@ class bookType {
   ///
   /// Rounds up all of the values for the specified index in the database and prints the record. This tells the user everything they may want to know about the book.
   void print() const;
+
+  /// Destructor
+  ~bookType();
 };
 
 #endif

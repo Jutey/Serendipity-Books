@@ -154,3 +154,8 @@ void bookType::print() const
   cout << "████████████████████████████████████████████████████████████████████████████████";
   cout << endl << endl << endl;
 }
+
+bookType::~bookType()
+{
+  //destructor
+}
