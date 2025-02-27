@@ -35,7 +35,7 @@ void editBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
     return;
   }
   
-  do
+  while(choice != 9)
   {
     cout << "\033[2J\033[1;1H";
     cout << endl << endl;
@@ -148,7 +148,7 @@ void editBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
 
     cout << "\033[2J\033[1;1H";
 
-  } while(choice != 9);
+  }
 
   return;
 }

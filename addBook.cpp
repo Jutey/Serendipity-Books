@@ -27,7 +27,7 @@ void addBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
   //initialize all filler variables
   tempBook = bookType();
 
-  do
+  while(choice != 0 && bookCount < 20)
   {
     cout << "\033[2J\033[1;1H";
     cout << endl << endl;
@@ -166,13 +166,10 @@ void addBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
         cout << "\033[2J\033[1;1H";
         break;
       default:
-        cout << "\033[2J\033[1;1H";
         break;
     }
 
-    cout << "\033[2J\033[1;1H";
-
-  } while(choice != 0 && bookCount < 20);
+  }
 
   return;
 }
