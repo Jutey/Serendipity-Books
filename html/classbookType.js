@@ -2,6 +2,7 @@ var classbookType =
 [
     [ "bookType", "classbookType.html#a6b8b0b2a1c7ae327bfef6ad9fef187ad", null ],
     [ "bookType", "classbookType.html#a0c9b9cde622a7b80b2be1e2d92fbbe42", null ],
+    [ "~bookType", "classbookType.html#a55e48625f7d4d3596586eef9fcd0d936", null ],
     [ "getAuthor", "classbookType.html#a2bd297763f452fea4eb34165ba07ee45", null ],
     [ "getBookTitle", "classbookType.html#abcbff1446ddde303f10f75d0d561cb12", null ],
     [ "getDateAdded", "classbookType.html#aac9d4b92a3095ad0c222abeb40232e1a", null ],

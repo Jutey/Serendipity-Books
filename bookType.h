@@ -30,63 +30,58 @@ class bookType {
 		/// Contains Default Values for Private Members.
 		///
 		/// Default values from this function are used as placeholders when updating the database.
-		///@returns nothing meaningful for the moment
 		bookType();
 		/// Pushes an Update for All Private Members When Called.
 		///
 		/// Makes sure each value from the user has been updated and stored in the database.
-		///@param string: Placeholders for all string members of the class, being bookTitle, isbn, author, publisher, and dateAdded
-		///@param int: Placeholders for all int members of the class, being qtyOnHand
-		///@param double: Placeholders for all double members of the class, being wholesale and retail
-		///@returns nothing meaningful for the moment
+		///@param title: string - the book's title
+		///@param isbn: string - the book's isbn
+		///@param author: string - the book's author
+		///@param publisher: string - the book's publisher
+		///@param date: string - the book's date of addition
+		///@param qty: int - the amount of books of that type
+		///@param wholesale: double - the wholesale value of the book
+		///@param retail: double - the retail sale of the book
 		bookType(string, string, string, string, string, int, double, double);
 		/// Sets the Book Title Based on Input.
 		///
 		/// Takes a value from the user as a parameter and updates the title accordingly.
-		///@param string: Placeholder for the bookTitle
-		///@returns nothing meaningful for the moment
+		///@param title: string - the book's title
 		void setBookTitle(string);
 		/// Sets the Book's ISBN Based on Input.
 		///
 		/// Takes a value from the user as a parameter and updates the isbn accordingly.
-		///@param string: Placeholder for the isbn
-		///@returns nothing meaningful for the moment
+		///@param isbn: string - the book's isbn
 		void setIsbn(string);
 		/// Sets the Book's Author Based on Input.
 		///
 		/// Takes a value from the user as a parameter and updates the author accordingly.
-		///@param string: Placeholder for the author
-		///@returns nothing meaningful for the moment
+		///@param author: string - the book's author
 		void setAuthor(string);
 		/// Sets the Book's Publisher Based on Input.
 		///
 		/// Takes a value from the user as a parameter and updates the publisher accordingly.
-		///@param string: Placeholder for the publisher
-		///@returns nothing meaningful for the moment
+		///@param publisher: string - the book's publisher
 		void setPublisher(string);
-		/// Sets the Book's Date Of Addition Based on Input.
+		/// Sets the book's Date Of Addition Based on Input.
 		///
 		/// Takes a value from the user as a parameter and updates the date of addition accordingly.
-		///@param string: Placeholder for the dateAdded
-		///@returns nothing meaningful for the moment
+		///@param date: string - the book's date of addition
 		void setDateAdded(string);
 		/// Sets the Book's On Hand Quantity Based on Input.
 		///
 		/// Takes a value from the user as a parameter and updates the on hand quantity accordingly.
-		///@param int: Placeholder for the qtyOnHand
-		///@returns nothing meaningful for the moment
+		///@param qty: int - the amount of books of that type
 		void setQtyOnHand(int);
 		/// Sets the Book's Wholesale Value Based on Input.
 		///
 		/// Takes a value from the user as a parameter and updates the wholesale value accordingly.
-		///@param double: Placeholder for the wholesale value
-		///@returns nothing meaningful for the moment
+		///@param wholesale: double - the wholesale value of the book
 		void setWholesale(double);
 		/// Sets the Book's Retail Value Based on Input.
 		///
 		/// Takes a value from the user as a parameter and updates the retail value accordingly.
-		///@param double: Placeholder for the retail value
-		///@returns nothing meaningful for the moment
+		///@param retail: double - the retail sale of the book
 		void setRetail(double);
 		/// Gets the Current Value of the Book's title.
 		///
@@ -131,7 +126,6 @@ class bookType {
 		/// Creates and Displays a Record of the Book.
 		///
 		/// Rounds up all of the values for the specified index in the database and prints the record. This tells the user everything they may want to know about the book.
-		///@returns nothing meaningful for the moment
 		void print() const;
 		/// Destructor
 		///
