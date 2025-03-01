@@ -18,7 +18,17 @@
 
 using namespace std;
 
+/// A function used to clear any hindrances from the system
+///
+/// A function called within lookUpBook to clear any tasks or information not being used by the system from the terminal
+///@returns nothing meaningful for the moment
 void cls();
+
+/// A function to find a title in the database and give the user a multitude of choices
+///
+/// This function returns all matching search results based on the search query entered
+///@param db: vector<bookType> - the database itself passed into the function to be replicated and searched
+///@returns nothing meaningful for the moment
 void lookUpBook(vector<bookType> db);
 
 #endif
