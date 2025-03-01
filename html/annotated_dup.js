@@ -1,4 +1,4 @@
 var annotated_dup =
 [
-    [ "bookType", "classbookType.html", "classbookType" ]
+    [ "bookType", "classbookType.html", null ]
 ];

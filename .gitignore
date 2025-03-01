@@ -1,6 +1,17 @@
+<<<<<<< HEAD
 /*.o
 /*.s
 /main-menu
 /nohup.out
 /.vscode
 /.vscode-server
+=======
+/*.s
+/*.o
+/main-menu
+/invmenu
+/bookinfo
+/reports
+/nohup.out
+/.vscode
+>>>>>>> e83689307ed0767201248e917553f1202eb69813

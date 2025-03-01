@@ -22,14 +22,20 @@ int intInputChecked(string prompt, int rangeBegin, int rangeEnd)
   cout << prompt << ": ";
   cin >> out;
 
-  while (cin.fail() || out < rangeBegin || out > rangeEnd)
+  while (cin.fail())
   {
-    cin.clear();
     cout << "Error: please enter a number from the range" << rangeBegin << "-" << rangeEnd << ".";
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     cout << prompt << ": ";
     cin >> out;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    if (out < rangeBegin || out > rangeEnd)
+    {
+      cout << "Error: please enter a number from the range" << rangeBegin << "-" << rangeEnd << ".";
+    }
   }
 
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -49,14 +55,20 @@ long long intInputCheckedLong(string prompt, int rangeBegin, int rangeEnd)
   cout << prompt << ": ";
   cin >> out;
 
-  while (cin.fail() || out < rangeBegin || out > rangeEnd)
+  while (cin.fail())
   {
-    cin.clear();
     cout << "Error: please enter a number from the range" << rangeBegin << "-" << rangeEnd << ".";
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     cout << prompt << ": ";
     cin >> out;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    if (out < rangeBegin || out > rangeEnd)
+    {
+      cout << "Error: please enter a number from the range" << rangeBegin << "-" << rangeEnd << ".";
+    }
   }
 
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -76,14 +88,20 @@ float floatInputChecked(string prompt, float rangeBegin, float rangeEnd)
   cout << prompt << ": ";
   cin >> out;
 
-  while (cin.fail() || out < rangeBegin || out > rangeEnd)
+  while (cin.fail())
   {
-    cin.clear();
     cout << "Error: please enter a number from the range" << rangeBegin << "-" << rangeEnd << ".";
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     cout << prompt << ": ";
     cin >> out;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    if (out < rangeBegin || out > rangeEnd)
+    {
+      cout << "Error: please enter a number from the range" << rangeBegin << "-" << rangeEnd << ".";
+    }
   }
 
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -103,14 +121,20 @@ double doubleInputChecked(string prompt, double rangeBegin, double rangeEnd)
   cout << prompt << ": ";
   cin >> out;
 
-  while (cin.fail() || out < rangeBegin || out > rangeEnd)
+  while (cin.fail())
   {
-    cin.clear();
     cout << "Error: please enter a number from the range" << rangeBegin << "-" << rangeEnd << ".";
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     cout << prompt << ": ";
     cin >> out;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    if (out < rangeBegin || out > rangeEnd)
+    {
+      cout << "Error: please enter a number from the range" << rangeBegin << "-" << rangeEnd << ".";
+    }
   }
 
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
