@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['setauthor_0',['setAuthor',['../classbookType.html#a46be7c682a6e457e4faf23d6fce62232',1,'bookType']]],
-  ['setbooktitle_1',['setBookTitle',['../classbookType.html#a9f0871280930671e51447317d7825b74',1,'bookType']]],
-  ['setdateadded_2',['setDateAdded',['../classbookType.html#a053690857e2790f6009fb6d670130204',1,'bookType']]],
-  ['setisbn_3',['setIsbn',['../classbookType.html#aceb6a14ed4401670aca179225a42c300',1,'bookType']]],
-  ['setpublisher_4',['setPublisher',['../classbookType.html#a9bc4372c481c3df0f271f9b92ed832d5',1,'bookType']]],
-  ['setqtyonhand_5',['setQtyOnHand',['../classbookType.html#a66b6872a5445aac12648d535ce1873c4',1,'bookType']]],
-  ['setretail_6',['setRetail',['../classbookType.html#a224a89c5fc662207e802605820b6d7d8',1,'bookType']]],
-  ['setwholesale_7',['setWholesale',['../classbookType.html#a53074f2b543bfd2bbf25f0c72f359efa',1,'bookType']]]
+  ['db_5fsize_5fpadding_0',['DB_SIZE_PADDING',['../setw__consts_8h.html#a4357fdc76c590436313560f2d8061651',1,'setw_consts.h']]],
+  ['dbsize_1',['DBSIZE',['../bookType_8h.html#ad04ad280238d26764c9455d53e035fc3',1,'bookType.h']]],
+  ['deletebook_2',['deleteBook',['../deleteBook_8cpp.html#a97f98a014127ac47e7c810da87ecf9e9',1,'deleteBook(vector&lt; bookType &gt; &amp;bookInfo, int &amp;bookCount):&#160;deleteBook.cpp'],['../deleteBook_8h.html#a3e955eaa85d0496cd07099ac65471b4b',1,'deleteBook(std::vector&lt; bookType &gt; &amp;bookInfo, int &amp;bookCount):&#160;deleteBook.h']]],
+  ['deletebook_2ecpp_3',['deleteBook.cpp',['../deleteBook_8cpp.html',1,'']]],
+  ['deletebook_2eh_4',['deleteBook.h',['../deleteBook_8h.html',1,'']]],
+  ['doubleinputchecked_5',['doubleInputChecked',['../int__input__checked_8cpp.html#a061b66e975097f624bc3bb700daaba8b',1,'doubleInputChecked(string prompt, double rangeBegin, double rangeEnd):&#160;int_input_checked.cpp'],['../int__input__checked_8h.html#a061b66e975097f624bc3bb700daaba8b',1,'doubleInputChecked(string prompt, double rangeBegin, double rangeEnd):&#160;int_input_checked.cpp']]]
 ];

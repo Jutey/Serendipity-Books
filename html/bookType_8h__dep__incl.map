@@ -1,0 +1,15 @@
+<map id="bookType.h" name="bookType.h">
+<area shape="rect" id="node1" title=" " alt="" coords="434,5,522,32"/>
+<area shape="rect" id="node2" href="$addBook_8cpp.html" title=" " alt="" coords="23,155,120,181"/>
+<area shape="rect" id="node3" href="$addBook_8h.html" title=" " alt="" coords="138,80,221,107"/>
+<area shape="rect" id="node4" href="$invmenu_8cpp.html" title=" " alt="" coords="228,229,323,256"/>
+<area shape="rect" id="node5" href="$invmenu_8h.html" title=" " alt="" coords="196,155,278,181"/>
+<area shape="rect" id="node6" href="$mainmenu_8cpp.html" title=" " alt="" coords="581,229,687,256"/>
+<area shape="rect" id="node7" href="$bookType_8cpp.html" title=" " alt="" coords="904,80,1007,107"/>
+<area shape="rect" id="node8" href="$deleteBook_8h.html" title=" " alt="" coords="360,80,458,107"/>
+<area shape="rect" id="node10" href="$editBook_8cpp.html" title=" " alt="" coords="682,155,779,181"/>
+<area shape="rect" id="node11" href="$editBook_8h.html" title=" " alt="" coords="689,80,772,107"/>
+<area shape="rect" id="node12" href="$lookUpBook_8h.html" title=" " alt="" coords="496,80,599,107"/>
+<area shape="rect" id="node9" href="$deleteBook_8cpp.html" title=" " alt="" coords="353,155,465,181"/>
+<area shape="rect" id="node13" href="$lookUpBook_8cpp.html" title=" " alt="" coords="489,155,606,181"/>
+</map>
