@@ -29,6 +29,6 @@ void cls();
 /// This function returns all matching search results based on the search query entered
 ///@param db: vector<bookType> - the database itself passed into the function to be replicated and searched
 ///@returns nothing meaningful for the moment
-void lookUpBook(vector<bookType> db);
+int lookUpBook(vector<bookType> db);
 
 #endif
