@@ -67,9 +67,9 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
         lookUpBook(bookInfo);
         break;
       case 2:
-        addBook(bookInfo, bookCount, DBSIZE);
         if (bookCount < DBSIZE)
         {
+				cout << " ";
             addBook(bookInfo, bookCount, DBSIZE);
         }
         else
@@ -93,9 +93,6 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
         continue;
     }
 
-    cout << "█" << setw(MENU_BODY_PADDING) << " " << "Press ENTER to continue ..." << setw(28) << "█" << endl;
-    cout << "██████████████████████████████████████████████████████████████████████████████";
-    cin.ignore(numeric_limits<streamsize>::max(),'\n');
     cout << "\033[2J\033[1;1H";
 
   } while(userChoice != 5);
