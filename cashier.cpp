@@ -2,6 +2,8 @@
 
 #include "cashier.h"
 #include "int_input_checked.h"
+#include "bookType.h"
+#include "lookUpBook.h"
 
 using namespace std;
 
@@ -15,7 +17,7 @@ using namespace std;
  |  return 0;   |
  |}           |
  *--------------------*/
-void cashier()
+void cashier(vector<bookType>& bookInfo)
 {
   const double SALESTAX = 0.06;
 
@@ -30,39 +32,44 @@ void cashier()
 
   do //while (toupper(userChoice[0]) == 'Y')
   {
-    // clear the screen
     cout << "\033[2J\033[1;1H";
 
-    // start printing an input menu
-    cout << "████████████████████████████████████████████████████████████████████████████████\n";
-    cout << "Serendipity Booksellers\n Cashier Module\n\n";
+	double totalPrice = 0.0;
+	bool hasPurchased = false;
 
-    // ask the user for their input
-    cout << "Date: ";
-    getline(cin, date);
+ 
+  do { //inner for loop
+	   int index = lookUpBook(bookInfo);
 
-    quantity = intInputChecked("Quantity of Book: ", 1, numeric_limits<int>::max());
+	bookType& selectedBook = bookInfo[index];
+	int availableStock = selectedBook.getQtyOnHand();
 
-    cout << "ISBN: ";
-    getline(cin, isbn);
+	if (availableStock == 0) 
+	{
+		cout << "Sorry, " << selectedBook.getBookTitle() << " is out of stock.\n";
+		continue;
+	}
 
-    cout << "Title: ";
-    getline(cin, title);
+		cout << "How many do you want to purchase? ";
+		int quantity = intInputChecked("> ", 0, availableStock);
 
-    pricePer = doubleInputChecked("Price: ", 0.01, numeric_limits<double>::max());
-    cout << endl << endl;
+	if (quantity > availableStock) 
+	{
+		cout << "Only " << availableStock << " available. Purchasing all " << availableStock << " copies.\n";
+		quantity = availableStock;
+	}
 
-    // finish the input menu
-    cout << "████████████████████████████████████████████████████████████████████████████████\n";
+	cout << "Purchase Request: " << quantity << " x " << selectedBook.getBookTitle() << "\n";
+	totalPrice += selectedBook.getRetail() * quantity;
+	selectedBook.setQtyOnHand(selectedBook.getQtyOnHand() - quantity);
+	hasPurchased = true;
 
-    // ask the user to confirm
-    cout << "Press ENTER to continue...";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    // clear the screen
-    cout << "\033[2J\033[1;1H";
+	cout << "Do you want to add another book to this purchase? (Y/N): ";
+	getline(cin, userChoice);
 
-    // calculate totalSale and totalPrice
-    totalPrice = pricePer   * quantity;
+	} while (toupper(userChoice[0]) == 'Y');
+
+
     totalSale  = totalPrice + totalPrice * SALESTAX;
 
     // print the sales slip
@@ -79,8 +86,8 @@ void cashier()
                  << setw(8)  << "Total"  << " █\n";
     cout << "█"  << setfill('-')      << setw(78)   <<  '-'  << setfill(' ') <<       "█\n";
     cout << "█"  << right << setw(3)  << quantity   << "  "
-         << left << setw(14) << isbn
-                 << setw(38) << title
+         << left << setw(14) << bookInfo[index].getIsbn()
+                 << setw(38) << bookInfo[index].getBookTitle()
          << '$'  << right    << setw(7)  << pricePer   << "  "
          << left << '$'      << right    << setw(7)  << totalPrice << " █\n";
     cout << "█                                        █\n"

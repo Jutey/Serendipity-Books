@@ -33,7 +33,14 @@ int main()
 
     cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
 
+	if(bookCount < DBSIZE){
     cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "1. Cashier Module" << "█" << endl;
+	}
+	else
+	{
+	  cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "1. Cashier Module (DISABLED)" << "█" << endl;
+ 	}
+
     cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "2. Inventory Database Module" << "█" << endl;
     cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "3. Report Module" << "█" << endl;
     cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_EXIT_PADDING) << "\033[31m4. Exit\033[0m " << "█" << endl;
@@ -51,9 +58,15 @@ int main()
     switch(choice)
     {
       case 1:
-        cashier();
+		if (bookCount < DBSIZE){
+        cashier(bookInfo);
         cout << "\033[2J\033[1;1H";
         break;
+		}
+		else{
+			cout << "please add books to inventory prior to entering cashier";
+			break;
+			}
       case 2:
         invmenu(bookInfo, bookCount, DBSIZE);
         cout << "\033[2J\033[1;1H";
