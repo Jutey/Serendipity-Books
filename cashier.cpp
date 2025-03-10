@@ -34,40 +34,41 @@ void cashier(vector<bookType>& bookInfo)
   {
     cout << "\033[2J\033[1;1H";
 
-	double totalPrice = 0.0;
-	bool hasPurchased = false;
+	  double totalPrice = 0.0;
+	  bool hasPurchased = false;
 
- 
-  do { //inner for loop
-	   int index = lookUpBook(bookInfo);
+    int index = lookUpBook(bookInfo);
+    do 
+    { //inner for loop
+      
+	    bookType& selectedBook = bookInfo[index];
+	    int availableStock = selectedBook.getQtyOnHand();
 
-	bookType& selectedBook = bookInfo[index];
-	int availableStock = selectedBook.getQtyOnHand();
+	    if (availableStock == 0) 
+	    {
+	  	  cout << "Sorry, " << selectedBook.getBookTitle() << " is out of stock.\n";
+	  	  continue;
+	    }
 
-	if (availableStock == 0) 
-	{
-		cout << "Sorry, " << selectedBook.getBookTitle() << " is out of stock.\n";
-		continue;
-	}
+	    cout << "How many do you want to purchase? ";
 
-		cout << "How many do you want to purchase? ";
-		int quantity = intInputChecked("> ", 0, availableStock);
+	    int quantity = intInputChecked("> ", 0, availableStock);
 
-	if (quantity > availableStock) 
-	{
-		cout << "Only " << availableStock << " available. Purchasing all " << availableStock << " copies.\n";
-		quantity = availableStock;
-	}
+	    if (quantity > availableStock) 
+	    {
+		    cout << "Only " << availableStock << " available. Purchasing all " << availableStock << " copies.\n";
+		    quantity = availableStock;
+    	}
 
-	cout << "Purchase Request: " << quantity << " x " << selectedBook.getBookTitle() << "\n";
-	totalPrice += selectedBook.getRetail() * quantity;
-	selectedBook.setQtyOnHand(selectedBook.getQtyOnHand() - quantity);
-	hasPurchased = true;
+  	  cout << "Purchase Request: " << quantity << " x " << selectedBook.getBookTitle() << "\n";
+  	  totalPrice += selectedBook.getRetail() * quantity;
+	    selectedBook.setQtyOnHand(selectedBook.getQtyOnHand() - quantity);
+  	  hasPurchased = true;
 
-	cout << "Do you want to add another book to this purchase? (Y/N): ";
-	getline(cin, userChoice);
+  	  cout << "Do you want to add another book to this purchase? (Y/N): ";
+	    getline(cin, userChoice);
 
-	} while (toupper(userChoice[0]) == 'Y');
+	  } while (toupper(userChoice[0]) == 'Y');
 
 
     totalSale  = totalPrice + totalPrice * SALESTAX;
