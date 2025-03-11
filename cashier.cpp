@@ -24,27 +24,30 @@ void cashier(vector<bookType>& bookInfo)
   string date;
   string isbn;
   string title;
-  int  quantity;
+  int    quantity;
   double pricePer;
   double totalPrice;
   double totalSale;
   string userChoice;
 
+  int index;
+  int availableStock;
+//  TODO:
+//  vector<bookType> tracking;
+
   do //while (toupper(userChoice[0]) == 'Y')
   {
     cout << "\033[2J\033[1;1H";
+	 bool hasPurchased = false;
 
-	  double totalPrice = 0.0;
-	  bool hasPurchased = false;
-
-    int index = lookUpBook(bookInfo);
+    index = lookUpBook(bookInfo);
     do 
     { //inner for loop
       
 	    bookType& selectedBook = bookInfo[index];
-	    int availableStock = selectedBook.getQtyOnHand();
+	    availableStock = selectedBook.getQtyOnHand();
 
-	    if (availableStock == 0) 
+	    if (availableStock == 0)
 	    {
 	  	  cout << "Sorry, " << selectedBook.getBookTitle() << " is out of stock.\n";
 	  	  continue;
@@ -52,9 +55,9 @@ void cashier(vector<bookType>& bookInfo)
 
 	    cout << "How many do you want to purchase? ";
 
-	    int quantity = intInputChecked("> ", 0, availableStock);
+	    quantity = intInputChecked("> ", 0, availableStock);
 
-	    if (quantity > availableStock) 
+	    if (quantity > availableStock)
 	    {
 		    cout << "Only " << availableStock << " available. Purchasing all " << availableStock << " copies.\n";
 		    quantity = availableStock;
@@ -64,9 +67,15 @@ void cashier(vector<bookType>& bookInfo)
   	  totalPrice += selectedBook.getRetail() * quantity;
 	    selectedBook.setQtyOnHand(selectedBook.getQtyOnHand() - quantity);
   	  hasPurchased = true;
+     availableStock = selectedBook.getQtyOnHand();
 
   	  cout << "Do you want to add another book to this purchase? (Y/N): ";
-	    getline(cin, userChoice);
+	  getline(cin, userChoice);
+
+     if (toupper(userChoice[0]) == 'Y')
+     {
+       index = lookUpBook(bookInfo);
+     }
 
 	  } while (toupper(userChoice[0]) == 'Y');
 
@@ -89,7 +98,7 @@ void cashier(vector<bookType>& bookInfo)
     cout << "█"  << right << setw(3)  << quantity   << "  "
          << left << setw(14) << bookInfo[index].getIsbn()
                  << setw(38) << bookInfo[index].getBookTitle()
-         << '$'  << right    << setw(7)  << pricePer   << "  "
+         << '$'  << right    << setw(7)  << bookInfo[index].getRetail()   << "  "
          << left << '$'      << right    << setw(7)  << totalPrice << " █\n";
     cout << "█                                        █\n"
          << "█                                        █\n";
