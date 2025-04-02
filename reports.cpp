@@ -85,7 +85,7 @@ if (currentPage < totalPages) {
 }
 
 
-void reports(const vector<bookType>& bookInfo)
+void reports(const vector<bookType*> bookInfo)
 {
   int choice;
   do
