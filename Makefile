@@ -1,5 +1,5 @@
-main-menu: mainmenu.cpp bookType.o int_input_checked.o invmenu.o cashier.o reports.o addBook.o editBook.o lookUpBook.o deleteBook.o
-	g++ -std=c++20 -Wall -Werror -o main-menu mainmenu.cpp bookType.o int_input_checked.o invmenu.o cashier.o reports.o addBook.o editBook.o lookUpBook.o deleteBook.o
+main-menu: mainmenu.cpp bookType.o int_input_checked.o invmenu.o cashier.o reports.o addBook.o editBook.o lookUpBook.o deleteBook.o book_info_deref.o
+	g++ -std=c++20 -Wall -Werror -o main-menu mainmenu.cpp bookType.o int_input_checked.o invmenu.o cashier.o reports.o addBook.o editBook.o lookUpBook.o deleteBook.o book_info_deref.o
 reports: reports.cpp
 	g++ -std=c++20 -Wall -Werror -c reports.cpp
 bookinfo: bookinfo.cpp
@@ -20,6 +20,8 @@ editbook: editBook.cpp
 	g++ -std=c++20 -Wall -Werror -c editBook.cpp
 deletebook: deletebook.cpp
 	g++ -std=c++20 -Wall -Werror -c deletebook.cpp
+book_info_deref: book_info_deref.cpp
+	g++ -std=c++20 -Wall -Werror -c book_info_deref.cpp
 asm: mainmenu.cpp
 	g++ -std=c++20 -Wall -Werror -S mainmenu.cpp
 clean:
