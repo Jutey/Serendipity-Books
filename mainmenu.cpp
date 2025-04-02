@@ -64,7 +64,7 @@ int main()
       case 1:
     if (bookCount > 0){
         derefBookInfo = bookInfoDeref(bookInfo);
-        cashier(derefBookInfo);
+        cashier(bookInfo);
         cout << "\033[2J\033[1;1H";
         break;
     }
