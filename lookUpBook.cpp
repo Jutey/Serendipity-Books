@@ -6,6 +6,7 @@
 ************************************************/
 
 #include "lookUpBook.h"
+#include "book_info_deref.h" // for bookInfoDeref
 
 using namespace std;
 
@@ -18,7 +19,7 @@ void cls()
   #endif
 }
 
-int lookUpBook(vector<bookType> db)
+int lookUpBook(vector<bookType*> db)
 {
   // `std::find` sucks with arrays of structs,
   // so copying titles into temporary array of strings to make things easier
@@ -44,7 +45,7 @@ int lookUpBook(vector<bookType> db)
   
   //copies book titles into the titles vectors
 
-  for (bookType book : db)
+  for (bookType book : bookInfoDeref(db))
   {
     titles.push_back(book.getBookTitle());
   }
@@ -76,7 +77,7 @@ int lookUpBook(vector<bookType> db)
     // }
     if (titles[i].find(query) != string::npos)  // If query is found within the title
     {
-      cout << "Found title: " << db[i].getBookTitle() << endl;  // Display original title
+      cout << "Found title: " << bookInfoDeref(db)[i].getBookTitle() << endl;  // Display original title
       cout << "Is this the book you're looking for? (y/n) ";
       cin.get(foundResponse);
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -87,7 +88,7 @@ int lookUpBook(vector<bookType> db)
       {
         case 'y':
           // Print book details
-          db[i].print();
+          bookInfoDeref(db)[i].print();
           cout << endl;
           out = i;
 			 found = true;

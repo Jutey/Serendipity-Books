@@ -79,7 +79,7 @@ int main()
         break;
       case 3:
         derefBookInfo = bookInfoDeref(bookInfo); // Reuse the same variable
-        reports(derefBookInfo); // pass the dereferenced vector to reports
+        reports(bookInfo); // pass the dereferenced vector to reports
         cout << "\033[2J\033[1;1H";
         break;
       case 4:

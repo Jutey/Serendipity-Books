@@ -17,10 +17,11 @@
 #include "editBook.h"
 #include "deleteBook.h"
 #include "setw_consts.h"
+#include "book_info_deref.h"
 
 using namespace std;
 
-void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
+void invmenu(vector<bookType*> bookInfo, int &bookCount, const int DBSIZE)
 {
   
   int userChoice;
@@ -58,6 +59,7 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
 
     // error checking
     userChoice = intInputChecked("Enter Your Choice", 1, 5);
+    vector<bookType> derefed = bookInfoDeref(bookInfo);
     
     // Menu navigation
     switch(userChoice)
@@ -70,7 +72,7 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
         if (bookCount < DBSIZE)
         {
 				cout << " ";
-            addBook(bookInfo, bookCount, DBSIZE);
+            addBook(derefed, bookCount, DBSIZE);
         }
         else
         {
@@ -79,10 +81,10 @@ void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
 
         break;
       case 3:
-        editBook(bookInfo, bookCount, DBSIZE);
+        editBook(derefed, bookCount, DBSIZE);
         break;
       case 4:
-        deleteBook(bookInfo, bookCount);
+        deleteBook(derefed, bookCount);
         break;
       case 5:
         break;
