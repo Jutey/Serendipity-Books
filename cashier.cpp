@@ -3,6 +3,7 @@
 #include "int_input_checked.h"
 #include "bookType.h"
 #include "lookUpBook.h"
+#include "book_info_deref.h" // for bookInfoDeref
 
 using namespace std;
 
@@ -16,7 +17,7 @@ using namespace std;
  |  return 0;   |
  |}           |
  *--------------------*/
-void cashier(vector<bookType>& bookInfo)
+void cashier(vector<bookType*> bookInfo)
 {
   const double SALESTAX = 0.06;
 
@@ -34,6 +35,8 @@ void cashier(vector<bookType>& bookInfo)
 //  TODO:
 //  vector<bookType> tracking;
 
+vector<bookType> derefed = bookInfoDeref(bookInfo);
+
   do //while (toupper(userChoice[0]) == 'Y')
   {
     cout << "\033[2J\033[1;1H";
@@ -42,8 +45,7 @@ void cashier(vector<bookType>& bookInfo)
     index = lookUpBook(bookInfo);
     do 
     { //inner for loop
-      
-	    bookType& selectedBook = bookInfo[index];
+	    bookType& selectedBook = derefed[index];
 	    availableStock = selectedBook.getQtyOnHand();
 
 	    if (availableStock == 0)
@@ -95,9 +97,9 @@ void cashier(vector<bookType>& bookInfo)
                  << setw(8)  << "Total"  << " █\n";
     cout << "█"  << setfill('-')      << setw(78)   <<  '-'  << setfill(' ') <<       "█\n";
     cout << "█"  << right << setw(3)  << quantity   << "  "
-         << left << setw(14) << bookInfo[index].getIsbn()
-                 << setw(38) << bookInfo[index].getBookTitle()
-         << '$'  << right    << setw(7)  << bookInfo[index].getRetail()   << "  "
+         << left << setw(14) << derefed[index].getIsbn()
+                 << setw(38) << derefed[index].getBookTitle()
+         << '$'  << right    << setw(7)  << derefed[index].getRetail()   << "  "
          << left << '$'      << right    << setw(7)  << totalPrice << " █\n";
     cout << "█                                        █\n"
          << "█                                        █\n";
