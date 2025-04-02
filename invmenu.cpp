@@ -84,7 +84,7 @@ void invmenu(vector<bookType*> bookInfo, int &bookCount, const int DBSIZE)
         editBook(bookInfo, bookCount, DBSIZE);
         break;
       case 4:
-        deleteBook(derefed, bookCount);
+        deleteBook(bookInfo, bookCount);
         break;
       case 5:
         break;
