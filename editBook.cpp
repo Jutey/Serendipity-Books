@@ -8,6 +8,7 @@
 #include "editBook.h"
 #include "lookUpBook.h"
 #include "setw_consts.h"
+#include "book_info_deref.h"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ using namespace std;
 //bookCount is a variable that should be addressed and initialized within main
 //Default array/vector name is bookInfo if that's easiest, otherwise update lines 1BOOK_EDITOR_BODY_PADDING-1BOOK_EDITOR_SUBTITLE_PADDING
 //Also, make sure this vvvvvvvv filler parameter gets updated, wasn't sure what we were using
-void editBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
+void editBook(vector<bookType*> bookInfo, int &bookCount, const int DBSIZE)
 {
   int i = lookUpBook(bookInfo);
   int choice;
@@ -27,7 +28,7 @@ void editBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
   int tmpQtyOnHand;
   double tmpWholesale;
   double tmpRetail;
-
+  vector<bookType> derefed = bookInfoDeref(bookInfo); // Dereference the bookInfo vector to get a vector of bookType objects
 
   if (bookCount == 0)
   {
@@ -62,22 +63,22 @@ void editBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
     cout << left;
 
     cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)               << "<1> Update Book Title"        << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getBookTitle()     << "█" << endl;
+          << setw(BOOK_EDITOR_BODY_WIDTH)     << derefed[i].getBookTitle()     << "█" << endl;
     cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)               << "<2> Update ISBN"          << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getIsbn()          << "█" << endl;
+          << setw(BOOK_EDITOR_BODY_WIDTH)     << derefed[i].getIsbn()          << "█" << endl;
     cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)               << "<3> Update Author"          << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getAuthor()        << "█" << endl;
+          << setw(BOOK_EDITOR_BODY_WIDTH)     << derefed[i].getAuthor()        << "█" << endl;
     cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)               << "<4> Update Publisher"         << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getPublisher()     << "█" << endl;
+          << setw(BOOK_EDITOR_BODY_WIDTH)     << derefed[i].getPublisher()     << "█" << endl;
     cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)               << "<5> Date Last Updated <mm/dd/yyyy>" << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getDateAdded()     << "█" << endl;
+          << setw(BOOK_EDITOR_BODY_WIDTH)     << derefed[i].getDateAdded()     << "█" << endl;
     cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)               << "<6> Update Quantity on Hand"    << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)     << bookInfo[i].getQtyOnHand()     << "█" << endl;
+          << setw(BOOK_EDITOR_BODY_WIDTH)     << derefed[i].getQtyOnHand()     << "█" << endl;
     cout << fixed << setprecision(2);
     cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)               << "<7> Update Wholesale Cost"      << ">  --$"
-          << setw(BOOK_EDITOR_BODY_WIDTH - 1)     << bookInfo[i].getWholesale() << "█" << endl;
+          << setw(BOOK_EDITOR_BODY_WIDTH - 1)     << derefed[i].getWholesale() << "█" << endl;
     cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)               << "<8> Update Retail Price"      << ">  --$"
-            << setw(BOOK_EDITOR_BODY_WIDTH - 1)     << bookInfo[i].getRetail()  << "█" << endl;
+            << setw(BOOK_EDITOR_BODY_WIDTH - 1)     << derefed[i].getRetail()  << "█" << endl;
 
     cout.unsetf(ios::fixed);
     cout << setprecision(6);
@@ -97,52 +98,52 @@ void editBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
       case 1:
         cout << "Enter Book Title: ";
         getline(cin, tmpTitle);
-        bookInfo[i].setBookTitle(tmpTitle);
+        derefed[i].setBookTitle(tmpTitle);
         cout << "\033[2J\033[1;1H";
         break;
       case 2:
         cout << "Enter ISBN: ";
         getline(cin, tmpIsbn);
-       bookInfo[i].setIsbn(tmpIsbn);
+       derefed[i].setIsbn(tmpIsbn);
         cout << "\033[2J\033[1;1H";
         break;
       case 3:
         cout << "Enter Author: ";
         getline(cin, tmpAuthor);
-        bookInfo[i].setAuthor(tmpAuthor);
+        derefed[i].setAuthor(tmpAuthor);
         cout << "\033[2J\033[1;1H";
         break;
       case 4:
         cout << "Enter Publisher: ";
         getline(cin, tmpPublisher);
-        bookInfo[i].setPublisher(tmpPublisher);
+        derefed[i].setPublisher(tmpPublisher);
         cout << "\033[2J\033[1;1H";
         break;
       case 5:
         cout << "Enter Date Added: ";
         getline(cin, tmpDateAdded);
-        bookInfo[i].setDateAdded(tmpDateAdded);
+        derefed[i].setDateAdded(tmpDateAdded);
         cout << "\033[2J\033[1;1H";
         break;
       case 6:
         cout << "Enter Quantity on Hand: ";
         cin >> tmpQtyOnHand;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        bookInfo[i].setQtyOnHand(tmpQtyOnHand);
+        derefed[i].setQtyOnHand(tmpQtyOnHand);
         cout << "\033[2J\033[1;1H";
         break;
       case 7:
         cout << "Enter Wholesale Cost: ";
         cin  >> tmpWholesale;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        bookInfo[i].setWholesale(tmpWholesale);
+        derefed[i].setWholesale(tmpWholesale);
         cout << "\033[2J\033[1;1H";
         break;
       case 8:
         cout << "Enter Retail Price: ";
         cin  >> tmpRetail;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        bookInfo[i].setRetail(tmpRetail);
+        derefed[i].setRetail(tmpRetail);
         cout << "\033[2J\033[1;1H";
         break;
       case 9:
