@@ -13,7 +13,7 @@
 ///@param bookCount: int - a user feedback integer that keeps track of the amount of books in the database
 ///@param DBSIZE: const int - an integer that limits the size of the Database
 ///@returns nothing meaningful at the moment
-void editBook(vector<bookType*> &bookInfo, int &bookCount, const int DBSIZE);
+void editBook(vector<bookType*> bookInfo, int &bookCount, const int DBSIZE);
 
 /// A function to allow database edits and maintenance
 ///
