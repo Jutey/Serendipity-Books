@@ -7,9 +7,11 @@
 #include "int_input_checked.h"
 #include "setw_consts.h"
 #include "bookType.h"
+#include "book_info_deref.h" // for bookInfoDeref
 
 using namespace std;
-void repListing(const vector<bookType>& bookInfo){
+void repListing(const vector<bookType*> bookInfo){
+  vector<bookType> bookInfoDerefImpl = bookInfoDeref(const_cast<vector<bookType*>&>(bookInfo)); // Dereference the vector of pointers to get a vector of bookType objects
 	//Pull the current Date from the system
 	time_t currentTime = time(nullptr);               // Get current time
 	tm* localTime      = localtime(&currentTime);     // Convert to local time
@@ -19,7 +21,7 @@ void repListing(const vector<bookType>& bookInfo){
 	string date        = to_string(month) + "/" + to_string(day) + "/" + to_string(year);
 //Constructing the current date from system year/month/day
 	int currentPage = 1;
-	int totalBooks = bookType::getBookCount();
+	int totalBooks = bookType::getNumRecs();
 	int totalPages = (totalBooks + 9) / 10;
 
 	int startingIndex = (currentPage - 1) * 10;
@@ -50,14 +52,14 @@ void repListing(const vector<bookType>& bookInfo){
 
 for (int i = startingIndex; i < endingIndex; ++i){
 
- cout << "█  " << left << setw(30) << bookInfo[i].getBookTitle().substr(0, 30)
-                 << setw(12) << bookInfo[i].getIsbn().substr(0, 12)
-                 << setw(21) << bookInfo[i].getAuthor().substr(0, 21)
-                 << setw(12) << bookInfo[i].getPublisher().substr(0, 12)
-                 << setw(12) << bookInfo[i].getDateAdded()
-                 << setw(8)  << bookInfo[i].getQtyOnHand()
-                 << "$" << right << setw(7) << fixed << setprecision(2) << bookInfo[i].getWholesale()
-                 << "   $" << right << setw(7) << bookInfo[i].getRetail()
+ cout << "█  " << left << setw(30) << bookInfoDerefImpl[i].getBookTitle().substr(0, 30)
+                 << setw(12) << bookInfoDerefImpl[i].getIsbn().substr(0, 12)
+                 << setw(21) << bookInfoDerefImpl[i].getAuthor().substr(0, 21)
+                 << setw(12) << bookInfoDerefImpl[i].getPublisher().substr(0, 12)
+                 << setw(12) << bookInfoDerefImpl[i].getDateAdded()
+                 << setw(8)  << bookInfoDerefImpl[i].getQtyOnHand()
+                 << "$" << right << setw(7) << fixed << setprecision(2) << bookInfoDerefImpl[i].getWholesale()
+                 << "   $" << right << setw(7) << bookInfoDerefImpl[i].getRetail()
                  << " █" << endl;
 
 }

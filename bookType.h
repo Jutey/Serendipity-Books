@@ -26,7 +26,6 @@ class bookType {
 		int qtyOnHand;
 		double wholesale;
 		double retail;
-		static int bookCount;
 		static int num_recs;
 
 	public:

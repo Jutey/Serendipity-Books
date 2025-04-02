@@ -8,14 +8,15 @@
 #include "bookType.h" // DBSIZE
 #include "int_input_checked.h"
 #include "setw_consts.h"
+#include "book_info_deref.h" // for bookInfoDeref
 
-using namespace std;  
+using namespace std;
 
 int main()
 {
 
   int choice;
-  vector<bookType> bookInfo;
+  vector<bookType*> bookInfo;
   int bookCount = 0;
 
   do
@@ -56,24 +57,29 @@ int main()
 
     choice = intInputChecked("Enter Your Choice", 1, 4);
     
+    vector<bookType> derefBookInfo; // Declare outside the switch to avoid bypassing initialization
+
     switch(choice)
     {
       case 1:
-		if (bookCount > 0){
-        cashier(bookInfo);
+    if (bookCount > 0){
+        derefBookInfo = bookInfoDeref(bookInfo);
+        cashier(derefBookInfo);
         cout << "\033[2J\033[1;1H";
         break;
-		}
-		else{
-			cout << "please add books to inventory prior to entering cashier";
-			break;
-			}
+    }
+    else{
+      cout << "please add books to inventory prior to entering cashier";
+      break;
+      }
       case 2:
-        invmenu(bookInfo, bookCount, DBSIZE);
+        derefBookInfo = bookInfoDeref(bookInfo); // Reuse the same variable
+        invmenu(derefBookInfo, bookCount, DBSIZE);
         cout << "\033[2J\033[1;1H";
         break;
       case 3:
-        reports(bookInfo);
+        derefBookInfo = bookInfoDeref(bookInfo); // Reuse the same variable
+        reports(derefBookInfo); // pass the dereferenced vector to reports
         cout << "\033[2J\033[1;1H";
         break;
       case 4:
@@ -86,7 +92,6 @@ int main()
     }
 
   cout << "\033[2J\033[1;1H";
-
   } while(choice != 4);
 
   return 0;

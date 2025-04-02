@@ -3,7 +3,6 @@
 
 using namespace std;
 
-int bookType::bookCount = 0;
 int bookType::num_recs = 0;
 
 
@@ -79,10 +78,6 @@ void bookType::setWholesale(double wholesale)
 void bookType::setRetail(double retail)
 {
   this->retail = retail;
-}
-int bookType::getBookCount()
-{
-	return bookCount;
 }
 int bookType::getNumRecs()
 {
