@@ -33,7 +33,8 @@ int main()
 
     cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
 
-	if(bookCount < DBSIZE){
+	if(bookCount > 0)
+   {
     cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "1. Cashier Module" << "█" << endl;
 	}
 	else
@@ -58,7 +59,7 @@ int main()
     switch(choice)
     {
       case 1:
-		if (bookCount < DBSIZE){
+		if (bookCount > 0){
         cashier(bookInfo);
         cout << "\033[2J\033[1;1H";
         break;
