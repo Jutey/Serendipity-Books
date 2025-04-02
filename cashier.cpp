@@ -29,6 +29,7 @@ void cashier(vector<bookType>& bookInfo)
   double totalPrice;
   double totalSale;
   string userChoice;
+  int index = 0;
 
   do //while (toupper(userChoice[0]) == 'Y')
   {
@@ -38,16 +39,22 @@ void cashier(vector<bookType>& bookInfo)
 	bool hasPurchased = false;
 
  
-  do { //inner for loop
+  do //inner for loop
+	{ 
 	   int index = lookUpBook(bookInfo);
-
+	if(index == -1) 
+	{
+		cout << "book not found\n";
+		continue;
+	}
 	bookType& selectedBook = bookInfo[index];
 	int availableStock = selectedBook.getQtyOnHand();
+
 
 	if (availableStock == 0) 
 	{
 		cout << "Sorry, " << selectedBook.getBookTitle() << " is out of stock.\n";
-		continue;
+		break;
 	}
 
 		cout << "How many do you want to purchase? ";
@@ -59,14 +66,19 @@ void cashier(vector<bookType>& bookInfo)
 		quantity = availableStock;
 	}
 
-	cout << "Purchase Request: " << quantity << " x " << selectedBook.getBookTitle() << "\n";
+	cout << "Purchase Request: " << quantity << " x " << selectedBook.getBookTitle() << endl;
 	totalPrice += selectedBook.getRetail() * quantity;
-	selectedBook.setQtyOnHand(selectedBook.getQtyOnHand() - quantity);
 	hasPurchased = true;
 
 	cout << "Do you want to add another book to this purchase? (Y/N): ";
 	getline(cin, userChoice);
+	
+	if(!hasPurchased){
+		cout << "nothing purchased";
+		continue;
+	}
 
+	selectedBook.setQtyOnHand(selectedBook.getQtyOnHand() - quantity);
 	} while (toupper(userChoice[0]) == 'Y');
 
 
