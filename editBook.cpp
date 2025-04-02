@@ -37,6 +37,13 @@ void editBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
   
   while(choice != 9)
   {
+	 if (i == -1)
+    {
+		cout << "Book not found. Returning to Inventory Menu.\n";
+		cout << "Press ENTER to continue...";
+		cin.ignore();
+		return;  
+    }
     cout << "\033[2J\033[1;1H";
     cout << endl << endl;
     //cout << setfill("█") << setw(80) << "#" << endl;

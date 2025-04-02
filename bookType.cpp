@@ -3,6 +3,10 @@
 
 using namespace std;
 
+int bookType::bookCount = 0;
+int bookType::num_recs = 0;
+
+
 bookType::bookType()
 {
   this->bookTitle = "EMPTY";
@@ -13,6 +17,7 @@ bookType::bookType()
   this->qtyOnHand = 0;
   this->wholesale = 0.0;
   this->retail = 0.0;
+  num_recs++;
 }
 
 bookType::bookType(string title,
@@ -32,6 +37,8 @@ bookType::bookType(string title,
   this->qtyOnHand = qty;
   this->wholesale = wholesale;
   this->retail = retail;
+
+  num_recs++;
 }
 
 void bookType::setBookTitle(string title)
@@ -72,6 +79,14 @@ void bookType::setWholesale(double wholesale)
 void bookType::setRetail(double retail)
 {
   this->retail = retail;
+}
+int bookType::getBookCount()
+{
+	return bookCount;
+}
+int bookType::getNumRecs()
+{
+	return num_recs;
 }
 
 string bookType::getBookTitle() const
@@ -165,4 +180,5 @@ void bookType::print() const
 bookType::~bookType()
 {
   //destructor
+	num_recs--;
 }

@@ -1,14 +1,89 @@
 #include <iostream>
 #include <iomanip>
 #include <limits>
+#include <vector>
 
 #include "reports.h"
 #include "int_input_checked.h"
 #include "setw_consts.h"
+#include "bookType.h"
 
 using namespace std;
+void repListing(const vector<bookType>& bookInfo){
+	//Pull the current Date from the system
+	time_t currentTime = time(nullptr);               // Get current time
+	tm* localTime      = localtime(&currentTime);     // Convert to local time
+	int year           = localTime->tm_year + 1900;   // Years since 1900
+	int month          = localTime->tm_mon + 1;       // Months since January (0-11)
+	int day            = localTime->tm_mday;          // Day of the month (1-31)
+	string date        = to_string(month) + "/" + to_string(day) + "/" + to_string(year);
+//Constructing the current date from system year/month/day
+	int currentPage = 1;
+	int totalBooks = bookType::getBookCount();
+	int totalPages = (totalBooks + 9) / 10;
 
-void reports()
+	int startingIndex = (currentPage - 1) * 10;
+	int endingIndex = min(startingIndex + 10, totalBooks);
+
+	string choice;
+
+   do{
+
+    cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"
+		   << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█" << setw(65) << right << "SERENDIPITY BOOKSELLERS" << setw(54) << right << "█" << endl;
+    cout << "█" << setw(62) << right << "REPORT LISTING" << setw(57) << right << "█" << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█"  << date     <<      "PAGE:" << currentPage << " of " << totalPages <<    " DATABASE SIZE: 20     CURRENT BOOK COUNT: 20           █" << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+
+    cout << "█  TITLE                          ISBN         AUTHOR              PUBLISHER   DATE ADDED QTY O/H WHOLESALE RETAIL █" << endl;
+    cout << "█  ----------------------------  ----------   -------------------  ----------  ----------- ------- --------- -------█" << endl;
+
+  		  
+  
+
+ 
+
+
+
+for (int i = startingIndex; i < endingIndex; ++i){
+
+ cout << "█  " << left << setw(30) << bookInfo[i].getBookTitle().substr(0, 30)
+                 << setw(12) << bookInfo[i].getIsbn().substr(0, 12)
+                 << setw(21) << bookInfo[i].getAuthor().substr(0, 21)
+                 << setw(12) << bookInfo[i].getPublisher().substr(0, 12)
+                 << setw(12) << bookInfo[i].getDateAdded()
+                 << setw(8)  << bookInfo[i].getQtyOnHand()
+                 << "$" << right << setw(7) << fixed << setprecision(2) << bookInfo[i].getWholesale()
+                 << "   $" << right << setw(7) << bookInfo[i].getRetail()
+                 << " █" << endl;
+
+}
+
+if (currentPage < totalPages) {
+            cout << "█  Type \"2\" to go to the next page, or any other key to return...                          █" << endl;
+        } else {
+            cout << "█  Press any key to return...                                                                █" << endl;
+        }
+        cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████" << endl;
+
+		getline(cin, choice);
+   if (choice == "2" && currentPage < totalPages) 
+	{
+         currentPage++;
+   } else 
+	{
+      	break;
+   }
+
+
+	}while(true);
+}
+
+
+void reports(const vector<bookType>& bookInfo)
 {
   int choice;
   do
@@ -48,10 +123,11 @@ void reports()
     {
 
       case 1:
-        cout << "You selected item 1." << endl;
-        cout << "Press ENTER to continue ...";
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        break;
+      //  cout << "You selected item 1." << endl;
+      //  cout << "Press ENTER to continue ...";
+      //  cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			repListing(bookInfo);
+       
 
       case 2:
         cout << "You selected item 2." << endl;
@@ -90,3 +166,4 @@ void reports()
 
   } while(choice != 7);
 }
+

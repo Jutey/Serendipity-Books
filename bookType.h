@@ -26,6 +26,9 @@ class bookType {
 		int qtyOnHand;
 		double wholesale;
 		double retail;
+		static int bookCount;
+		static int num_recs;
+
 	public:
 		/// Contains Default Values for Private Members.
 		///
@@ -126,10 +129,13 @@ class bookType {
 		/// Creates and Displays a Record of the Book.
 		///
 		/// Rounds up all of the values for the specified index in the database and prints the record. This tells the user everything they may want to know about the book.
+		static int getBookCount();
 		void print() const;
+		static int getNumRecs();
 		/// Destructor
 		///
 		/// Automatically Runs when the object is destroyed
+
 		~bookType();
 };
 

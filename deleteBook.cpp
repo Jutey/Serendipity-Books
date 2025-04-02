@@ -19,6 +19,14 @@ void deleteBook(vector<bookType> &bookInfo, int &bookCount)
 
   do
   {
+	if(index == -1)
+	{
+		cout << "Book not found. No books deleted.\n";
+		cout << "Press ENTER to return to Inventory Menu...";
+		cin.ignore();
+      return;
+	}
+
     bookInfo.erase(bookInfo.begin() + index);
     bookCount--;
 
@@ -28,6 +36,7 @@ void deleteBook(vector<bookType> &bookInfo, int &bookCount)
     cout << "Press ENTER to return to Inventory Menu...";
     cin.ignore();
     count++;
+	
   } while(count < 1);
 
   return;

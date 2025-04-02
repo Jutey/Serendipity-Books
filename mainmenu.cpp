@@ -73,7 +73,7 @@ int main()
         cout << "\033[2J\033[1;1H";
         break;
       case 3:
-        reports();
+        reports(bookInfo);
         cout << "\033[2J\033[1;1H";
         break;
       case 4:
