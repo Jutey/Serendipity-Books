@@ -27,9 +27,13 @@ void deleteBook(vector<bookType*> bookInfo, int &bookCount)
         return;
     }
 
-    
+
     bookInfo.erase(bookInfo.begin() + index);
-    bookCount--;
+
+    // Temporary workaround until we can figure out how to completely drop the bookCount parameter thanks to having numRecs to replace it
+    bookCount = bookType::getNumRecs();
+    
+    // We decrement in the destructor, so no need to decrement again
 
     cout << "\033[2J\033[1;1H";
 
