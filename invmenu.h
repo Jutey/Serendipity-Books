@@ -19,6 +19,6 @@ using namespace std;
 ///@param bookCount: int - a reference integer keeping count of the books in the database to warn the user
 ///@param DBSIZE: const int - a constant integer limiting the size of the database
 ///@returns nothing meaningful for the moment
-void invmenu(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE);
+void invmenu(vector<bookType*> bookInfo, int &bookCount, const int DBSIZE);
 
 #endif

@@ -63,7 +63,6 @@ int main()
     {
       case 1:
     if (bookCount > 0){
-        derefBookInfo = bookInfoDeref(bookInfo);
         cashier(bookInfo);
         cout << "\033[2J\033[1;1H";
         break;
@@ -73,12 +72,10 @@ int main()
       break;
       }
       case 2:
-        derefBookInfo = bookInfoDeref(bookInfo); // Reuse the same variable
-        invmenu(derefBookInfo, bookCount, DBSIZE);
+        invmenu(bookInfo, bookCount, DBSIZE);
         cout << "\033[2J\033[1;1H";
         break;
       case 3:
-        derefBookInfo = bookInfoDeref(bookInfo); // Reuse the same variable
         reports(bookInfo); // pass the dereferenced vector to reports
         cout << "\033[2J\033[1;1H";
         break;
