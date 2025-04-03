@@ -124,6 +124,15 @@ double bookType::getRetail() const
   return retail;
 }
 
+void bookType::incrementNumRecs()
+{
+  num_recs++;
+}
+void bookType::decrementNumRecs()
+{
+  num_recs--;
+}
+
 void bookType::print() const
 {
   ostringstream wholesaleOss;

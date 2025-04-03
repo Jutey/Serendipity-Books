@@ -59,7 +59,6 @@ void invmenu(vector<bookType*> bookInfo, int &bookCount, const int DBSIZE)
 
     // error checking
     userChoice = intInputChecked("Enter Your Choice", 1, 5);
-    vector<bookType> derefed = bookInfoDeref(bookInfo);
     
     // Menu navigation
     switch(userChoice)
@@ -72,7 +71,7 @@ void invmenu(vector<bookType*> bookInfo, int &bookCount, const int DBSIZE)
         if (bookCount < DBSIZE)
         {
 				cout << " ";
-            addBook(derefed, bookCount, DBSIZE);
+            addBook(bookInfo, bookCount, DBSIZE);
         }
         else
         {

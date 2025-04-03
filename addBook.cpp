@@ -6,6 +6,7 @@
 #include "addBook.h"
 #include "int_input_checked.h"
 #include "setw_consts.h"
+#include "book_info_deref.h" // for bookInfoDeref
 
 using namespace std;
 
@@ -13,7 +14,7 @@ using namespace std;
 //bookCount is a variable that should be addressed and initialized within main
 //Default array/vector name is bookInfo if that's easiest, otherwise update lines 1BOOK_EDITOR_BODY_PADDING-1BOOK_EDITOR_SUBTITLE_PADDING
 //Also, make sure this vvvvvvvv filler parameter gets updated, wasn't sure what we were using
-void addBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
+void addBook(vector<bookType*> bookInfo, int &bookCount, const int DBSIZE)
 {
   bookType tempBook;
   int choice;
@@ -157,7 +158,7 @@ void addBook(vector<bookType> &bookInfo, int &bookCount, const int DBSIZE)
       case 9:
         //pass all filler information into the struct array/vector
         //adding all the book info into the vector
-        bookInfo.push_back(tempBook);
+        bookInfo.push_back(new bookType(tempBook));
         //update bookCount
         bookCount++;
         //re-initialize all filler variables

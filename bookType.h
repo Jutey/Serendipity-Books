@@ -129,8 +129,32 @@ class bookType {
 		///
 		/// Rounds up all of the values for the specified index in the database and prints the record. This tells the user everything they may want to know about the book.
 		static int getBookCount();
+
+		/// Prints the Book's Information.
+		///
+		/// Prints the book's information in a formatted manner. This includes the title, author, publisher, date added, quantity on hand, wholesale cost, and retail price.
+		///@param bookInfo: vector<bookType> - a vector which serves as the database for all book information
+		///@param index: int - the index of the book in the database
+		///@returns nothing meaningful for the moment
 		void print() const;
+
+		/// Gets the Current Number of Records in the Database.
+		///
+		/// Finds the corresponding member within the class object and returns it's value.
+		///@returns num_recs of type int
 		static int getNumRecs();
+
+		/// Increments the number of records in the database.
+		///
+		/// Increments the number of records in the database by 1.
+		void incrementNumRecs();
+
+		/// Decrements the number of records in the database.
+		///
+		/// Decrements the number of records in the database by 1.
+		void decrementNumRecs();
+
+
 		/// Destructor
 		///
 		/// Automatically Runs when the object is destroyed
