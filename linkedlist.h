@@ -1,6 +1,8 @@
 #ifndef _LINKED_LIST_H_
 #define _LINKED_LIST_H_
 
+using namespace std;
+
 template<typename T>
 struct node
 {
@@ -105,10 +107,10 @@ public:
     node<T>* current = head;
     while (current != nullptr)
     {
-      std::cout << current->data << " ";
+      cout << current->data << " ";
       current = current->next;
     }
-    std::cout << std::endl;
+    cout << endl;
   }
 
   void displayReverse() const
@@ -116,10 +118,10 @@ public:
     node<T>* current = tail;
     while (current != nullptr)
     {
-      std::cout << current->data << " ";
+      cout << current->data << " ";
       current = current->prev;
     }
-    std::cout << std::endl;
+    cout << endl;
   }
 
   // Getters for static members
