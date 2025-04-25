@@ -6,6 +6,7 @@ struct node
 {
   T data;
   node* next;
+  node* prev;
 };
 
 // Because this is defined as a template, we risk compiler errors if this code is moved to a different file.
@@ -39,7 +40,7 @@ public:
 
   void addNode(const T& value)
   {
-    node<T>* newNode = new node<T>{value, nullptr};
+    node<T>* newNode = new node<T>{value, nullptr, tail};
     if (tail != nullptr)
     {
       tail->next = newNode;
@@ -56,24 +57,27 @@ public:
   void deleteNode(const T& value)
   {
     node<T>* current = head;
-    node<T>* previous = nullptr;
 
     while (current != nullptr)
     {
       if (current->data == value)
       {
-        if (previous != nullptr)
+        if (current->prev != nullptr)
         {
-          previous->next = current->next;
+          current->prev->next = current->next;
         }
         else
         {
           head = current->next;
         }
 
-        if (current == tail)
+        if (current->next != nullptr)
         {
-          tail = previous;
+          current->next->prev = current->prev;
+        }
+        else
+        {
+          tail = current->prev;
         }
 
         delete current;
@@ -82,7 +86,6 @@ public:
         return;
       }
 
-      previous = current;
       current = current->next;
     }
   }
@@ -104,6 +107,17 @@ public:
     {
       std::cout << current->data << " ";
       current = current->next;
+    }
+    std::cout << std::endl;
+  }
+
+  void displayReverse() const
+  {
+    node<T>* current = tail;
+    while (current != nullptr)
+    {
+      std::cout << current->data << " ";
+      current = current->prev;
     }
     std::cout << std::endl;
   }
