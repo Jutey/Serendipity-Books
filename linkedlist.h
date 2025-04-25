@@ -134,6 +134,22 @@ public:
   {
     return totalLists;
   }
+
+  T getNodeData(int index) const
+  {
+    if (index < 0 || index >= size)
+    {
+      throw out_of_range("Index out of range");
+    }
+
+    node<T>* current = head;
+    for (int i = 0; i < index; ++i)
+    {
+      current = current->next;
+    }
+
+    return current->data;
+  }
 };
 
 // Initialize static members
