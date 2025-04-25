@@ -1,6 +1,9 @@
 #ifndef _LINKED_LIST_H_
 #define _LINKED_LIST_H_
 
+#include <iostream>
+#include <stdexcept>
+#include <string>
 using namespace std;
 
 template<typename T>
@@ -107,7 +110,7 @@ public:
     node<T>* current = head;
     while (current != nullptr)
     {
-      cout << current->data << " ";
+      cout << current->data << endl;
       current = current->next;
     }
     cout << endl;
