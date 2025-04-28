@@ -43,6 +43,16 @@ public:
     --totalLists;
   }
 
+  linkedList(const linkedList<T>& other) : head(nullptr), tail(nullptr), size(0)
+  {
+    node<T>* current = other.head;
+    while (current != nullptr)
+    {
+      addNode(current->data);
+      current = current->next;
+    }
+  }
+
   void addNode(const T& value)
   {
     node<T>* newNode = new node<T>{value, nullptr, tail};
