@@ -142,7 +142,7 @@ void unorderedLinkedList<Type>::deleteNode(const Type& deleteItem)
                 if (current->data != deleteItem) 
                 {
                     trailCurrent = current;
-                    current = current-> next;
+                    current = current->next;
                 }
                 else
                     found = true;
