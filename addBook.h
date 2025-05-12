@@ -12,6 +12,6 @@
 ///@param bookCount: int - a running total of the books in the database that makes sure the limit is not exceeded
 ///@param DBSIZE: constant int - a constant which controls the maximum limit for the database size
 ///@returns nothing meaningful for the moment
-void addBook(vector<bookType*> bookInfo, int &bookCount, const int DBSIZE);
+void addBook(orderedLinkedList<bookType> bookInfo, int &bookCount, const int DBSIZE);
 
 #endif

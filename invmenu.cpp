@@ -21,7 +21,7 @@
 
 using namespace std;
 
-void invmenu(vector<bookType*> bookInfo, int &bookCount, const int DBSIZE)
+void invmenu(orderedLinkedList<bookType> &bookInfo, int &bookCount, const int DBSIZE)
 {
   
   int userChoice;
@@ -70,7 +70,7 @@ void invmenu(vector<bookType*> bookInfo, int &bookCount, const int DBSIZE)
       case 2:
         if (bookCount < DBSIZE)
         {
-				cout << " ";
+        cout << " ";
             addBook(bookInfo, bookCount, DBSIZE);
         }
         else

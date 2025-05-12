@@ -13,6 +13,6 @@ using namespace std;
 /// Takes input from the user on what books they are purchasing and gives them a receipt of their purchase. Soon to rely on the database of class bookType
 ///@see bookType.h
 ///@returns nothing meaningful for the moment
-void cashier(vector<bookType*> bookInfo);
+void cashier(orderedLinkedList<bookType> bookInfo);
 
 #endif

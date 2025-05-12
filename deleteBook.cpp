@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void deleteBook(vector<bookType*> bookInfo, int &bookCount)
+void deleteBook(orderedLinkedList<bookType> bookInfo, int &bookCount)
 {
   int count = 0;
 

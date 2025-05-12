@@ -12,115 +12,76 @@ using namespace std;
 
 void cls()
 {
-  #ifdef _WIN32
-    system("cls");
-  #else
-    system("clear");
-  #endif
+#ifdef _WIN32
+  system("cls");
+#else
+  system("clear");
+#endif
 }
 
-int lookUpBook(vector<bookType*> db)
+int lookUpBook(orderedLinkedList<bookType> db)
 {
-  // `std::find` sucks with arrays of structs,
-  // so copying titles into temporary array of strings to make things easier
-  vector<string> titles;
-  vector<string> fixedTitles;
-  
-  // User input
   string query;
   char foundResponse;
-  char editResponse;
   char retryResponse;
+  int out = -1;
+  bool found = false;
 
-  // Return value
-	int out = -1;
-	bool found = false;
-	int currentBookCount = db.size();
- do {
-
-  cls();
-
-  cout << "Search: ";
-  getline(cin, query);
-  
-  //copies book titles into the titles vectors
-
-  for (bookType book : bookInfoDeref(db))
+  do
   {
-    titles.push_back(book.getBookTitle());
-  }
+    cls();
 
-  // Converts query to a case-desensitized search query
-  transform(query.begin(), query.end(), query.begin(), ::tolower);
+    cout << "Search: ";
+    getline(cin, query);
 
-  // Case-desensitize titles
-  for (string title : titles)
-  {
-    transform(title.begin(), title.end(), title.begin(), ::tolower);
-    fixedTitles.push_back(title);
-  }
-  
-  //replace original title with lowercase option
-  titles = fixedTitles;
-  
-  fixedTitles.clear();
+    // Convert query to lowercase for case-insensitive search
+    transform(query.begin(), query.end(), query.begin(), ::tolower);
 
-  // Loop through titles, find results, and ask user if they found the book they were looking for
- for (int i = 0; i < titles.size(); i++)
- {
-    // if (cin.fail())
-    // {
-    //   cin.clear();
-    //   cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    //   cout << "Not Found, try searching for a different book." << endl;
-    //   break;
-    // }
-    if (titles[i].find(query) != string::npos)  // If query is found within the title
+    int counter = 0;
+    found = false;
+
+    for (linkedListIterator<bookType> it = db.begin(); it != db.end(); ++it, ++counter)
     {
-      cout << "Found title: " << bookInfoDeref(db)[i].getBookTitle() << endl;  // Display original title
-      cout << "Is this the book you're looking for? (y/n) ";
-      cin.get(foundResponse);
-      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      string title = (*it).getBookTitle();
+      string lowerTitle = title;
+      transform(lowerTitle.begin(), lowerTitle.end(), lowerTitle.begin(), ::tolower);
 
-      foundResponse = tolower(foundResponse);
-
-      switch (foundResponse)
+      if (lowerTitle.find(query) != string::npos)
       {
-        case 'y':
-          // Print book details
-          bookInfoDeref(db)[i].print();
+        cout << "Found title: " << title << endl;
+        cout << "Is this the book you're looking for? (y/n) ";
+        cin.get(foundResponse);
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        foundResponse = tolower(foundResponse);
+
+        if (foundResponse == 'y')
+        {
+          (*it).print();
           cout << endl;
-          out = i;
-			 found = true;
+          out = counter;
+          found = true;
+          cout << "Press Enter to continue ..." << endl;
+          cin.ignore(numeric_limits<streamsize>::max(), '\n');
           break;
-        case 'n':
-          continue; // Continue searching
-        default:
+        }
+        else if (foundResponse != 'n')
+        {
           cout << "Error: invalid response. Please enter either y or n." << endl;
           continue;
+        }
       }
     }
-   if(found)
-	{
-		cout << "Book not found. Would you like to search for another book? (y/n) ";
+
+    if (!found)
+    {
+      cout << "Book not found. Would you like to search for another book? (y/n) ";
       cin.get(retryResponse);
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		break;
-
-	}
-	if(tolower(retryResponse) != 'y')
-	{
-	 return -1;
-	}
-
-    if (foundResponse == 'y')
-    {
-      cout << "Press Enter to continue ..." << endl;
-      cin.ignore(numeric_limits<streamsize>::max(), '\n');
-      break;
+      if (tolower(retryResponse) != 'y')
+        return -1;
     }
   }
-	}while(out == -1);
+  while (out == -1);
 
   return out;
 }

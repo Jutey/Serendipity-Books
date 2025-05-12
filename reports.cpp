@@ -8,10 +8,13 @@
 #include "setw_consts.h"
 #include "bookType.h"
 #include "book_info_deref.h" // for bookInfoDeref
+#include "linkedlist.h"
+#include "orderedLinkedList.h"
+#include "book_info_deref.h"
 
 using namespace std;
-void repListing(const vector<bookType*> bookInfo){
-  vector<bookType> bookInfoDerefImpl = bookInfoDeref(const_cast<vector<bookType*>&>(bookInfo)); // Dereference the vector of pointers to get a vector of bookType objects
+void repListing(const orderedLinkedList<bookType> bookInfo){
+  vector<bookType> bookInfoDerefImpl = bookInfoDeref(const_cast<orderedLinkedList<bookType>&>(bookInfo)); // Dereference the vector of pointers to get a vector of bookType objects
 	//Pull the current Date from the system
 	time_t currentTime = time(nullptr);               // Get current time
 	tm* localTime      = localtime(&currentTime);     // Convert to local time
@@ -85,7 +88,7 @@ if (currentPage < totalPages) {
 }
 
 
-void reports(const vector<bookType*> bookInfo)
+void reports(const orderedLinkedList<bookType> bookInfo)
 {
   int choice;
   do

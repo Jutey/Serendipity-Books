@@ -14,7 +14,7 @@ using namespace std;
 //bookCount is a variable that should be addressed and initialized within main
 //Default array/vector name is bookInfo if that's easiest, otherwise update lines 1BOOK_EDITOR_BODY_PADDING-1BOOK_EDITOR_SUBTITLE_PADDING
 //Also, make sure this vvvvvvvv filler parameter gets updated, wasn't sure what we were using
-void addBook(vector<bookType*> bookInfo, int &bookCount, const int DBSIZE)
+void addBook(orderedLinkedList<bookType> bookInfo, int &bookCount, const int DBSIZE)
 {
   bookType tempBook;
   int choice;
