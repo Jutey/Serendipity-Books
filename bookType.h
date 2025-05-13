@@ -168,7 +168,7 @@ class bookType {
 		bool operator>=(const bookType& other) const;
 
 		// Not equal operator: compares all fields
-		bool bookType::operator!=(const bookType& other) const;
+		bool operator!=(const bookType& other) const;
 };
 
 #endif
