@@ -1,5 +1,7 @@
 #include "bookType.h"
 #include <regex>
+#include "linkedlist.h"
+#include "orderedLinkedList.h"
 
 #ifndef EDITBOOK_H
 #define EDITBOOK_H
