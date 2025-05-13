@@ -62,7 +62,7 @@ bool orderedLinkedList<Type>::
     bool found = false;
     nodeType<Type> *current; //pointer to traverse the list
 
-    current = head;  //start the search at the first node
+    current = this->head;  //start the search at the first node
 
     while (current != nullptr && !found)
         if (current->data >= searchItem)
@@ -100,7 +100,7 @@ template <class Type>
 Type* orderedLinkedList<Type>::get(int index) const
 {
     if (index < 0) return nullptr;
-    nodeType<Type>* current = head;
+    nodeType<Type>* current = this->head;
     int i = 0;
     while (current != nullptr && i < index) {
         current = current->next;
@@ -125,15 +125,15 @@ void orderedLinkedList<Type>::insert(const Type& newItem)
     newNode->next = nullptr;  //set the next field of the node
                               //to nullptr
 
-    if (head == nullptr)  //Case 1
+    if (this->head == nullptr)  //Case 1
     {
-        head = newNode;
-        tail = newNode;
-        count++;
+        this->head = newNode;
+        this->tail = newNode;
+        this->count++;
     }
     else
     {
-        current = head;
+        current = this->head;
         found = false;
 
         while (current != nullptr && !found) //search the list
@@ -145,11 +145,11 @@ void orderedLinkedList<Type>::insert(const Type& newItem)
                current = current->next;
            }
  
-        if (current == head)      //Case 2
+        if (current == this->head)      //Case 2
         {
-            newNode->next = head;
-            head = newNode;
-            count++;
+            newNode->next = this->head;
+            this->head = newNode;
+            this->count++;
         }
         else                       //Case 3
         {
@@ -157,9 +157,9 @@ void orderedLinkedList<Type>::insert(const Type& newItem)
             newNode->next = current;
 
             if (current == nullptr)
-                tail = newNode;
+                this->tail = newNode;
 
-            count++;
+            this->count++;
         }
     }//end else
 }//end insert
@@ -184,11 +184,11 @@ void orderedLinkedList<Type>::deleteNode(const Type& deleteItem)
                                             //before current
     bool found;
 
-    if (head == nullptr) //Case 1
+    if (this->head == nullptr) //Case 1
         cout << "Cannot delete from an empty list." << endl;
     else
     {
-        current = head;
+        current = this->head;
         found = false;
 
         while (current != nullptr && !found)  //search the list
@@ -207,12 +207,12 @@ void orderedLinkedList<Type>::deleteNode(const Type& deleteItem)
             if (current->data == deleteItem) //the item to be 
                                    //deleted is in the list
             {
-                if (head == current)       //Case 2
+                if (this->head == current)       //Case 2
                 {
-                    head = head->next;
+                    this->head = this->head->next;
 
-                    if (head == nullptr)
-                        tail = nullptr;
+                    if (this->head == nullptr)
+                        this->tail = nullptr;
 
                     delete current;
                 }
@@ -220,12 +220,12 @@ void orderedLinkedList<Type>::deleteNode(const Type& deleteItem)
                 {
                     trailCurrent->next = current->next;
 
-                    if (current == tail)
-                        tail = trailCurrent;
+                    if (current == this->tail)
+                        this->tail = trailCurrent;
 
                     delete current;
                 }
-                count--;
+                this->count--;
             }
             else                            //Case 4
                 cout << "The item to be deleted is not in the "
