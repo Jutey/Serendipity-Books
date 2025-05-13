@@ -52,6 +52,7 @@ public:
     int size();
 
     Type* get(int index) const;
+    void erase(const Type& item);
 };
 
 
@@ -233,5 +234,10 @@ void orderedLinkedList<Type>::deleteNode(const Type& deleteItem)
     }
 }//end deleteNode
 
+template<class Type>
+void orderedLinkedList<Type>::erase(const Type& item)
+{
+    deleteNode(item);
+}
 
 #endif
