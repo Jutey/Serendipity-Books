@@ -35,7 +35,7 @@ void cashier(orderedLinkedList<bookType> bookInfo)
 //  TODO:
 //  vector<bookType> tracking;
 
-vector<bookType> derefed = bookInfoDeref(bookInfo);
+orderedLinkedList<bookType> derefed = bookInfoDeref(bookInfo);
 
   do //while (toupper(userChoice[0]) == 'Y')
   {
@@ -45,8 +45,8 @@ vector<bookType> derefed = bookInfoDeref(bookInfo);
     index = lookUpBook(bookInfo);
     do 
     { //inner for loop
-	    bookType& selectedBook = derefed[index];
-	    availableStock = selectedBook.getQtyOnHand();
+         bookType selectedBook = *derefed.get(index);
+         availableStock = selectedBook.getQtyOnHand();
 
 	    if (availableStock == 0)
 	    {
@@ -97,9 +97,9 @@ vector<bookType> derefed = bookInfoDeref(bookInfo);
                  << setw(8)  << "Total"  << " █\n";
     cout << "█"  << setfill('-')      << setw(78)   <<  '-'  << setfill(' ') <<       "█\n";
     cout << "█"  << right << setw(3)  << quantity   << "  "
-         << left << setw(14) << derefed[index].getIsbn()
-                 << setw(38) << derefed[index].getBookTitle()
-         << '$'  << right    << setw(7)  << derefed[index].getRetail()   << "  "
+         << left << setw(14) << derefed.get(index)->getIsbn()
+                 << setw(38) << derefed.get(index)->getBookTitle()
+         << '$'  << right    << setw(7)  << derefed.get(index)->getRetail()   << "  "
          << left << '$'      << right    << setw(7)  << totalPrice << " █\n";
     cout << "█                                        █\n"
          << "█                                        █\n";

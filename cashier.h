@@ -6,6 +6,8 @@
 #include <string>
 #include <limits>
 #include "bookType.h"
+#include "linkedlist.h"
+#include "orderedLinkedList.h"
 using namespace std;
 
 /// A function to give a summary and receipt to the customer
