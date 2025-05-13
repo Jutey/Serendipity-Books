@@ -133,6 +133,56 @@ void bookType::decrementNumRecs()
   num_recs--;
 }
 
+bool bookType::operator==(const bookType& other) const
+{
+  return bookTitle == other.bookTitle &&
+        isbn == other.isbn &&
+        author == other.author &&
+        publisher == other.publisher &&
+        dateAdded == other.dateAdded &&
+        qtyOnHand == other.qtyOnHand &&
+        wholesale == other.wholesale &&
+        retail == other.retail;
+}
+
+bool bookType::operator!=(const bookType& other) const
+{
+  return !(*this == other);
+}
+
+bool bookType::operator>=(const bookType& other) const
+{
+  if (bookTitle != other.bookTitle)
+  {
+    return bookTitle > other.bookTitle;
+  }
+  if (isbn != other.isbn)
+  {
+    return isbn > other.isbn;
+  }
+  if (author != other.author)
+  {
+    return author > other.author;
+  }
+  if (publisher != other.publisher)
+  {
+    return publisher > other.publisher;
+  }
+  if (dateAdded != other.dateAdded)
+  {
+    return dateAdded > other.dateAdded;
+  }
+  if (qtyOnHand != other.qtyOnHand)
+  {
+    return qtyOnHand > other.qtyOnHand;
+  }
+  if (wholesale != other.wholesale)
+  {
+    return wholesale > other.wholesale;
+  }
+  return retail >= other.retail;
+}
+
 void bookType::print() const
 {
   ostringstream wholesaleOss;

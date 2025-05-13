@@ -160,6 +160,15 @@ class bookType {
 		/// Automatically Runs when the object is destroyed
 
 		~bookType();
+
+		// Equality operator: compares all fields
+		bool operator==(const bookType& other) const;
+
+		// Greater than or equal operator
+		bool operator>=(const bookType& other) const;
+
+		// Not equal operator: compares all fields
+		bool bookType::operator!=(const bookType& other) const;
 };
 
 #endif
