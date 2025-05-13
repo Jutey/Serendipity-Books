@@ -13,6 +13,6 @@
 ///@param bookInfo: vector<bookType> - a vector which serves as the database for all book information
 ///@param bookCount: int - a running count of the books in the database to inform the user
 ///@returns nothing meaningful for the moment
-void deleteBook(orderedLinkedList<bookType> bookInfo, int &bookCount);
+void deleteBook(orderedLinkedList<bookType>& bookInfo, int &bookCount);
 
 #endif

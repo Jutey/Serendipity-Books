@@ -70,8 +70,8 @@ void invmenu(orderedLinkedList<bookType> &bookInfo, int &bookCount, const int DB
       case 2:
         if (bookCount < DBSIZE)
         {
-        cout << " ";
-            addBook(bookInfo, bookCount, DBSIZE);
+          cout << " ";
+          addBook(bookInfo, bookCount, DBSIZE);
         }
         else
         {
