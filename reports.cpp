@@ -14,7 +14,7 @@
 
 using namespace std;
 void repListing(const orderedLinkedList<bookType> bookInfo){
-  vector<bookType> bookInfoDerefImpl = bookInfoDeref(const_cast<orderedLinkedList<bookType>&>(bookInfo)); // Dereference the vector of pointers to get a vector of bookType objects
+  orderedLinkedList<bookType> bookInfoDerefImpl = bookInfoDeref(const_cast<orderedLinkedList<bookType>&>(bookInfo)); // Dereference the vector of pointers to get a vector of bookType objects
 	//Pull the current Date from the system
 	time_t currentTime = time(nullptr);               // Get current time
 	tm* localTime      = localtime(&currentTime);     // Convert to local time
@@ -55,14 +55,14 @@ void repListing(const orderedLinkedList<bookType> bookInfo){
 
 for (int i = startingIndex; i < endingIndex; ++i){
 
- cout << "█  " << left << setw(30) << bookInfoDerefImpl[i].getBookTitle().substr(0, 30)
-                 << setw(12) << bookInfoDerefImpl[i].getIsbn().substr(0, 12)
-                 << setw(21) << bookInfoDerefImpl[i].getAuthor().substr(0, 21)
-                 << setw(12) << bookInfoDerefImpl[i].getPublisher().substr(0, 12)
-                 << setw(12) << bookInfoDerefImpl[i].getDateAdded()
-                 << setw(8)  << bookInfoDerefImpl[i].getQtyOnHand()
-                 << "$" << right << setw(7) << fixed << setprecision(2) << bookInfoDerefImpl[i].getWholesale()
-                 << "   $" << right << setw(7) << bookInfoDerefImpl[i].getRetail()
+ cout << "█  " << left << setw(30) << bookInfoDerefImpl.get(i)->getBookTitle().substr(0, 30)
+                 << setw(12) << bookInfoDerefImpl.get(i)->getIsbn().substr(0, 12)
+                 << setw(21) << bookInfoDerefImpl.get(i)->getAuthor().substr(0, 21)
+                 << setw(12) << bookInfoDerefImpl.get(i)->getPublisher().substr(0, 12)
+                 << setw(12) << bookInfoDerefImpl.get(i)->getDateAdded()
+                 << setw(8)  << bookInfoDerefImpl.get(i)->getQtyOnHand()
+                 << "$" << right << setw(7) << fixed << setprecision(2) << bookInfoDerefImpl.get(i)->getWholesale()
+                 << "   $" << right << setw(7) << bookInfoDerefImpl.get(i)->getRetail()
                  << " █" << endl;
 
 }
@@ -112,7 +112,7 @@ void reports(const orderedLinkedList<bookType> bookInfo)
     cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "4. Listing by Quantity" << "█" << endl;
     cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "5. Listing by Cost" << "█" << endl;
     cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_BODY_WIDTH) << "6. Listing by Age" << "█" << endl;
-    cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(63) << "\033[32m7. Return to Main Menu\033[0m " << "█" << endl;
+    cout << "█" << setw(MENU_BODY_PADDING) << " " << setw(MENU_EXIT_PADDING) << "\033[32m7. Return to Main Menu\033[0m " << "█" << endl;
     cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
     cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
     cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;

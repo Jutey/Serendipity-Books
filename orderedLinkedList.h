@@ -46,6 +46,12 @@ public:
       //               new list, and count is decremented by 1.
       //               If deleteItem is not in the list, an
       //               appropriate message is printed.
+
+    void push_back(const Type& newItem);
+
+    int size();
+
+    Type* get(int index) const;
 };
 
 
@@ -70,6 +76,39 @@ bool orderedLinkedList<Type>::
     return found;
 }//end search
 
+template<class Type>
+void orderedLinkedList<Type>::push_back(const Type& newItem)
+{
+    this->insertLast(newItem);
+}
+
+template<class Type>
+int orderedLinkedList<Type>::size()
+{
+    int counter = 0;
+    linkedListIterator<Type> it(this->head);
+    linkedListIterator<Type> end(nullptr);
+
+    while (it != end) {
+        ++counter;
+        ++it;
+    }
+    return counter;
+}
+
+template <class Type>
+Type* orderedLinkedList<Type>::get(int index) const
+{
+    if (index < 0) return nullptr;
+    nodeType<Type>* current = head;
+    int i = 0;
+    while (current != nullptr && i < index) {
+        current = current->next;
+        ++i;
+    }
+    if (current == nullptr) return nullptr;
+    return &(current->data);
+}
 
 template <class Type>
 void orderedLinkedList<Type>::insert(const Type& newItem)

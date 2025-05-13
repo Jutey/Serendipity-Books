@@ -7,6 +7,8 @@
 #include "int_input_checked.h"
 #include "setw_consts.h"
 #include "book_info_deref.h" // for bookInfoDeref
+#include "orderedLinkedList.h"
+#include "linkedlist.h"
 
 using namespace std;
 
@@ -158,7 +160,7 @@ void addBook(orderedLinkedList<bookType> bookInfo, int &bookCount, const int DBS
       case 9:
         //pass all filler information into the struct array/vector
         //adding all the book info into the vector
-        bookInfo.push_back(new bookType(tempBook));
+        bookInfo.push_back(*(new bookType(tempBook)));
         //update bookCount
         bookCount++;
         //re-initialize all filler variables

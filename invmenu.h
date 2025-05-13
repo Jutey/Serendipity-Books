@@ -3,6 +3,8 @@
 
 #include "bookType.h"
 #include "addBook.h"
+#include "orderedLinkedList.h"
+#include "linkedlist.h"
 
 #include <iostream>
 #include <iomanip>
