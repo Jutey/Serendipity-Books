@@ -6,6 +6,8 @@
 #include <string>
 #include "bookType.h"
 #include <vector>
+#include "linkedlist.h"
+#include "orderedLinkedList.h"
 
 using namespace std;
 
