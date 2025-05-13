@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void deleteBook(orderedLinkedList<bookType> bookInfo, int &bookCount)
+void deleteBook(orderedLinkedList<bookType>& bookInfo, int &bookCount)
 {
   int count = 0;
 
@@ -28,7 +28,14 @@ void deleteBook(orderedLinkedList<bookType> bookInfo, int &bookCount)
     }
 
 
-    bookInfo.erase(bookInfo.begin() + index);
+    // Advance iterator to the index-th position
+    linkedListIterator<bookType> it = bookInfo.begin();
+    for (int i = 0; i < index && it != bookInfo.end(); ++i) {
+        ++it;
+    }
+    if (it != bookInfo.end()) {
+        bookInfo.deleteNode(*it);
+    }
 
     // Temporary workaround until we can figure out how to completely drop the bookCount parameter thanks to having numRecs to replace it
     bookCount = bookType::getNumRecs();

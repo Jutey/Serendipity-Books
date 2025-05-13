@@ -55,7 +55,6 @@ public:
     void erase(const Type& item);
 };
 
-
 template <class Type>
 bool orderedLinkedList<Type>::
                  search(const Type& searchItem) const
