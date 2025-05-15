@@ -21,7 +21,7 @@ void cls()
 #endif
 }
 
-int lookUpBook(orderedLinkedList<bookType*> db)
+int lookUpBook(orderedLinkedList<bookType>& db)
 {
   string query;
   char foundResponse;
@@ -42,10 +42,10 @@ int lookUpBook(orderedLinkedList<bookType*> db)
     int counter = 0;
     found = false;
 
-    for (linkedListIterator<bookType*> it = db.begin(); it != db.end(); ++it, ++counter)
+    for (linkedListIterator<bookType> it = db.begin(); it != db.end(); ++it, ++counter)
     {
-      bookType* bookPtr = *it;
-      string title = bookPtr->getBookTitle();
+      const bookType& book = *it;
+      string title = book.getBookTitle();
       string lowerTitle = title;
       transform(lowerTitle.begin(), lowerTitle.end(), lowerTitle.begin(), ::tolower);
 
@@ -59,7 +59,7 @@ int lookUpBook(orderedLinkedList<bookType*> db)
 
         if (foundResponse == 'y')
         {
-          bookPtr->print();
+          book.print();
           cout << endl;
           out = counter;
           found = true;
