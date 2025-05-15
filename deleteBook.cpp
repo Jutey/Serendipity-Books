@@ -1,3 +1,9 @@
+/************************************************
+* Assignment: Exam 3
+* Purpose: Serendipity Final Project
+* Author: Kenny Strawn
+* Due Date: 5/21/2025
+************************************************/
 #include <iostream>
 #include <vector>
 #include "deleteBook.h"

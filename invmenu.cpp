@@ -1,13 +1,9 @@
-/***********************************************
-* Serendipity Project
-*
-* invmenu.cpp
-*
-* Purpose: to manage each book stored on this 
-*        file
-*
-  * By: Romewin Villacorte
-************************************************/ 
+/************************************************
+* Assignment: Exam 3
+* Purpose: Serendipity Final Project
+* Author: Kenny Strawn
+* Due Date: 5/21/2025
+************************************************/
 #include <vector>
 #include "invmenu.h"
 #include "addBook.h"

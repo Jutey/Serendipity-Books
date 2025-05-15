@@ -1,12 +1,14 @@
 /************************************************
-* Assignment: G4
-* Purpose: Serendipity Structs
+* Assignment: Exam 3
+* Purpose: Serendipity Final Project
 * Author: Kenny Strawn
-* Due Date: 2/19/2025
+* Due Date: 5/21/2025
 ************************************************/
 
 #include "lookUpBook.h"
 #include "book_info_deref.h" // for bookInfoDeref
+#include "linkedlist.h" // for linkedListIterator class
+#include "orderedLinkedList.h" // for orderedLinkedList class
 
 using namespace std;
 
@@ -19,7 +21,7 @@ void cls()
 #endif
 }
 
-int lookUpBook(orderedLinkedList<bookType> db)
+int lookUpBook(orderedLinkedList<bookType*> db)
 {
   string query;
   char foundResponse;
@@ -40,9 +42,10 @@ int lookUpBook(orderedLinkedList<bookType> db)
     int counter = 0;
     found = false;
 
-    for (linkedListIterator<bookType> it = db.begin(); it != db.end(); ++it, ++counter)
+    for (linkedListIterator<bookType*> it = db.begin(); it != db.end(); ++it, ++counter)
     {
-      string title = (*it).getBookTitle();
+      bookType* bookPtr = *it;
+      string title = bookPtr->getBookTitle();
       string lowerTitle = title;
       transform(lowerTitle.begin(), lowerTitle.end(), lowerTitle.begin(), ::tolower);
 
@@ -56,7 +59,7 @@ int lookUpBook(orderedLinkedList<bookType> db)
 
         if (foundResponse == 'y')
         {
-          (*it).print();
+          bookPtr->print();
           cout << endl;
           out = counter;
           found = true;

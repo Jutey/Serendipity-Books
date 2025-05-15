@@ -1,8 +1,8 @@
 /************************************************
-* Assignment: G4
-* Purpose: Serendipity Structs
+* Assignment: Exam 3
+* Purpose: Serendipity Final Project
 * Author: Kenny Strawn
-* Due Date: 2/19/2025
+* Due Date: 5/21/2025
 ************************************************/
 
 #ifndef __LOOK_UP_BOOK_H__
