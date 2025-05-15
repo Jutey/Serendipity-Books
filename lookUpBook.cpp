@@ -21,7 +21,7 @@ void cls()
 #endif
 }
 
-int lookUpBook(orderedLinkedList<bookType>& db)
+int lookUpBook(orderedLinkedList<bookType> db)
 {
   string query;
   char foundResponse;
