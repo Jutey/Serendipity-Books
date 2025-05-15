@@ -47,8 +47,6 @@ public:
       //               If deleteItem is not in the list, an
       //               appropriate message is printed.
 
-    void push_back(const Type& newItem);
-
     int size();
 
     Type* get(int index) const;
@@ -75,12 +73,6 @@ bool orderedLinkedList<Type>::
 
     return found;
 }//end search
-
-template<class Type>
-void orderedLinkedList<Type>::push_back(const Type& newItem)
-{
-    this->insertLast(newItem);
-}
 
 template<class Type>
 int orderedLinkedList<Type>::size()
