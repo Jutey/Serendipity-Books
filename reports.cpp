@@ -14,28 +14,27 @@
 
 using namespace std;
 void repListing(const orderedLinkedList<bookType> bookInfo){
-  orderedLinkedList<bookType> bookInfoDerefImpl = bookInfoDeref(const_cast<orderedLinkedList<bookType>&>(bookInfo)); // Dereference the vector of pointers to get a vector of bookType objects
-	//Pull the current Date from the system
-	time_t currentTime = time(nullptr);               // Get current time
-	tm* localTime      = localtime(&currentTime);     // Convert to local time
-	int year           = localTime->tm_year + 1900;   // Years since 1900
-	int month          = localTime->tm_mon + 1;       // Months since January (0-11)
-	int day            = localTime->tm_mday;          // Day of the month (1-31)
-	string date        = to_string(month) + "/" + to_string(day) + "/" + to_string(year);
-//Constructing the current date from system year/month/day
-	int currentPage = 1;
-	int totalBooks = bookType::getNumRecs();
-	int totalPages = (totalBooks + 9) / 10;
+  //Pull the current Date from the system
+  time_t currentTime = time(nullptr);               // Get current time
+  tm* localTime      = localtime(&currentTime);     // Convert to local time
+  int year           = localTime->tm_year + 1900;   // Years since 1900
+  int month          = localTime->tm_mon + 1;       // Months since January (0-11)
+  int day            = localTime->tm_mday;          // Day of the month (1-31)
+  string date        = to_string(month) + "/" + to_string(day) + "/" + to_string(year);
+  //Constructing the current date from system year/month/day
+  int currentPage = 1;
+  int totalBooks = bookInfo.length();
+  int totalPages = (totalBooks + 9) / 10;
 
-	int startingIndex = (currentPage - 1) * 10;
-	int endingIndex = min(startingIndex + 10, totalBooks);
+  string choice;
 
-	string choice;
-
-   do{
+  do
+  {
+    int startingIndex = (currentPage - 1) * 10;
+    int endingIndex = min(startingIndex + 10, totalBooks);
 
     cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"
-		   << endl;
+      << endl;
     cout << "█" << setw(118) << right << "█" << endl;
     cout << "█" << setw(65) << right << "SERENDIPITY BOOKSELLERS" << setw(54) << right << "█" << endl;
     cout << "█" << setw(62) << right << "REPORT LISTING" << setw(57) << right << "█" << endl;
@@ -45,46 +44,35 @@ void repListing(const orderedLinkedList<bookType> bookInfo){
 
     cout << "█  TITLE                          ISBN         AUTHOR              PUBLISHER   DATE ADDED QTY O/H WHOLESALE RETAIL █" << endl;
     cout << "█  ----------------------------  ----------   -------------------  ----------  ----------- ------- --------- -------█" << endl;
+    for (int i = startingIndex; i < endingIndex; ++i){
+      const bookType& book = *(bookInfo).get(i);
+      cout << "█  " << left << setw(30) << book.getBookTitle().substr(0, 30)
+        << setw(12) << book.getIsbn().substr(0, 12)
+        << setw(21) << book.getAuthor().substr(0, 21)
+        << setw(12) << book.getPublisher().substr(0, 12)
+        << setw(12) << book.getDateAdded()
+        << setw(8)  << book.getQtyOnHand()
+        << "$" << right << setw(7) << fixed << setprecision(2) << book.getWholesale()
+        << "   $" << right << setw(7) << book.getRetail()
+        << " █" << endl;
+    }
 
-  		  
-  
+    if (currentPage < totalPages) {
+      cout << "█  Type \"2\" to go to the next page, or any other key to return...                          █" << endl;
+    } else {
+      cout << "█  Press any key to return...                                                                █" << endl;
+    }
+    cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████" << endl;
 
- 
-
-
-
-for (int i = startingIndex; i < endingIndex; ++i){
-
- cout << "█  " << left << setw(30) << bookInfoDerefImpl.get(i)->getBookTitle().substr(0, 30)
-                 << setw(12) << bookInfoDerefImpl.get(i)->getIsbn().substr(0, 12)
-                 << setw(21) << bookInfoDerefImpl.get(i)->getAuthor().substr(0, 21)
-                 << setw(12) << bookInfoDerefImpl.get(i)->getPublisher().substr(0, 12)
-                 << setw(12) << bookInfoDerefImpl.get(i)->getDateAdded()
-                 << setw(8)  << bookInfoDerefImpl.get(i)->getQtyOnHand()
-                 << "$" << right << setw(7) << fixed << setprecision(2) << bookInfoDerefImpl.get(i)->getWholesale()
-                 << "   $" << right << setw(7) << bookInfoDerefImpl.get(i)->getRetail()
-                 << " █" << endl;
-
-}
-
-if (currentPage < totalPages) {
-            cout << "█  Type \"2\" to go to the next page, or any other key to return...                          █" << endl;
-        } else {
-            cout << "█  Press any key to return...                                                                █" << endl;
-        }
-        cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████" << endl;
-
-		getline(cin, choice);
-   if (choice == "2" && currentPage < totalPages) 
-	{
-         currentPage++;
-   } else 
-	{
-      	break;
-   }
-
-
-	}while(true);
+    getline(cin, choice);
+    if (choice == "2" && currentPage < totalPages) 
+    {
+      currentPage++;
+    } else 
+    {
+      break;
+    }
+  }while(true);
 }
 
 
