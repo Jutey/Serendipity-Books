@@ -112,7 +112,7 @@ void orderedLinkedList<Type>::insert(const Type& newItem)
 
     bool  found;
 
-    newNode = new nodeType<Type>; //create the node
+    newNode = new nodeType<Type>(); //create the node
     newNode->data = newItem;  //store newItem in the node
     newNode->next = nullptr;  //set the next field of the node
                               //to nullptr
