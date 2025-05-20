@@ -121,7 +121,7 @@ void reports(const orderedLinkedList<bookType> bookInfo)
       //  cin.ignore(numeric_limits<streamsize>::max(), '\n');
       if (bookInfo.isEmptyList())
       {
-        cout << "█" << setw(MENU_BODY_PADDING) << " " << "The database is empty. Please add a book." << setw(15) << "█" << endl;
+        cout << "█" << setw(MENU_BODY_PADDING) << " " << "The database is empty. Please add a book." << setw(35) << "█" << endl;
       }
       else
       {

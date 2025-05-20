@@ -160,7 +160,7 @@ void addBook(orderedLinkedList<bookType> bookInfo, int &bookCount, const int DBS
       case 9:
         //pass all filler information into the struct array/vector
         //adding all the book info into the vector
-        bookInfo.insertLast(*(new bookType(tempBook)));
+        bookInfo.insert(tempBook);
         //update bookCount
         bookCount++;
         //re-initialize all filler variables
