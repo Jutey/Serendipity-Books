@@ -18,7 +18,7 @@ using namespace std;
 //Also, make sure this vvvvvvvv filler parameter gets updated, wasn't sure what we were using
 void addBook(orderedLinkedList<bookType> bookInfo, int &bookCount, const int DBSIZE)
 {
-  bookType tempBook;
+  bookType* tempBook;
   int choice;
 
   if (bookCount >= DBSIZE)
@@ -28,7 +28,7 @@ void addBook(orderedLinkedList<bookType> bookInfo, int &bookCount, const int DBS
   }
 
   //initialize all filler variables
-  tempBook = bookType();
+  tempBook = new bookType();
 
   while(choice != 0 && bookCount < 20)
   {
@@ -50,22 +50,22 @@ void addBook(orderedLinkedList<bookType> bookInfo, int &bookCount, const int DBS
     cout << left;
 
     cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)             << "<1> Update Book Title"        << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)         << tempBook.getBookTitle()  << "█" << endl;
+          << setw(BOOK_EDITOR_BODY_WIDTH)         << tempBook->getBookTitle()  << "█" << endl;
     cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)             << "<2> Update ISBN"          << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)         << tempBook.getIsbn()       << "█" << endl;
+          << setw(BOOK_EDITOR_BODY_WIDTH)         << tempBook->getIsbn()       << "█" << endl;
     cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)             << "<3> Update Author"          << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)         << tempBook.getAuthor()     << "█" << endl;
+          << setw(BOOK_EDITOR_BODY_WIDTH)         << tempBook->getAuthor()     << "█" << endl;
     cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)             << "<4> Update Publisher"         << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)         << tempBook.getPublisher()  << "█" << endl;
+          << setw(BOOK_EDITOR_BODY_WIDTH)         << tempBook->getPublisher()  << "█" << endl;
     cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)             << "<5> Date Last Updated <mm/dd/yyyy>" << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)         << tempBook.getDateAdded()  << "█" << endl;
+          << setw(BOOK_EDITOR_BODY_WIDTH)         << tempBook->getDateAdded()  << "█" << endl;
     cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)             << "<6> Update Quantity on Hand"    << ">  --"
-          << setw(BOOK_EDITOR_BODY_WIDTH)         << tempBook.getQtyOnHand()  << "█" << endl;
+          << setw(BOOK_EDITOR_BODY_WIDTH)         << tempBook->getQtyOnHand()  << "█" << endl;
     cout << fixed << setprecision(2);
     cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)             << "<7> Update Wholesale Cost"      << ">  --$"
-          << setw(BOOK_EDITOR_BODY_WIDTH - 1)     << tempBook.getWholesale()  << "█" << endl;
+          << setw(BOOK_EDITOR_BODY_WIDTH - 1)     << tempBook->getWholesale()  << "█" << endl;
     cout << "█"   << " "        << setw(BOOK_EDITOR_BODY_PADDING)             << "<8> Update Retail Price"      << ">  --$"
-            << setw(BOOK_EDITOR_BODY_WIDTH - 1)   << tempBook.getRetail()     << "█" << endl;
+            << setw(BOOK_EDITOR_BODY_WIDTH - 1)   << tempBook->getRetail()     << "█" << endl;
 
     cout.unsetf(ios::fixed);
     cout << setprecision(6);
@@ -109,62 +109,62 @@ void addBook(orderedLinkedList<bookType> bookInfo, int &bookCount, const int DBS
       case 1:
         cout << "Enter Book Title: ";
         getline(cin, tmpTitle);
-        tempBook.setBookTitle(tmpTitle);
+        tempBook->setBookTitle(tmpTitle);
         cout << "\033[2J\033[1;1H";
         break;
       case 2:
         cout << "Enter ISBN: ";
         getline(cin, tmpIsbn);
-        tempBook.setIsbn(tmpIsbn);
+        tempBook->setIsbn(tmpIsbn);
         cout << "\033[2J\033[1;1H";
         break;
       case 3:
         cout << "Enter Author: ";
         getline(cin, tmpAuthor);
-        tempBook.setAuthor(tmpAuthor);
+        tempBook->setAuthor(tmpAuthor);
         cout << "\033[2J\033[1;1H";
         break;
       case 4:
         cout << "Enter Publisher: ";
         getline(cin, tmpPublisher);
-        tempBook.setPublisher(tmpPublisher);
+        tempBook->setPublisher(tmpPublisher);
         cout << "\033[2J\033[1;1H";
         break;
       case 5:
         cout << "Enter Date Added: ";
         getline(cin, tmpDateAdded);
-        tempBook.setDateAdded(tmpDateAdded);
+        tempBook->setDateAdded(tmpDateAdded);
         cout << "\033[2J\033[1;1H";
         break;
       case 6:
         cout << "Enter Quantity on Hand: ";
         cin >> tmpQtyOnHand;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        tempBook.setQtyOnHand(tmpQtyOnHand);
+        tempBook->setQtyOnHand(tmpQtyOnHand);
         cout << "\033[2J\033[1;1H";
         break;
       case 7:
         cout << "Enter Wholesale Cost: ";
         cin  >> tmpWholesale;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        tempBook.setWholesale(tmpWholesale);
+        tempBook->setWholesale(tmpWholesale);
         cout << "\033[2J\033[1;1H";
         break;
       case 8:
         cout << "Enter Retail Price: ";
         cin  >> tmpRetail;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        tempBook.setRetail(tmpRetail);
+        tempBook->setRetail(tmpRetail);
         cout << "\033[2J\033[1;1H";
         break;
       case 9:
         //pass all filler information into the struct array/vector
         //adding all the book info into the vector
-        bookInfo.insert(tempBook);
+        bookInfo.insert(*tempBook);
         //update bookCount
         bookCount++;
         //re-initialize all filler variables
-        tempBook = bookType();
+        tempBook = new bookType();
         //clear screen
         cout << "\033[2J\033[1;1H";
         break;
