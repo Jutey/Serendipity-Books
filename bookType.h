@@ -11,8 +11,6 @@
 
 using namespace std;
 
-const int DBSIZE = 20;
-
 /// This is a class to store info for each book
 ///
 /// Every Book has a Title, ISBN, Author, Publisher, Date Added to the Database, Quantity, Wholesale value, and Retail value

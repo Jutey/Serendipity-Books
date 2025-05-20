@@ -16,21 +16,15 @@ using namespace std;
 //bookCount is a variable that should be addressed and initialized within main
 //Default array/vector name is bookInfo if that's easiest, otherwise update lines 1BOOK_EDITOR_BODY_PADDING-1BOOK_EDITOR_SUBTITLE_PADDING
 //Also, make sure this vvvvvvvv filler parameter gets updated, wasn't sure what we were using
-void addBook(orderedLinkedList<bookType*> &bookInfo, int &bookCount, const int DBSIZE)
+void addBook(orderedLinkedList<bookType*> &bookInfo, int &bookCount)
 {
   bookType* tempBook;
   int choice = -1;
 
-  if (bookCount >= DBSIZE)
-  {
-    cout << "Book database is full! Cannot add more than " << DBSIZE << " books.\n";
-    return;
-  }
-
   //initialize all filler variables
   tempBook = new bookType();
 
-  while(choice != 0 && bookCount < 20)
+  while(choice != 0)
   {
     cout << "\033[2J\033[1;1H";
     cout << endl << endl;
@@ -41,8 +35,7 @@ void addBook(orderedLinkedList<bookType*> &bookInfo, int &bookCount, const int D
     cout << "█" << setw(BOOK_EDITOR_TITLE_PADDING) << "SERENDIPITY  BOOKSELLERS" << setw(BOOK_EDITOR_TITLE_WIDTH) << " " << "█" << endl;
     cout << "█" << setw(BOOK_EDITOR_SUBTITLE_PADDING) << "ADD BOOK"         << setw(BOOK_EDITOR_SUBTITLE_WIDTH) << " " << "█" << endl;
     cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
-    cout << "█" << setw(BOOK_EDITOR_SUBTITLE_PADDING) << "DATABASE SIZE:"       << setw(DB_SIZE_PADDING)  << "  20"
-          << setw(BOOK_COUNT_PADDING) << "CURRENT BOOK COUNT:"    << setw(DB_SIZE_PADDING)  << bookCount
+    cout << "█" << setw(BOOK_EDITOR_SUBTITLE_PADDING) << "CURRENT BOOK COUNT:"    << setw(DB_SIZE_PADDING)  << bookCount
           << setw(DB_SIZE_PADDING + 1)  << " " << "█" << endl;
     cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
     cout << "█" << setw(PENDING_VALUES_PADDING) << "--PENDING VALUES"     << setw(PENDING_VALUES_WIDTH)  << " " << "█" << endl;
@@ -78,20 +71,6 @@ void addBook(orderedLinkedList<bookType*> &bookInfo, int &bookCount, const int D
     cout << endl;
 
     choice = intInputChecked("    Choice<0-9>", 0, 9);
-
-//    cout << "    Choice<0-9>";
-//    cin >> choice;
-//    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-//
-//    if (cin.fail())
-//    {
-//      cin.clear();
-//      cout << "Invalid entry. Please enter a number." << endl;
-
-//      cout << "    Choice<0-9>";
-//      cin >> choice;
-//      cin.ignore(numeric_limits<streamsize>::max(), '\n');
-//    }
 
     // Temporary variables to pass to setter methods
     string tmpTitle;

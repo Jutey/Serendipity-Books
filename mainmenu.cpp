@@ -5,7 +5,7 @@
 #include "invmenu.h"
 #include "cashier.h"
 #include "reports.h"
-#include "bookType.h" // DBSIZE
+#include "bookType.h"
 #include "int_input_checked.h"
 #include "setw_consts.h"
 #include "book_info_deref.h" // for bookInfoDeref
@@ -72,7 +72,7 @@ int main()
       break;
       }
       case 2:
-        invmenu(bookInfo, bookCount, DBSIZE);
+        invmenu(bookInfo, bookCount);
         cout << "\033[2J\033[1;1H";
         break;
       case 3:

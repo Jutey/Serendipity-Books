@@ -16,7 +16,7 @@ using namespace std;
 //bookCount is a variable that should be addressed and initialized within main
 //Default array/vector name is bookInfo if that's easiest, otherwise update lines 1BOOK_EDITOR_BODY_PADDING-1BOOK_EDITOR_SUBTITLE_PADDING
 //Also, make sure this vvvvvvvv filler parameter gets updated, wasn't sure what we were using
-void editBook(orderedLinkedList<bookType*> bookInfo, int &bookCount, const int DBSIZE)
+void editBook(orderedLinkedList<bookType*> bookInfo, int &bookCount)
 {
   int i = lookUpBook(bookInfo);
   int choice;
@@ -32,18 +32,18 @@ void editBook(orderedLinkedList<bookType*> bookInfo, int &bookCount, const int D
 
   if (bookCount == 0)
   {
-    cout << "Book database is empty! Cannot edit" << DBSIZE << " books.\n";
+    cout << "Book database is empty! Cannot edit books.\n";
     return;
   }
   
   while(choice != 9)
   {
-	 if (i == -1)
+   if (i == -1)
     {
-		cout << "Book not found. Returning to Inventory Menu.\n";
-		cout << "Press ENTER to continue...";
-		cin.ignore();
-		return;  
+    cout << "Book not found. Returning to Inventory Menu.\n";
+    cout << "Press ENTER to continue...";
+    cin.ignore();
+    return;  
     }
     cout << "\033[2J\033[1;1H";
     cout << endl << endl;
@@ -54,8 +54,7 @@ void editBook(orderedLinkedList<bookType*> bookInfo, int &bookCount, const int D
     cout << "█" << setw(BOOK_EDITOR_TITLE_PADDING) << "SERENDIPITY  BOOKSELLERS" << setw(BOOK_EDITOR_TITLE_WIDTH) << " " << "█" << endl;
     cout << "█" << setw(BOOK_EDITOR_SUBTITLE_PADDING) << "EDIT BOOK"         << setw(BOOK_EDITOR_SUBTITLE_WIDTH) << " " << "█" << endl;
     cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
-    cout << "█" << setw(BOOK_EDITOR_SUBTITLE_PADDING) << "DATABASE SIZE:"       << setw(DB_SIZE_PADDING)  << "  20"
-          << setw(BOOK_COUNT_PADDING) << "CURRENT BOOK COUNT:"    << setw(DB_SIZE_PADDING)  << bookCount
+    cout << "█" << setw(BOOK_EDITOR_SUBTITLE_PADDING) << "CURRENT BOOK COUNT:"    << setw(DB_SIZE_PADDING)  << bookCount
           << setw(DB_SIZE_PADDING + 1)  << " " << "█" << endl;
     cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
     cout << "█" << setw(PENDING_VALUES_PADDING) << "--PENDING VALUES"     << setw(PENDING_VALUES_WIDTH)  << " " << "█" << endl;
