@@ -13,23 +13,21 @@
 #include "book_info_deref.h"
 
 using namespace std;
-void repListing(const orderedLinkedList<bookType> bookInfo){
-  //Pull the current Date from the system
-  time_t currentTime = time(nullptr);               // Get current time
-  tm* localTime      = localtime(&currentTime);     // Convert to local time
-  int year           = localTime->tm_year + 1900;   // Years since 1900
-  int month          = localTime->tm_mon + 1;       // Months since January (0-11)
-  int day            = localTime->tm_mday;          // Day of the month (1-31)
-  string date        = to_string(month) + "/" + to_string(day) + "/" + to_string(year);
-  //Constructing the current date from system year/month/day
-  int currentPage = 1;
+void repListing(orderedLinkedList<bookType> bookInfo){
+  // Pull the current Date from the system
+  time_t currentTime = time(nullptr);
+  tm* localTime = localtime(&currentTime);
+  int year = localTime->tm_year + 1900;
+  int month = localTime->tm_mon + 1;
+  int day = localTime->tm_mday;
+  string date = to_string(month) + "/" + to_string(day) + "/" + to_string(year);
+
   int totalBooks = bookInfo.length();
   int totalPages = (totalBooks + 9) / 10;
-
+  int currentPage = 1;
   string choice;
 
-  do
-  {
+  do {
     int startingIndex = (currentPage - 1) * 10;
     int endingIndex = min(startingIndex + 10, totalBooks);
 
@@ -44,8 +42,13 @@ void repListing(const orderedLinkedList<bookType> bookInfo){
 
     cout << "█  TITLE                          ISBN         AUTHOR              PUBLISHER   DATE ADDED QTY O/H WHOLESALE RETAIL █" << endl;
     cout << "█  ----------------------------  ----------   -------------------  ----------  ----------- ------- --------- -------█" << endl;
-    for (int i = startingIndex; i < endingIndex; ++i){
-      const bookType& book = *(bookInfo).get(i);
+
+    int idx = 0;
+    int printed = 0;
+    for (linkedListIterator<bookType> it = bookInfo.begin(); it != bookInfo.end(); ++it, ++idx) {
+      if (idx < startingIndex) continue;
+      if (idx >= endingIndex) break;
+      const bookType& book = *it;
       cout << "█  " << left << setw(30) << book.getBookTitle().substr(0, 30)
         << setw(12) << book.getIsbn().substr(0, 12)
         << setw(21) << book.getAuthor().substr(0, 21)
@@ -55,6 +58,7 @@ void repListing(const orderedLinkedList<bookType> bookInfo){
         << "$" << right << setw(7) << fixed << setprecision(2) << book.getWholesale()
         << "   $" << right << setw(7) << book.getRetail()
         << " █" << endl;
+      ++printed;
     }
 
     if (currentPage < totalPages) {
@@ -65,14 +69,12 @@ void repListing(const orderedLinkedList<bookType> bookInfo){
     cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████" << endl;
 
     getline(cin, choice);
-    if (choice == "2" && currentPage < totalPages) 
-    {
+    if (choice == "2" && currentPage < totalPages) {
       currentPage++;
-    } else 
-    {
+    } else {
       break;
     }
-  }while(true);
+  } while (true);
 }
 
 
