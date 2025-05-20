@@ -17,7 +17,7 @@ using namespace std;
  |  return 0;   |
  |}           |
  *--------------------*/
-void cashier(orderedLinkedList<bookType*> bookInfo)
+void cashier(orderedLinkedList<bookType*> &bookInfo)
 {
   const double SALESTAX = 0.06;
 

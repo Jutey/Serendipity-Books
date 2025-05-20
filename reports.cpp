@@ -13,7 +13,7 @@
 #include "book_info_deref.h"
 
 using namespace std;
-void repListing(orderedLinkedList<bookType*> bookInfo){
+void repListing(orderedLinkedList<bookType*> &bookInfo){
   // Pull the current Date from the system
   time_t currentTime = time(nullptr);
   tm* localTime = localtime(&currentTime);
@@ -78,7 +78,7 @@ void repListing(orderedLinkedList<bookType*> bookInfo){
 }
 
 
-void reports(const orderedLinkedList<bookType*> bookInfo)
+void reports(const orderedLinkedList<bookType*> &bookInfo)
 {
   int choice;
   do
