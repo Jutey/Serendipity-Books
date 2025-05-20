@@ -6,12 +6,15 @@
 ************************************************/
 #include "book_info_deref.h" // for bookInfoDeref
 
-orderedLinkedList<bookType> bookInfoDeref(orderedLinkedList<bookType> &bookInfo)
+orderedLinkedList<bookType> bookInfoDeref(orderedLinkedList<bookType*> &bookInfo)
 {
     orderedLinkedList<bookType> derefBookInfo;
     for (size_t i = 0; i < bookInfo.size(); ++i)
     {
-        derefBookInfo.insertLast(*bookInfo.get(i)); // Dereference the bookType object and add it to the new list
+        bookType* ptr = *bookInfo.get(i);
+        if (ptr != nullptr) {
+            derefBookInfo.insert(*ptr); // Dereference the bookType object and add it to the new list
+        }
     }
     return derefBookInfo;
 }

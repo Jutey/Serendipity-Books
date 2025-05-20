@@ -16,7 +16,7 @@ int main()
 {
 
   int choice;
-  orderedLinkedList<bookType> bookInfo;
+  orderedLinkedList<bookType*> bookInfo;
   int bookCount = 0;
 
   do

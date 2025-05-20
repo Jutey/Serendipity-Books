@@ -13,7 +13,7 @@
 #include "book_info_deref.h"
 
 using namespace std;
-void repListing(orderedLinkedList<bookType> bookInfo){
+void repListing(orderedLinkedList<bookType*> bookInfo){
   // Pull the current Date from the system
   time_t currentTime = time(nullptr);
   tm* localTime = localtime(&currentTime);
@@ -45,10 +45,10 @@ void repListing(orderedLinkedList<bookType> bookInfo){
 
     int idx = 0;
     int printed = 0;
-    for (linkedListIterator<bookType> it = bookInfo.begin(); it != bookInfo.end(); ++it, ++idx) {
+    for (linkedListIterator<bookType*> it = bookInfo.begin(); it != bookInfo.end(); ++it, ++idx) {
       if (idx < startingIndex) continue;
       if (idx >= endingIndex) break;
-      const bookType& book = *it;
+      const bookType& book = **it;
       cout << "█  " << left << setw(30) << book.getBookTitle().substr(0, 30)
         << setw(12) << book.getIsbn().substr(0, 12)
         << setw(21) << book.getAuthor().substr(0, 21)
@@ -78,7 +78,7 @@ void repListing(orderedLinkedList<bookType> bookInfo){
 }
 
 
-void reports(const orderedLinkedList<bookType> bookInfo)
+void reports(const orderedLinkedList<bookType*> bookInfo)
 {
   int choice;
   do

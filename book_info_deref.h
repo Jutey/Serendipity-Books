@@ -6,6 +6,6 @@
 #include "bookType.h" // for bookType class
 using namespace std;
 
-orderedLinkedList<bookType> bookInfoDeref(orderedLinkedList<bookType> &bookInfo);
+orderedLinkedList<bookType> bookInfoDeref(orderedLinkedList<bookType*> &bookInfo);
 
 #endif // BOOK_INFO_DEREF_H

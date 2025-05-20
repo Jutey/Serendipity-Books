@@ -15,7 +15,7 @@
 ///@param bookCount: int - a user feedback integer that keeps track of the amount of books in the database
 ///@param DBSIZE: const int - an integer that limits the size of the Database
 ///@returns nothing meaningful at the moment
-void editBook(orderedLinkedList<bookType> bookInfo, int &bookCount, const int DBSIZE);
+void editBook(orderedLinkedList<bookType*> bookInfo, int &bookCount, const int DBSIZE);
 
 /// A function to allow database edits and maintenance
 ///
@@ -27,6 +27,6 @@ void editBook(orderedLinkedList<bookType> bookInfo, int &bookCount, const int DB
 ///@see bookType.h
 ///@param DBSIZE: const int - an integer that limits the size of the Database
 ///@returns nothing meaningful at the moment
-void editBook(string title, int &bookCount, orderedLinkedList<bookType> bookInfo, const int DBSIZE);
+void editBook(string title, int &bookCount, orderedLinkedList<bookType*> bookInfo, const int DBSIZE);
 
 #endif

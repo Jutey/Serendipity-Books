@@ -11,7 +11,7 @@
 
 using namespace std;
 
-void deleteBook(orderedLinkedList<bookType>& bookInfo, int &bookCount)
+void deleteBook(orderedLinkedList<bookType*>& bookInfo, int &bookCount)
 {
   int count = 0;
 
@@ -35,7 +35,7 @@ void deleteBook(orderedLinkedList<bookType>& bookInfo, int &bookCount)
 
 
     // Advance iterator to the index-th position
-    linkedListIterator<bookType> it = bookInfo.begin();
+    linkedListIterator<bookType*> it = bookInfo.begin();
     for (int i = 0; i < index && it != bookInfo.end(); ++i) {
         ++it;
     }

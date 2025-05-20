@@ -17,7 +17,7 @@
 
 using namespace std;
 
-void invmenu(orderedLinkedList<bookType> &bookInfo, int &bookCount, const int DBSIZE)
+void invmenu(orderedLinkedList<bookType*> bookInfo, int &bookCount, const int DBSIZE)
 {
   
   int userChoice;
