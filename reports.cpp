@@ -119,8 +119,14 @@ void reports(const orderedLinkedList<bookType> bookInfo)
       //  cout << "You selected item 1." << endl;
       //  cout << "Press ENTER to continue ...";
       //  cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			repListing(bookInfo);
-       
+      if (bookInfo.isEmptyList())
+      {
+        cout << "█" << setw(MENU_BODY_PADDING) << " " << "The database is empty. Please add a book." << setw(15) << "█" << endl;
+      }
+      else
+      {
+        repListing(bookInfo);
+      }
 
       case 2:
         cout << "You selected item 2." << endl;
