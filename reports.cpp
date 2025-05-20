@@ -11,9 +11,12 @@
 #include "linkedlist.h"
 #include "orderedLinkedList.h"
 #include "book_info_deref.h"
+#include "selsort.h"
 
 using namespace std;
-void repListing(orderedLinkedList<bookType*> &bookInfo){
+
+void repListing(orderedLinkedList<bookType*> &bookInfo)
+{
   // Pull the current Date from the system
   time_t currentTime = time(nullptr);
   tm* localTime = localtime(&currentTime);
@@ -27,7 +30,8 @@ void repListing(orderedLinkedList<bookType*> &bookInfo){
   int currentPage = 1;
   string choice;
 
-  do {
+  do
+  {
     int startingIndex = (currentPage - 1) * 10;
     int endingIndex = min(startingIndex + 10, totalBooks);
 
@@ -45,7 +49,9 @@ void repListing(orderedLinkedList<bookType*> &bookInfo){
 
     int idx = 0;
     int printed = 0;
-    for (linkedListIterator<bookType*> it = bookInfo.begin(); it != bookInfo.end(); ++it, ++idx) {
+
+    for (linkedListIterator<bookType*> it = bookInfo.begin(); it != bookInfo.end(); ++it, ++idx)
+    {
       if (idx < startingIndex) continue;
       if (idx >= endingIndex) break;
       const bookType& book = **it;
@@ -61,9 +67,11 @@ void repListing(orderedLinkedList<bookType*> &bookInfo){
       ++printed;
     }
 
-    if (currentPage < totalPages) {
+    if (currentPage < totalPages)
+    {
       cout << "█  Type \"2\" to go to the next page, or any other key to return...                          █" << endl;
-    } else {
+    } else
+    {
       cout << "█  Press any key to return...                                                                █" << endl;
     }
     cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████" << endl;
@@ -77,6 +85,379 @@ void repListing(orderedLinkedList<bookType*> &bookInfo){
   } while (true);
 }
 
+void repWholesale(orderedLinkedList<bookType*> &bookInfo)
+{
+  // Get current date
+  time_t currentTime = time(nullptr);
+  tm* localTime = localtime(&currentTime);
+  int year = localTime->tm_year + 1900;
+  int month = localTime->tm_mon + 1;
+  int day = localTime->tm_mday;
+  string date = to_string(month) + "/" + to_string(day) + "/" + to_string(year);
+
+  int totalBooks = bookInfo.length();
+  int totalPages = (totalBooks + 9) / 10;
+  int currentPage = 1;
+  string choice;
+  double totalWholesale = 0.0;
+
+  do
+  {
+    int startingIndex = (currentPage - 1) * 10;
+    int endingIndex = min(startingIndex + 10, totalBooks);
+
+    cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"
+      << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█" << setw(65) << right << "SERENDIPITY BOOKSELLERS" << setw(54) << right << "█" << endl;
+    cout << "█" << setw(62) << right << "WHOLESALE VALUE REPORT" << setw(57) << right << "█" << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(75) << " " << "█" << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+
+    cout << "█  TITLE                          ISBN         QTY O/H   WHOLESALE COST                                   █" << endl;
+    cout << "█  ----------------------------  ----------   -------   --------------                                   █" << endl;
+
+    int idx = 0;
+    double pageWholesale = 0.0;
+    for (linkedListIterator<bookType*> it = bookInfo.begin(); it != bookInfo.end(); ++it, ++idx)
+    {
+      if (idx < startingIndex) continue;
+      if (idx >= endingIndex) break;
+      const bookType& book = **it;
+      double bookValue = book.getWholesale() * book.getQtyOnHand();
+      pageWholesale += bookValue;
+      cout << "█  " << left << setw(30) << book.getBookTitle().substr(0, 30)
+        << setw(12) << book.getIsbn().substr(0, 12)
+        << setw(9) << book.getQtyOnHand()
+        << "$" << right << setw(13) << fixed << setprecision(2) << book.getWholesale()
+        << "   (Total: $" << setw(10) << bookValue << ")"
+        << setw(32) << " " << "█" << endl;
+    }
+    totalWholesale += pageWholesale;
+
+    if (currentPage < totalPages)
+    {
+      cout << "█  Type \"2\" to go to the next page, or any other key to continue...                        █" << endl;
+    }
+    else
+    {
+      cout << "█  Total Wholesale Value of Inventory: $" << fixed << setprecision(2) << totalWholesale << setw(60) << " " << "█" << endl;
+      cout << "█  Press any key to return...                                                                █" << endl;
+    }
+    cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████" << endl;
+
+    getline(cin, choice);
+    if (choice == "2" && currentPage < totalPages)
+    {
+      currentPage++;
+    }
+    else
+    {
+      break;
+    }
+  } while (true);
+}
+
+void repRetail(orderedLinkedList<bookType*> &bookInfo)
+{
+  // Get current date
+  time_t currentTime = time(nullptr);
+  tm* localTime = localtime(&currentTime);
+  int year = localTime->tm_year + 1900;
+  int month = localTime->tm_mon + 1;
+  int day = localTime->tm_mday;
+  string date = to_string(month) + "/" + to_string(day) + "/" + to_string(year);
+
+  int totalBooks = bookInfo.length();
+  int totalPages = (totalBooks + 9) / 10;
+  int currentPage = 1;
+  string choice;
+  double totalRetail = 0.0;
+
+  do
+  {
+    int startingIndex = (currentPage - 1) * 10;
+    int endingIndex = min(startingIndex + 10, totalBooks);
+
+    cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"
+      << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█" << setw(65) << right << "SERENDIPITY BOOKSELLERS" << setw(54) << right << "█" << endl;
+    cout << "█" << setw(62) << right << "RETAIL VALUE REPORT" << setw(57) << right << "█" << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(75) << " " << "█" << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+
+    cout << "█  TITLE                          ISBN         QTY O/H   RETAIL PRICE                                     █" << endl;
+    cout << "█  ----------------------------  ----------   -------   --------------                                   █" << endl;
+
+    int idx = 0;
+    double pageRetail = 0.0;
+    for (linkedListIterator<bookType*> it = bookInfo.begin(); it != bookInfo.end(); ++it, ++idx)
+    {
+      if (idx < startingIndex) continue;
+      if (idx >= endingIndex) break;
+      const bookType& book = **it;
+      double bookValue = book.getRetail() * book.getQtyOnHand();
+      pageRetail += bookValue;
+      cout << "█  " << left << setw(30) << book.getBookTitle().substr(0, 30)
+        << setw(12) << book.getIsbn().substr(0, 12)
+        << setw(9) << book.getQtyOnHand()
+        << "$" << right << setw(13) << fixed << setprecision(2) << book.getRetail()
+        << "   (Total: $" << setw(10) << bookValue << ")"
+        << setw(32) << " " << "█" << endl;
+    }
+    totalRetail += pageRetail;
+
+    if (currentPage < totalPages)
+    {
+      cout << "█  Type \"2\" to go to the next page, or any other key to continue...                        █" << endl;
+    }
+    else
+    {
+      cout << "█  Total Retail Value of Inventory: $" << fixed << setprecision(2) << totalRetail << setw(62) << " " << "█" << endl;
+      cout << "█  Press any key to return...                                                                █" << endl;
+    }
+    cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████" << endl;
+
+    getline(cin, choice);
+    if (choice == "2" && currentPage < totalPages)
+    {
+      currentPage++;
+    }
+    else
+    {
+      break;
+    }
+  } while (true);
+}
+
+void repQty(orderedLinkedList<bookType*> &bookInfo)
+{
+  // Get current date
+  time_t currentTime = time(nullptr);
+  tm* localTime = localtime(&currentTime);
+  int year = localTime->tm_year + 1900;
+  int month = localTime->tm_mon + 1;
+  int day = localTime->tm_mday;
+  string date = to_string(month) + "/" + to_string(day) + "/" + to_string(year);
+
+  // Copy pointers to vector for sorting
+  vector<bookType*> books;
+  for (linkedListIterator<bookType*> it = bookInfo.begin(); it != bookInfo.end(); ++it)
+    books.push_back(*it);
+
+  // Sort by quantity on hand descending
+  selectionSort(books.begin(), books.end(), [](bookType* a, bookType* b) {
+    return a->getQtyOnHand() > b->getQtyOnHand();
+  });
+
+  int totalBooks = books.size();
+  int totalPages = (totalBooks + 9) / 10;
+  int currentPage = 1;
+  string choice;
+
+  do
+  {
+    int startingIndex = (currentPage - 1) * 10;
+    int endingIndex = min(startingIndex + 10, totalBooks);
+
+    cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"
+      << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█" << setw(65) << right << "SERENDIPITY BOOKSELLERS" << setw(54) << right << "█" << endl;
+    cout << "█" << setw(62) << right << "LISTING BY QUANTITY" << setw(57) << right << "█" << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(75) << " " << "█" << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+
+    cout << "█  TITLE                          ISBN         QTY O/H   WHOLESALE   RETAIL                                      █" << endl;
+    cout << "█  ----------------------------  ----------   -------   ----------  ----------                                   █" << endl;
+
+    for (int idx = startingIndex; idx < endingIndex; ++idx)
+    {
+      const bookType& book = *books[idx];
+      cout << "█  " << left << setw(30) << book.getBookTitle().substr(0, 30)
+        << setw(12) << book.getIsbn().substr(0, 12)
+        << setw(9) << book.getQtyOnHand()
+        << "$" << right << setw(10) << fixed << setprecision(2) << book.getWholesale()
+        << "  $" << right << setw(10) << book.getRetail()
+        << setw(32) << " " << "█" << endl;
+    }
+
+    if (currentPage < totalPages)
+    {
+      cout << "█  Type \"2\" to go to the next page, or any other key to return...                          █" << endl;
+    }
+    else
+    {
+      cout << "█  Press any key to return...                                                                █" << endl;
+    }
+    cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████" << endl;
+
+    getline(cin, choice);
+    if (choice == "2" && currentPage < totalPages)
+    {
+      currentPage++;
+    }
+    else
+    {
+      break;
+    }
+  } while (true);
+}
+
+void repCost(orderedLinkedList<bookType*> &bookInfo)
+{
+  // Get current date
+  time_t currentTime = time(nullptr);
+  tm* localTime = localtime(&currentTime);
+  int year = localTime->tm_year + 1900;
+  int month = localTime->tm_mon + 1;
+  int day = localTime->tm_mday;
+  string date = to_string(month) + "/" + to_string(day) + "/" + to_string(year);
+
+  // Copy pointers to vector for sorting
+  vector<bookType*> books;
+  for (linkedListIterator<bookType*> it = bookInfo.begin(); it != bookInfo.end(); ++it)
+    books.push_back(*it);
+
+  // Sort by wholesale cost descending
+  selectionSort(books.begin(), books.end(), [](const bookType* a, const bookType* b) {
+    return a->getWholesale() > b->getWholesale();
+  });
+
+  int totalBooks = books.size();
+  int totalPages = (totalBooks + 9) / 10;
+  int currentPage = 1;
+  string choice;
+
+  do
+  {
+    int startingIndex = (currentPage - 1) * 10;
+    int endingIndex = min(startingIndex + 10, totalBooks);
+
+    cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"
+      << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█" << setw(65) << right << "SERENDIPITY BOOKSELLERS" << setw(54) << right << "█" << endl;
+    cout << "█" << setw(62) << right << "LISTING BY COST" << setw(57) << right << "█" << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(75) << " " << "█" << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+
+    cout << "█  TITLE                          ISBN         WHOLESALE   QTY O/H   RETAIL                                    █" << endl;
+    cout << "█  ----------------------------  ----------   ----------   -------   ----------                               █" << endl;
+
+    for (int idx = startingIndex; idx < endingIndex; ++idx)
+    {
+      const bookType& book = *books[idx];
+      cout << "█  " << left << setw(30) << book.getBookTitle().substr(0, 30)
+        << setw(12) << book.getIsbn().substr(0, 12)
+        << "$" << right << setw(10) << fixed << setprecision(2) << book.getWholesale()
+        << setw(9) << book.getQtyOnHand()
+        << "  $" << right << setw(10) << book.getRetail()
+        << setw(30) << " " << "█" << endl;
+    }
+
+    if (currentPage < totalPages)
+    {
+      cout << "█  Type \"2\" to go to the next page, or any other key to return...                          █" << endl;
+    }
+    else
+    {
+      cout << "█  Press any key to return...                                                                █" << endl;
+    }
+    cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████" << endl;
+
+    getline(cin, choice);
+    if (choice == "2" && currentPage < totalPages)
+    {
+      currentPage++;
+    }
+    else
+    {
+      break;
+    }
+  } while (true);
+}
+
+void repAge(orderedLinkedList<bookType*> &bookInfo)
+{
+  // Get current date
+  time_t currentTime = time(nullptr);
+  tm* localTime = localtime(&currentTime);
+  int year = localTime->tm_year + 1900;
+  int month = localTime->tm_mon + 1;
+  int day = localTime->tm_mday;
+  string date = to_string(month) + "/" + to_string(day) + "/" + to_string(year);
+
+  // Copy pointers to vector for sorting
+  vector<bookType*> books;
+  for (linkedListIterator<bookType*> it = bookInfo.begin(); it != bookInfo.end(); ++it)
+    books.push_back(*it);
+
+  // Sort by date added ascending (oldest first)
+  selectionSort(books.begin(), books.end(), [](bookType* a, bookType* b) {
+    return a->getDateAdded() < b->getDateAdded();
+  });
+
+  int totalBooks = books.size();
+  int totalPages = (totalBooks + 9) / 10;
+  int currentPage = 1;
+  string choice;
+
+  do
+  {
+    int startingIndex = (currentPage - 1) * 10;
+    int endingIndex = min(startingIndex + 10, totalBooks);
+
+    cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"
+      << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█" << setw(65) << right << "SERENDIPITY BOOKSELLERS" << setw(54) << right << "█" << endl;
+    cout << "█" << setw(62) << right << "LISTING BY AGE" << setw(57) << right << "█" << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(75) << " " << "█" << endl;
+    cout << "█" << setw(118) << right << "█" << endl;
+
+    cout << "█  TITLE                          ISBN         DATE ADDED  QTY O/H   WHOLESALE   RETAIL                        █" << endl;
+    cout << "█  ----------------------------  ----------   ----------  -------   ----------  ----------                     █" << endl;
+
+    for (int idx = startingIndex; idx < endingIndex; ++idx)
+    {
+      const bookType& book = *books[idx];
+      cout << "█  " << left << setw(30) << book.getBookTitle().substr(0, 30)
+        << setw(12) << book.getIsbn().substr(0, 12)
+        << setw(12) << book.getDateAdded()
+        << setw(9) << book.getQtyOnHand()
+        << "$" << right << setw(10) << fixed << setprecision(2) << book.getWholesale()
+        << "  $" << right << setw(10) << book.getRetail()
+        << setw(20) << " " << "█" << endl;
+    }
+
+    if (currentPage < totalPages)
+    {
+      cout << "█  Type \"2\" to go to the next page, or any other key to return...                          █" << endl;
+    }
+    else
+    {
+      cout << "█  Press any key to return...                                                                █" << endl;
+    }
+    cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████" << endl;
+
+    getline(cin, choice);
+    if (choice == "2" && currentPage < totalPages)
+    {
+      currentPage++;
+    }
+    else
+    {
+      break;
+    }
+  } while (true);
+}
 
 void reports(orderedLinkedList<bookType*> &bookInfo)
 {
@@ -131,32 +512,25 @@ void reports(orderedLinkedList<bookType*> &bookInfo)
       }
 
       case 2:
-        cout << "You selected item 2." << endl;
-        cout << "Press ENTER to continue ...";
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        repWholesale(bookInfo);
         break;
 
       case 3:
-        cout << "You selected item 3." << endl;
-        cout << "Press ENTER to continue ...";
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        repRetail(bookInfo);
         break;
 
       case 4:
-        cout << "You selected item 4." << endl;
-        cout << "Press ENTER to continue ...";
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        repQty(bookInfo);
         break;
+
       case 5:
-        cout << "You selected item 5." << endl;
-        cout << "Press ENTER to continue ...";
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        repCost(bookInfo);
         break;
+
       case 6:
-        cout << "You selected item 6." << endl;
-        cout << "Press ENTER to continue ...";
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        repAge(bookInfo);
         break;
+        
       case 7:
         break;
       default:

@@ -18,4 +18,9 @@ using namespace std;
 ///@returns nothing meaningful for the moment
 void reports(orderedLinkedList<bookType*> &bookInfo);
 void repListing(orderedLinkedList<bookType*> &bookInfo);
+void repWholesale(orderedLinkedList<bookType*> &bookInfo);
+void repRetail(orderedLinkedList<bookType*> &bookInfo);
+void repQty(orderedLinkedList<bookType*> &bookInfo);
+void repCost(orderedLinkedList<bookType*> &bookInfo);
+void repAge(orderedLinkedList<bookType*> &bookInfo);
 #endif
