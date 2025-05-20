@@ -1,9 +1,9 @@
-/************************************************
+/******************************************************************************
 * Assignment: Exam 3
 * Purpose: Serendipity Final Project
-* Author: Kenny Strawn
+* Authors: Kenny Strawn, Romewin Villacorte, William Donnell-Crume, Cade Coxon
 * Due Date: 5/21/2025
-************************************************/
+*******************************************************************************/
 
 #ifndef __LOOK_UP_BOOK_H__
 #define __LOOK_UP_BOOK_H__

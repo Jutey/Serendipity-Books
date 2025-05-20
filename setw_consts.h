@@ -1,3 +1,10 @@
+/******************************************************************************
+* Assignment: Exam 3
+* Purpose: Serendipity Final Project
+* Authors: Kenny Strawn, Romewin Villacorte, William Donnell-Crume, Cade Coxon
+* Due Date: 5/21/2025
+*******************************************************************************/
+
 #ifndef SETW_CONSTS_H
 #define SETW_CONSTS_H
 
@@ -35,5 +42,7 @@ const int MENU_BODY_WIDTH = WINDOW_INNER - MENU_BODY_PADDING;
 const int BOOK_EDITOR_TITLE_WIDTH = WINDOW_INNER - BOOK_EDITOR_TITLE_PADDING;
 const int BOOK_EDITOR_SUBTITLE_WIDTH = WINDOW_INNER - BOOK_EDITOR_SUBTITLE_PADDING;
 const int BOOK_EDITOR_BODY_WIDTH = WINDOW_INNER - BOOK_EDITOR_BODY_PADDING - 6;
+
+const int BOOK_INFO_WIDTH = WINDOW_INNER - 20;
 
 #endif // SETW_CONSTS_H

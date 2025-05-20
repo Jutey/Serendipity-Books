@@ -1,4 +1,10 @@
-#include "bookType.h"
+/******************************************************************************
+* Assignment: Exam 3
+* Purpose: Serendipity Final Project
+* Authors: Kenny Strawn, Romewin Villacorte, William Donnell-Crume, Cade Coxon
+* Due Date: 5/21/2025
+*******************************************************************************/
+
 #include "orderedLinkedList.h"
 #include "linkedlist.h"
 

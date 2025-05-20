@@ -1,9 +1,9 @@
-/********************************************************************************
-* Assignment: Exam 2
-* Purpose: Course Enrollment System (AKA rewrite of SOCCCD MySite backend in C++)
-* Author: Kenny Strawn
-* Due Date: 4/23/2025
-********************************************************************************/
+/******************************************************************************
+* Assignment: Exam 3
+* Purpose: Serendipity Final Project
+* Authors: Kenny Strawn, Romewin Villacorte, William Donnell-Crume, Cade Coxon
+* Due Date: 5/21/2025
+*******************************************************************************/
 
 #ifndef SELSORT_H
 #define SELSORT_H
