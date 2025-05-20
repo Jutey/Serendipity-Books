@@ -78,7 +78,7 @@ void repListing(orderedLinkedList<bookType*> &bookInfo){
 }
 
 
-void reports(const orderedLinkedList<bookType*> &bookInfo)
+void reports(orderedLinkedList<bookType*> &bookInfo)
 {
   int choice;
   do
