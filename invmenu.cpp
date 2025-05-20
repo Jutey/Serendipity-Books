@@ -56,6 +56,10 @@ void invmenu(orderedLinkedList<bookType> &bookInfo, int &bookCount, const int DB
     // error checking
     userChoice = intInputChecked("Enter Your Choice", 1, 5);
     
+    if (bookInfo.isEmptyList()) {
+      cout << "The inventory is currently empty." << endl;
+    }
+
     // Menu navigation
     switch(userChoice)
     {
