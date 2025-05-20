@@ -77,6 +77,14 @@ void invmenu(orderedLinkedList<bookType> &bookInfo, int &bookCount, const int DB
         else
         {
             cout << "Cannot add more books. Inventory is full!\n";
+            if (bookInfo.isEmptyList())
+            {
+              cout << "█" << setw(MENU_BODY_PADDING) << " " << "The database is empty. Please add a book." << setw(15) << "█" << endl;
+            }
+            else
+            {`
+              cout << "█" << setw(MENU_BODY_PADDING) << " " << "The database is full. Please delete a book." << setw(15) << "█" << endl;
+            }
         }
 
         break;
