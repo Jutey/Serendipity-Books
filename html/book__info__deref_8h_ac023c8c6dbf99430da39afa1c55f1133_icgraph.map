@@ -1,0 +1,12 @@
+<map id="bookInfoDeref" name="bookInfoDeref">
+<area shape="rect" id="Node000001" title=" " alt="" coords="361,32,476,60"/>
+<area shape="rect" id="Node000002" href="$cashier_8cpp.html#a9baf96f1cd1f8d628640257aebbf7e00" title=" " alt="" coords="113,5,181,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="345,41,181,25,182,20,346,36"/>
+<area shape="rect" id="Node000004" href="$editBook_8cpp.html#abf262cad5e6c8fc75cd66ffe1acc2fa6" title=" " alt="" coords="234,57,313,85"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="346,61,314,67,313,62,345,56"/>
+<area shape="rect" id="Node000003" href="$mainmenu_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,32,60,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="98,33,61,42,60,37,97,28"/>
+<area shape="rect" id="Node000005" href="$invmenu_8cpp.html#a2a7371d37109bbe025563bcb2680c192" title=" " alt="" coords="108,57,186,85"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="218,74,187,74,187,68,218,68"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="92,62,59,54,61,49,93,56"/>
+</map>

@@ -1,6 +1,9 @@
 <map id="int_input_checked.h" name="int_input_checked.h">
-<area shape="rect" id="node1" title=" " alt="" coords="58,5,195,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,77,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="100,80,152,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="177,80,230,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="63,5,214,33"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,81,85,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,36,75,73,72,69,120,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="109,81,168,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="141,34,141,65,136,65,136,34"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="192,81,250,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="155,32,197,69,193,73,151,36"/>
 </map>

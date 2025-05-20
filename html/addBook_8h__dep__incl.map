@@ -1,7 +1,12 @@
 <map id="addBook.h" name="addBook.h">
-<area shape="rect" id="node1" title=" " alt="" coords="99,5,182,32"/>
-<area shape="rect" id="node2" href="$addBook_8cpp.html" title=" " alt="" coords="5,80,103,107"/>
-<area shape="rect" id="node3" href="$invmenu_8cpp.html" title=" " alt="" coords="93,155,188,181"/>
-<area shape="rect" id="node4" href="$invmenu_8h.html" title=" " alt="" coords="179,80,260,107"/>
-<area shape="rect" id="node5" href="$mainmenu_8cpp.html" title=" " alt="" coords="213,155,319,181"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="104,5,194,33"/>
+<area shape="rect" id="Node000002" href="$addBook_8cpp.html" title=" " alt="" coords="5,81,111,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,45,76,83,72,78,119,41"/>
+<area shape="rect" id="Node000003" href="$invmenu_8cpp.html" title=" " alt="" coords="96,157,201,184"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="151,48,151,156,146,156,146,48"/>
+<area shape="rect" id="Node000004" href="$invmenu_8h.html" title=" " alt="" coords="186,81,276,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="177,42,218,79,215,83,173,46"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="207,121,165,158,162,154,203,117"/>
+<area shape="rect" id="Node000005" href="$mainmenu_8cpp.html" title=" " alt="" coords="226,157,344,184"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="252,120,277,155,273,158,248,123"/>
 </map>

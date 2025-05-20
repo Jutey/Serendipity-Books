@@ -1,9 +1,15 @@
 <map id="bookType.h" name="bookType.h">
-<area shape="rect" id="node1" title=" " alt="" coords="202,5,291,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,59,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="83,80,141,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="164,80,236,107"/>
-<area shape="rect" id="node5" title=" " alt="" coords="260,80,326,107"/>
-<area shape="rect" id="node6" title=" " alt="" coords="350,80,415,107"/>
-<area shape="rect" id="node7" title=" " alt="" coords="439,80,508,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="216,5,312,33"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,81,64,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="224,36,79,82,78,77,222,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="87,81,150,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="239,36,159,76,157,71,237,31"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="174,81,253,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="257,35,233,70,229,66,253,32"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="277,81,352,109"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="275,32,299,66,295,70,271,35"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="376,81,448,109"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="291,31,373,71,371,76,289,36"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="472,81,546,109"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="308,31,458,76,457,81,307,36"/>
 </map>

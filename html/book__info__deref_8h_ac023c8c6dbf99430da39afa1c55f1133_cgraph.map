@@ -1,0 +1,11 @@
+<map id="bookInfoDeref" name="bookInfoDeref">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,65,120,93"/>
+<area shape="rect" id="Node000002" href="$classorderedLinkedList.html#ae4eaac0e78031ef17cae608c0d2b82b9" title=" " alt="" coords="170,5,336,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,62,167,42,188,35,189,41,168,47,107,67"/>
+<area shape="rect" id="Node000003" href="$classorderedLinkedList.html#a964cbfe6a667aa81235324ec3b2fb7da" title=" " alt="" coords="181,57,325,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="120,76,165,76,165,82,120,82"/>
+<area shape="rect" id="Node000004" href="$classorderedLinkedList.html#a0f5be11865f8d11ce095f3107418599a" title=" " alt="" coords="168,125,338,153"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="107,91,168,111,189,118,188,123,167,116,105,96"/>
+<area shape="rect" id="Node000005" href="$classlinkedListType.html#a9b49ab93eaaa2e86173c0cc1b7ca5fb0" title=" " alt="" coords="386,125,531,153"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="339,136,370,136,370,142,339,142"/>
+</map>
