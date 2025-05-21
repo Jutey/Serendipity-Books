@@ -42,8 +42,8 @@ void addBook(orderedLinkedList<bookType*> &bookInfo, int &bookCount)
     cout << "█" << setw(BOOK_EDITOR_TITLE_PADDING) << "SERENDIPITY  BOOKSELLERS" << setw(BOOK_EDITOR_TITLE_WIDTH) << " " << "█" << endl;
     cout << "█" << setw(BOOK_EDITOR_SUBTITLE_PADDING) << "ADD BOOK"         << setw(BOOK_EDITOR_SUBTITLE_WIDTH) << " " << "█" << endl;
     cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
-    cout << "█" << setw(BOOK_EDITOR_SUBTITLE_PADDING) << "CURRENT BOOK COUNT:"    << setw(CURRENT_BOOK_COUNT_PADDING)  << bookCount
-          << setw(BOOK_EDITOR_BODY_PADDING)  << " " << "█" << endl;
+    cout << "█" << setw(BOOK_EDITOR_SUBTITLE_PADDING) << "CURRENT BOOK COUNT:"    << setw(DB_SIZE_PADDING)  << bookCount
+          << setw(CURRENT_BOOK_COUNT_PADDING)  << " " << "█" << endl;
     cout << "█" << setw(WINDOW_INNER) << " " << "█" << endl;
     cout << "█" << setw(PENDING_VALUES_PADDING) << "--PENDING VALUES"     << setw(PENDING_VALUES_WIDTH)  << " " << "█" << endl;
 
