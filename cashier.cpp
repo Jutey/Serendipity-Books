@@ -24,105 +24,117 @@ void cashier(orderedLinkedList<bookType*> &bookInfo)
   string date;
   string isbn;
   string title;
-  int    quantity;
+  int quantity;
   double pricePer;
-  double totalPrice;
+  double totalPrice = 0.0; // Initialize totalPrice
   double totalSale;
   string userChoice;
 
   int index;
   int availableStock;
-//  TODO:
-//  vector<bookType> tracking;
 
-orderedLinkedList<bookType> derefed = bookInfoDeref(bookInfo);
+  orderedLinkedList<bookType> derefed = bookInfoDeref(bookInfo);
 
-  do //while (toupper(userChoice[0]) == 'Y')
+  do
   {
     cout << "\033[2J\033[1;1H";
-	 bool hasPurchased = false;
+    bool hasPurchased = false;
 
     index = lookUpBook(bookInfo);
-    do 
-    { //inner for loop
-         bookType selectedBook = *derefed.get(index);
-         availableStock = selectedBook.getQtyOnHand();
 
-	    if (availableStock == 0)
-	    {
-	  	  cout << "Sorry, " << selectedBook.getBookTitle() << " is out of stock.\n";
-	  	  continue;
-	    }
+    // Check if lookUpBook returned -1
+    if (index == -1)
+    {
+      cout << "No book selected. Returning to the main menu.\n";
+      break; // Exit the purchase loop
+    }
 
-	    cout << "How many do you want to purchase? ";
+    do
+    {
+      bookType selectedBook = *derefed.get(index);
+      availableStock = selectedBook.getQtyOnHand();
 
-	    quantity = intInputChecked("> ", 0, availableStock);
+      if (availableStock == 0)
+      {
+        cout << "Sorry, " << selectedBook.getBookTitle() << " is out of stock.\n";
+        break; // Exit the inner loop
+      }
 
-	    if (quantity > availableStock)
-	    {
-		    cout << "Only " << availableStock << " available. Purchasing all " << availableStock << " copies.\n";
-		    quantity = availableStock;
-    	}
+      cout << "How many do you want to purchase? ";
 
-  	  cout << "Purchase Request: " << quantity << " x " << selectedBook.getBookTitle() << "\n";
-  	  totalPrice += selectedBook.getRetail() * quantity;
-	    selectedBook.setQtyOnHand(selectedBook.getQtyOnHand() - quantity);
-  	  hasPurchased = true;
-     availableStock = selectedBook.getQtyOnHand();
+      quantity = intInputChecked("> ", 0, availableStock);
 
-  	  cout << "Do you want to add another book to this purchase? (Y/N): ";
-	  getline(cin, userChoice);
+      if (quantity > availableStock)
+      {
+        cout << "Only " << availableStock << " available. Purchasing all " << availableStock << " copies.\n";
+        quantity = availableStock;
+      }
 
-     if (toupper(userChoice[0]) == 'Y')
-     {
-       index = lookUpBook(bookInfo);
-     }
+      cout << "Purchase Request: " << quantity << " x " << selectedBook.getBookTitle() << "\n";
+      totalPrice += selectedBook.getRetail() * quantity;
+      selectedBook.setQtyOnHand(selectedBook.getQtyOnHand() - quantity);
+      hasPurchased = true;
+      availableStock = selectedBook.getQtyOnHand();
 
-	  } while (toupper(userChoice[0]) == 'Y');
+      cout << "Do you want to add another book to this purchase? (Y/N): ";
+      getline(cin, userChoice);
 
+      if (toupper(userChoice[0]) == 'Y')
+      {
+        index = lookUpBook(bookInfo);
+        // Check if lookUpBook returned -1 again
+        if (index == -1)
+        {
+          cout << "No book selected. Returning to the main menu.\n";
+          break; // Exit the inner loop
+        }
+      }
 
-    totalSale  = totalPrice + totalPrice * SALESTAX;
+    } while (toupper(userChoice[0]) == 'Y');
 
-    // print the sales slip
-    cout << setprecision(2)      << fixed;
+    totalSale = totalPrice + totalPrice * SALESTAX;
+
+    // Print the sales slip
+    cout << setprecision(2) << fixed;
     cout << "████████████████████████████████████████████████████████████████████████████████\n";
     cout << "█Serendipity Book Sellers                            █\n"
-         << "█                                        █\n";
-    cout << "█ Date: "   << left << setw(70) << date <<                   " █\n"
-         << "█                                        █\n";
-    cout << left << "█"  << setw(5)  << "Qty"
-                 << setw(14) << "ISBN"
-                 << setw(38) << "Title"
-                 << setw(12) << "Price"
-                 << setw(8)  << "Total"  << " █\n";
-    cout << "█"  << setfill('-')      << setw(78)   <<  '-'  << setfill(' ') <<       "█\n";
-    cout << "█"  << right << setw(3)  << quantity   << "  "
-         << left << setw(14) << derefed.get(index)->getIsbn()
-                 << setw(38) << derefed.get(index)->getBookTitle()
-         << '$'  << right    << setw(7)  << derefed.get(index)->getRetail()   << "  "
-         << left << '$'      << right    << setw(7)  << totalPrice << " █\n";
+          << "█                                        █\n";
+    cout << "█ Date: " << left << setw(70) << date << " █\n"
+          << "█                                        █\n";
+    cout << left << "█" << setw(5) << "Qty"
+          << setw(14) << "ISBN"
+          << setw(38) << "Title"
+          << setw(12) << "Price"
+          << setw(8) << "Total"
+          << " █\n";
+    cout << "█" << setfill('-') << setw(78) << '-' << setfill(' ') << "█\n";
+    cout << "█" << right << setw(3) << quantity << "  "
+          << left << setw(14) << derefed.get(index)->getIsbn()
+          << setw(38) << derefed.get(index)->getBookTitle()
+          << '$' << right << setw(7) << derefed.get(index)->getRetail() << "  "
+          << left << '$' << right << setw(7) << totalPrice << " █\n";
     cout << "█                                        █\n"
-         << "█                                        █\n";
-    cout << left  << setw(60) << "█" << left  << setw(13)
-         << "Subtotal  $"      << right << setw(7)
-         << totalPrice            << " █\n";
-    cout << left  << setw(60) << "█" << left  << setw(13)
-         << "Tax     $"      << right << setw(7)
-         << totalPrice * SALESTAX       << " █\n";
-    cout << left  << setw(60) << "█" << left  << setw(13)
-         << "Total     $"      << right << setw(7)
-         << totalSale        << left  << " █\n";
+          << "█                                        █\n";
+    cout << left << setw(60) << "█" << left << setw(13)
+          << "Subtotal  $" << right << setw(7)
+          << totalPrice << " █\n";
+    cout << left << setw(60) << "█" << left << setw(13)
+          << "Tax     $" << right << setw(7)
+          << totalPrice * SALESTAX << " █\n";
+    cout << left << setw(60) << "█" << left << setw(13)
+          << "Total     $" << right << setw(7)
+          << totalSale << left << " █\n";
     cout << "█                                        █\n";
     cout << "█ Thank You for Shopping at Serendipity!                     █\n";
     cout << "████████████████████████████████████████████████████████████████████████████████\n";
 
-    // ask the user if they would like to make another purchase
+    // Ask the user if they would like to make another purchase
     cout << "Would you like to make another purchase? (\033[32mY\033[0m/\033[31mN\033[0m): ";
     getline(cin, userChoice);
 
   } while (toupper(userChoice[0]) == 'Y');
 
-  //clear the screen
+  // Clear the screen
   cout << "\033[2J\033[1;1H";
 
   return;
