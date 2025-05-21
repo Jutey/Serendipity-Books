@@ -8,7 +8,6 @@
 #include <iostream>
 #include <iomanip>
 #include <limits>
-#include <vector>
 
 #include "reports.h"
 #include "int_input_checked.h"
@@ -44,42 +43,70 @@ void repListing(orderedLinkedList<bookType*> &bookInfo)
 
     cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"
       << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
-    cout << "█" << setw(65) << right << "SERENDIPITY BOOKSELLERS" << setw(54) << right << "█" << endl;
-    cout << "█" << setw(62) << right << "REPORT LISTING" << setw(57) << right << "█" << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
-    cout << "█"  << date     <<      "PAGE:" << currentPage << " of " << totalPages <<    " DATABASE SIZE: 20     CURRENT BOOK COUNT: 20           █" << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH - 3) << right << " " << "█" << endl;
+    cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "SERENDIPITY BOOKSELLERS" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "REPORT LISTING" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH - 3) << right << " " << "█" << endl;
+    cout << "█  Date: " << left << setw(12) << date 
+       << "PAGE: " << setw(2) << currentPage 
+       << " of " << setw(2) << totalPages 
+       << " DATABASE SIZE: " << setw(5) << bookInfo.length()
+       << " CURRENT BOOK COUNT: " << setw(5) << bookInfo.length()
+       << setw(REP_LISTING_WIDTH - 84) << " " << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH - 3) << right << " " << "█" << endl;
 
-    cout << "█  TITLE                          ISBN         AUTHOR              PUBLISHER   DATE ADDED QTY O/H WHOLESALE RETAIL █" << endl;
-    cout << "█  ----------------------------  ----------   -------------------  ----------  ----------- ------- --------- -------█" << endl;
+    cout << "█  " << setw(31) << left << "TITLE"
+       << setw(12) << "ISBN"
+       << setw(21) << "AUTHOR"
+       << setw(12) << "PUBLISHER"
+       << setw(12) << "DATE ADDED"
+       << setw(8)  << "QTY O/H"
+       << setw(10) << "WHOLESALE"
+       << setw(14) << "RETAIL"
+       << "█" << endl;
+    cout << "█  " << setw(31) << "----------------------------"
+       << setw(12) << "----------"
+       << setw(21) << "---------------------"
+       << setw(12) << "----------"
+       << setw(12) << "-----------"
+       << setw(8)  << "-------"
+       << setw(10) << "---------"
+       << setw(14) << "-------"
+       << "█" << endl;
 
     int idx = 0;
-    int printed = 0;
 
     for (linkedListIterator<bookType*> it = bookInfo.begin(); it != bookInfo.end(); ++it, ++idx)
     {
       if (idx < startingIndex) continue;
       if (idx >= endingIndex) break;
       const bookType& book = **it;
-      cout << "█  " << left << setw(30) << book.getBookTitle().substr(0, 30)
-        << setw(12) << book.getIsbn().substr(0, 12)
-        << setw(21) << book.getAuthor().substr(0, 21)
-        << setw(12) << book.getPublisher().substr(0, 12)
-        << setw(12) << book.getDateAdded()
-        << setw(8)  << book.getQtyOnHand()
-        << "$" << right << setw(7) << fixed << setprecision(2) << book.getWholesale()
-        << "   $" << right << setw(7) << book.getRetail()
-        << " █" << endl;
-      ++printed;
+      cout << "█  " 
+        << left << setw(31) 
+        << (book.getBookTitle().length() > 30 ? book.getBookTitle().substr(0, 27) + "..." : book.getBookTitle())
+        << setw(12) 
+        << (book.getIsbn().length() > 12 ? book.getIsbn().substr(0, 9) + "..." : book.getIsbn())
+        << setw(21) 
+        << (book.getAuthor().length() > 21 ? book.getAuthor().substr(0, 18) + "..." : book.getAuthor())
+        << setw(12) 
+        << (book.getPublisher().length() > 12 ? book.getPublisher().substr(0, 9) + "..." : book.getPublisher())
+        << setw(12) 
+        << book.getDateAdded()
+        << setw(8)  
+        << book.getQtyOnHand()
+        << "$" << right << setw(9) 
+        << fixed << setprecision(2) << book.getWholesale()
+        << "  $" << right << setw(9) 
+        << book.getRetail()
+        << "  █" << endl;
     }
 
     if (currentPage < totalPages)
     {
-      cout << "█  Type \"2\" to go to the next page, or any other key to return...                          █" << endl;
+      cout << "█" << setw(REP_LISTING_WIDTH - 3) << left << "  Type \"2\" to go to the next page, or any other key to return..." << "█" << endl;
     } else
     {
-      cout << "█  Press any key to return...                                                                █" << endl;
+      cout << "█" << setw(REP_LISTING_WIDTH - 3) << left << "  Press any key to return..." << "█" << endl;
     }
     cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████" << endl;
 
@@ -115,15 +142,23 @@ void repWholesale(orderedLinkedList<bookType*> &bookInfo)
 
     cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"
       << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
-    cout << "█" << setw(65) << right << "SERENDIPITY BOOKSELLERS" << setw(54) << right << "█" << endl;
-    cout << "█" << setw(62) << right << "WHOLESALE VALUE REPORT" << setw(57) << right << "█" << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
-    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(75) << " " << "█" << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "SERENDIPITY BOOKSELLERS" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "WHOLESALE VALUE REPORT" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
+    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(REP_LISTING_TITLE_WIDTH + 28) << " " << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
 
-    cout << "█  TITLE                          ISBN         QTY O/H   WHOLESALE COST                                   █" << endl;
-    cout << "█  ----------------------------  ----------   -------   --------------                                   █" << endl;
+    cout << "█  " << setw(31) << left << "TITLE"
+       << setw(12) << "ISBN"
+       << setw(8) << "QTY O/H"
+       << setw(14) << "WHOLESALE COST"
+       << setw(REP_LISTING_WIDTH - 70) << " " << "█" << endl;
+    cout << "█  " << setw(31) << "----------------------------"
+       << setw(12) << "----------"
+       << setw(8) << "-------"
+       << setw(14) << "--------------"
+       << setw(REP_LISTING_WIDTH - 70) << " " << "█" << endl;
 
     int idx = 0;
     double pageWholesale = 0.0;
@@ -139,18 +174,18 @@ void repWholesale(orderedLinkedList<bookType*> &bookInfo)
         << setw(9) << book.getQtyOnHand()
         << "$" << right << setw(13) << fixed << setprecision(2) << book.getWholesale()
         << "   (Total: $" << setw(10) << bookValue << ")"
-        << setw(32) << " " << "█" << endl;
+        << setw(REP_LISTING_TAIL_PADDING + 26) << "█" << endl;
     }
     totalWholesale += pageWholesale;
 
     if (currentPage < totalPages)
     {
-      cout << "█  Type \"2\" to go to the next page, or any other key to continue...                        █" << endl;
+      cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << "Type \"2\" to go to the next page, or any other key to continue..." << setw(REP_LISTING_TITLE_WIDTH - 1) << "█" << endl;
     }
     else
     {
-      cout << "█  Total Wholesale Value of Inventory: $" << fixed << setprecision(2) << totalWholesale << setw(60) << " " << "█" << endl;
-      cout << "█  Press any key to return...                                                                █" << endl;
+      cout << "█  Total Wholesale Value of Inventory: $" << fixed << setprecision(2) << totalWholesale << setw(76) << " " << "█" << endl;
+      cout << "█" << setw(REP_LISTING_WIDTH - 3) << left << "  Press any key to return..." << "█" << endl;
     }
     cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████" << endl;
 
@@ -189,15 +224,23 @@ void repRetail(orderedLinkedList<bookType*> &bookInfo)
 
     cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"
       << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
-    cout << "█" << setw(65) << right << "SERENDIPITY BOOKSELLERS" << setw(54) << right << "█" << endl;
-    cout << "█" << setw(62) << right << "RETAIL VALUE REPORT" << setw(57) << right << "█" << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
-    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(75) << " " << "█" << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "SERENDIPITY BOOKSELLERS" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "RETAIL VALUE REPORT" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
+    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(REP_LISTING_TITLE_WIDTH + 28) << " " << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
 
-    cout << "█  TITLE                          ISBN         QTY O/H   RETAIL PRICE                                     █" << endl;
-    cout << "█  ----------------------------  ----------   -------   --------------                                   █" << endl;
+    cout << "█  " << setw(31) << left << "TITLE"
+       << setw(12) << "ISBN"
+       << setw(8) << "QTY O/H"
+       << setw(14) << "RETAIL PRICE"
+       << setw(REP_LISTING_WIDTH - 70) << " " << "█" << endl;
+    cout << "█  " << setw(31) << "----------------------------"
+       << setw(12) << "----------"
+       << setw(8) << "-------"
+       << setw(14) << "--------------"
+       << setw(REP_LISTING_WIDTH - 70) << " " << "█" << endl;
 
     int idx = 0;
     double pageRetail = 0.0;
@@ -213,18 +256,18 @@ void repRetail(orderedLinkedList<bookType*> &bookInfo)
         << setw(9) << book.getQtyOnHand()
         << "$" << right << setw(13) << fixed << setprecision(2) << book.getRetail()
         << "   (Total: $" << setw(10) << bookValue << ")"
-        << setw(32) << " " << "█" << endl;
+        << setw(REP_LISTING_TAIL_PADDING + 26) << "█" << endl;
     }
     totalRetail += pageRetail;
 
     if (currentPage < totalPages)
     {
-      cout << "█  Type \"2\" to go to the next page, or any other key to continue...                        █" << endl;
+      cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << "Type \"2\" to go to the next page, or any other key to continue..." << setw(REP_LISTING_TITLE_WIDTH - 1) << "█" << endl;
     }
     else
     {
-      cout << "█  Total Retail Value of Inventory: $" << fixed << setprecision(2) << totalRetail << setw(62) << " " << "█" << endl;
-      cout << "█  Press any key to return...                                                                █" << endl;
+      cout << "█  Total Retail Value of Inventory: $" << fixed << setprecision(2) << totalRetail << setw(REP_LISTING_TITLE_WIDTH + 17) << " " << "█" << endl;
+      cout << "█" << setw(REP_LISTING_WIDTH - 3) << left << "  Press any key to return..." << "█" << endl;
     }
     cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████" << endl;
 
@@ -272,34 +315,44 @@ void repQty(orderedLinkedList<bookType*> &bookInfo)
 
     cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"
       << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
-    cout << "█" << setw(65) << right << "SERENDIPITY BOOKSELLERS" << setw(54) << right << "█" << endl;
-    cout << "█" << setw(62) << right << "LISTING BY QUANTITY" << setw(57) << right << "█" << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
-    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(75) << " " << "█" << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "SERENDIPITY BOOKSELLERS" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "LISTING BY QUANTITY" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
+    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(REP_LISTING_TITLE_WIDTH + 28) << " " << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
 
-    cout << "█  TITLE                          ISBN         QTY O/H   WHOLESALE   RETAIL                                      █" << endl;
-    cout << "█  ----------------------------  ----------   -------   ----------  ----------                                   █" << endl;
+    cout << "█  " << setw(31) << left << "TITLE"
+       << setw(12) << "ISBN"
+       << setw(9) << "QTY O/H"
+       << setw(14) << "WHOLESALE"
+       << setw(14) << "RETAIL"
+       << setw(REP_LISTING_WIDTH - 85) << " " << "█" << endl;
+    cout << "█  " << setw(31) << "----------------------------"
+       << setw(12) << "----------"
+       << setw(9) << "-------"
+       << setw(14) << "----------"
+       << setw(14) << "----------"
+       << setw(REP_LISTING_WIDTH - 85) << " " << "█" << endl;
 
     for (int idx = startingIndex; idx < endingIndex; ++idx)
     {
       const bookType& book = *books[idx];
       cout << "█  " << left << setw(30) << book.getBookTitle().substr(0, 30)
-        << setw(12) << book.getIsbn().substr(0, 12)
-        << setw(9) << book.getQtyOnHand()
-        << "$" << right << setw(10) << fixed << setprecision(2) << book.getWholesale()
-        << "  $" << right << setw(10) << book.getRetail()
-        << setw(32) << " " << "█" << endl;
+      << setw(12) << book.getIsbn().substr(0, 12)
+      << setw(9) << book.getQtyOnHand()
+      << "$" << right << setw(10) << fixed << setprecision(2) << book.getWholesale()
+      << "  $" << right << setw(10) << book.getRetail()
+      << setw(REP_LISTING_TAIL_PADDING + 39) << "█" << endl;
     }
 
     if (currentPage < totalPages)
     {
-      cout << "█  Type \"2\" to go to the next page, or any other key to return...                          █" << endl;
+      cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << "Type \"2\" to go to the next page, or any other key to return..." << setw(REP_LISTING_TITLE_WIDTH + 1) << "█" << endl;
     }
     else
     {
-      cout << "█  Press any key to return...                                                                █" << endl;
+      cout << "█" << setw(REP_LISTING_WIDTH - 3) << left << "  Press any key to return..." << "█" << endl;
     }
     cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████" << endl;
 
@@ -347,34 +400,44 @@ void repCost(orderedLinkedList<bookType*> &bookInfo)
 
     cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"
       << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
-    cout << "█" << setw(65) << right << "SERENDIPITY BOOKSELLERS" << setw(54) << right << "█" << endl;
-    cout << "█" << setw(62) << right << "LISTING BY COST" << setw(57) << right << "█" << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
-    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(75) << " " << "█" << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "SERENDIPITY BOOKSELLERS" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "LISTING BY COST" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
+    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(REP_LISTING_TITLE_WIDTH + 28) << " " << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
 
-    cout << "█  TITLE                          ISBN         WHOLESALE   QTY O/H   RETAIL                                    █" << endl;
-    cout << "█  ----------------------------  ----------   ----------   -------   ----------                               █" << endl;
+    cout << "█  " << setw(31) << left << "TITLE"
+       << setw(12) << "ISBN"
+       << setw(10) << "WHOLESALE"
+       << setw(9) << "QTY O/H"
+       << setw(10) << "RETAIL"
+       << setw(REP_LISTING_WIDTH - 77) << " " << "█" << endl;
+    cout << "█  " << setw(31) << "----------------------------"
+       << setw(12) << "----------"
+       << setw(10) << "----------"
+       << setw(9) << "-------"
+       << setw(10) << "----------"
+       << setw(REP_LISTING_WIDTH - 77) << " " << "█" << endl;
 
     for (int idx = startingIndex; idx < endingIndex; ++idx)
     {
       const bookType& book = *books[idx];
       cout << "█  " << left << setw(30) << book.getBookTitle().substr(0, 30)
-        << setw(12) << book.getIsbn().substr(0, 12)
-        << "$" << right << setw(10) << fixed << setprecision(2) << book.getWholesale()
-        << setw(9) << book.getQtyOnHand()
-        << "  $" << right << setw(10) << book.getRetail()
-        << setw(30) << " " << "█" << endl;
+      << setw(12) << book.getIsbn().substr(0, 12)
+      << "$" << right << setw(10) << fixed << setprecision(2) << book.getWholesale()
+      << setw(9) << book.getQtyOnHand()
+      << "  $" << right << setw(10) << book.getRetail()
+      << setw(REP_LISTING_TAIL_PADDING + 39) << "█" << endl;
     }
 
     if (currentPage < totalPages)
     {
-      cout << "█  Type \"2\" to go to the next page, or any other key to return...                          █" << endl;
+      cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << "Type \"2\" to go to the next page, or any other key to return..." << setw(REP_LISTING_TITLE_WIDTH + 1) << "█" << endl;
     }
     else
     {
-      cout << "█  Press any key to return...                                                                █" << endl;
+      cout << "█" << setw(REP_LISTING_WIDTH - 3) << left << "  Press any key to return..." << "█" << endl;
     }
     cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████" << endl;
 
@@ -422,35 +485,47 @@ void repAge(orderedLinkedList<bookType*> &bookInfo)
 
     cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"
       << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
-    cout << "█" << setw(65) << right << "SERENDIPITY BOOKSELLERS" << setw(54) << right << "█" << endl;
-    cout << "█" << setw(62) << right << "LISTING BY AGE" << setw(57) << right << "█" << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
-    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(75) << " " << "█" << endl;
-    cout << "█" << setw(118) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "SERENDIPITY BOOKSELLERS" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "LISTING BY AGE" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
+    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(REP_LISTING_TITLE_WIDTH + 28) << " " << "█" << endl;
+    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
 
-    cout << "█  TITLE                          ISBN         DATE ADDED  QTY O/H   WHOLESALE   RETAIL                        █" << endl;
-    cout << "█  ----------------------------  ----------   ----------  -------   ----------  ----------                     █" << endl;
+    cout << "█  " << setw(31) << left << "TITLE"
+       << setw(12) << "ISBN"
+       << setw(12) << "DATE ADDED"
+       << setw(9) << "QTY O/H"
+       << setw(10) << "WHOLESALE"
+       << setw(10) << "RETAIL"
+       << setw(REP_LISTING_WIDTH - 89) << " " << "█" << endl;
+    cout << "█  " << setw(31) << "----------------------------"
+       << setw(12) << "----------"
+       << setw(12) << "----------"
+       << setw(9) << "-------"
+       << setw(10) << "----------"
+       << setw(10) << "----------"
+       << setw(REP_LISTING_WIDTH - 89) << " " << "█" << endl;
 
     for (int idx = startingIndex; idx < endingIndex; ++idx)
     {
       const bookType& book = *books[idx];
       cout << "█  " << left << setw(30) << book.getBookTitle().substr(0, 30)
-        << setw(12) << book.getIsbn().substr(0, 12)
-        << setw(12) << book.getDateAdded()
-        << setw(9) << book.getQtyOnHand()
-        << "$" << right << setw(10) << fixed << setprecision(2) << book.getWholesale()
-        << "  $" << right << setw(10) << book.getRetail()
-        << setw(20) << " " << "█" << endl;
+      << setw(12) << book.getIsbn().substr(0, 12)
+      << setw(12) << book.getDateAdded()
+      << setw(9) << book.getQtyOnHand()
+      << "$" << right << setw(10) << fixed << setprecision(2) << book.getWholesale()
+      << "  $" << right << setw(10) << book.getRetail()
+      << setw(REP_LISTING_TAIL_PADDING + 27) << "█" << endl;
     }
 
     if (currentPage < totalPages)
     {
-      cout << "█  Type \"2\" to go to the next page, or any other key to return...                          █" << endl;
+      cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << "Type \"2\" to go to the next page, or any other key to return..." << setw(REP_LISTING_TITLE_WIDTH + 1) << "█" << endl;
     }
     else
     {
-      cout << "█  Press any key to return...                                                                █" << endl;
+      cout << "█" << setw(REP_LISTING_WIDTH - 3) << left << "  Press any key to return..." << "█" << endl;
     }
     cout << "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████" << endl;
 
@@ -517,6 +592,7 @@ void reports(orderedLinkedList<bookType*> &bookInfo)
       {
         repListing(bookInfo);
       }
+      break;
 
       case 2:
         repWholesale(bookInfo);
