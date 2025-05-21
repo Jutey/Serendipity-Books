@@ -135,8 +135,13 @@ void repWholesale(orderedLinkedList<bookType*> &bookInfo)
   string choice;
   double totalWholesale = 0.0;
 
-  // Sort the linked list by quantity on hand descending directly
-  selectionSort(bookInfo.begin(), bookInfo.end(), [](bookType* a, bookType* b) {
+  // Copy pointers to vector for sorting
+  vector<bookType*> books;
+  for (linkedListIterator<bookType*> it = bookInfo.begin(); it != bookInfo.end(); ++it)
+    books.push_back(*it);
+
+  // Sort by quantity on hand descending
+  selectionSort(books.begin(), books.end(), [](bookType* a, bookType* b) {
     return a->getWholesale() > b->getWholesale();
   });
 
@@ -169,13 +174,13 @@ void repWholesale(orderedLinkedList<bookType*> &bookInfo)
     double pageWholesale = 0.0;
     for (int idx = startingIndex; idx < endingIndex; ++idx)
     {
-      const bookType* book = *bookInfo.get(idx);
-      double bookValue = book->getWholesale() * book->getQtyOnHand();
+      const bookType& book = *books[idx];
+      double bookValue = book.getWholesale() * book.getQtyOnHand();
       pageWholesale += bookValue;
-      cout << "█  " << left << setw(30) << book->getBookTitle().substr(0, 30)
-      << setw(12) << book->getIsbn().substr(0, 12)
-      << setw(9) << book->getQtyOnHand()
-      << "$" << right << setw(13) << fixed << setprecision(2) << book->getWholesale()
+      cout << "█  " << left << setw(30) << book.getBookTitle().substr(0, 30)
+      << setw(12) << book.getIsbn().substr(0, 12)
+      << setw(9) << book.getQtyOnHand()
+      << "$" << right << setw(13) << fixed << setprecision(2) << book.getWholesale()
       << "   (Total: $" << setw(10) << bookValue << ")"
       << setw(REP_LISTING_TAIL_PADDING + 26) << "█" << endl;
     }
@@ -220,8 +225,13 @@ void repRetail(orderedLinkedList<bookType*> &bookInfo)
   string choice;
   double totalRetail = 0.0;
 
+  // Copy pointers to vector for sorting
+  vector<bookType*> books;
+  for (linkedListIterator<bookType*> it = bookInfo.begin(); it != bookInfo.end(); ++it)
+    books.push_back(*it);
+
   // Sort by quantity on hand descending
-  selectionSort(bookInfo.begin(), bookInfo.end(), [](bookType* a, bookType* b) {
+  selectionSort(books.begin(), books.end(), [](bookType* a, bookType* b) {
     return a->getRetail() > b->getRetail();
   });
 
@@ -254,13 +264,13 @@ void repRetail(orderedLinkedList<bookType*> &bookInfo)
     double pageRetail = 0.0;
     for (int idx = startingIndex; idx < endingIndex; ++idx)
     {
-      const bookType* book = *bookInfo.get(idx);
-      double bookValue = book->getRetail() * book->getQtyOnHand();
+      const bookType& book = *books[idx];
+      double bookValue = book.getRetail() * book.getQtyOnHand();
       pageRetail += bookValue;
-      cout << "█  " << left << setw(30) << book->getBookTitle().substr(0, 30)
-      << setw(12) << book->getIsbn().substr(0, 12)
-      << setw(9) << book->getQtyOnHand()
-      << "$" << right << setw(13) << fixed << setprecision(2) << book->getRetail()
+      cout << "█  " << left << setw(30) << book.getBookTitle().substr(0, 30)
+      << setw(12) << book.getIsbn().substr(0, 12)
+      << setw(9) << book.getQtyOnHand()
+      << "$" << right << setw(13) << fixed << setprecision(2) << book.getRetail()
       << "   (Total: $" << setw(10) << bookValue << ")"
       << setw(REP_LISTING_TAIL_PADDING + 26) << "█" << endl;
     }
@@ -299,12 +309,17 @@ void repQty(orderedLinkedList<bookType*> &bookInfo)
   int day = localTime->tm_mday;
   string date = to_string(month) + "/" + to_string(day) + "/" + to_string(year);
 
+  // Copy pointers to vector for sorting
+  vector<bookType*> books;
+  for (linkedListIterator<bookType*> it = bookInfo.begin(); it != bookInfo.end(); ++it)
+    books.push_back(*it);
+
   // Sort by quantity on hand descending
-  selectionSort(bookInfo.begin(), bookInfo.end(), [](bookType* a, bookType* b) {
+  selectionSort(books.begin(), books.end(), [](bookType* a, bookType* b) {
     return a->getQtyOnHand() > b->getQtyOnHand();
   });
 
-  int totalBooks = bookInfo.length();
+  int totalBooks = books.size();
   int totalPages = (totalBooks + 9) / 10;
   int currentPage = 1;
   string choice;
@@ -338,12 +353,12 @@ void repQty(orderedLinkedList<bookType*> &bookInfo)
 
     for (int idx = startingIndex; idx < endingIndex; ++idx)
     {
-      const bookType* book = *bookInfo.get(idx); // Dereference to get bookType*
-      cout << "█  " << left << setw(30) << book->getBookTitle().substr(0, 30)
-      << setw(12) << book->getIsbn().substr(0, 12)
-      << setw(9) << book->getQtyOnHand()
-      << "$" << right << setw(10) << fixed << setprecision(2) << book->getWholesale()
-      << "  $" << right << setw(10) << book->getRetail()
+      const bookType& book = *books[idx];
+      cout << "█  " << left << setw(30) << book.getBookTitle().substr(0, 30)
+      << setw(12) << book.getIsbn().substr(0, 12)
+      << setw(9) << book.getQtyOnHand()
+      << "$" << right << setw(10) << fixed << setprecision(2) << book.getWholesale()
+      << "  $" << right << setw(10) << book.getRetail()
       << setw(REP_LISTING_TAIL_PADDING + 39) << "█" << endl;
     }
 
@@ -379,12 +394,17 @@ void repCost(orderedLinkedList<bookType*> &bookInfo)
   int day = localTime->tm_mday;
   string date = to_string(month) + "/" + to_string(day) + "/" + to_string(year);
 
+  // Copy pointers to vector for sorting
+  vector<bookType*> books;
+  for (linkedListIterator<bookType*> it = bookInfo.begin(); it != bookInfo.end(); ++it)
+    books.push_back(*it);
+
   // Sort by wholesale cost descending
-  selectionSort(bookInfo.begin(), bookInfo.end(), [](const bookType* a, const bookType* b) {
+  selectionSort(books.begin(), books.end(), [](const bookType* a, const bookType* b) {
     return a->getWholesale() > b->getWholesale();
   });
 
-  int totalBooks = bookInfo.length();
+  int totalBooks = books.size();
   int totalPages = (totalBooks + 9) / 10;
   int currentPage = 1;
   string choice;
@@ -418,12 +438,12 @@ void repCost(orderedLinkedList<bookType*> &bookInfo)
 
     for (int idx = startingIndex; idx < endingIndex; ++idx)
     {
-      const bookType* book = *bookInfo.get(idx);
-      cout << "█  " << left << setw(30) << book->getBookTitle().substr(0, 30)
-      << setw(12) << book->getIsbn().substr(0, 12)
-      << "$" << right << setw(10) << fixed << setprecision(2) << book->getWholesale()
-      << setw(9) << book->getQtyOnHand()
-      << "  $" << right << setw(10) << book->getRetail()
+      const bookType& book = *books[idx];
+      cout << "█  " << left << setw(30) << book.getBookTitle().substr(0, 30)
+      << setw(12) << book.getIsbn().substr(0, 12)
+      << "$" << right << setw(10) << fixed << setprecision(2) << book.getWholesale()
+      << setw(9) << book.getQtyOnHand()
+      << "  $" << right << setw(10) << book.getRetail()
       << setw(REP_LISTING_TAIL_PADDING + 39) << "█" << endl;
     }
 
@@ -459,12 +479,17 @@ void repAge(orderedLinkedList<bookType*> &bookInfo)
   int day = localTime->tm_mday;
   string date = to_string(month) + "/" + to_string(day) + "/" + to_string(year);
 
+  // Copy pointers to vector for sorting
+  vector<bookType*> books;
+  for (linkedListIterator<bookType*> it = bookInfo.begin(); it != bookInfo.end(); ++it)
+    books.push_back(*it);
+
   // Sort by date added ascending (oldest first)
-  selectionSort(bookInfo.begin(), bookInfo.end(), [](bookType* a, bookType* b) {
+  selectionSort(books.begin(), books.end(), [](bookType* a, bookType* b) {
     return a->getDateAdded() < b->getDateAdded();
   });
 
-  int totalBooks = bookInfo.length();
+  int totalBooks = books.size();
   int totalPages = (totalBooks + 9) / 10;
   int currentPage = 1;
   string choice;
@@ -500,13 +525,13 @@ void repAge(orderedLinkedList<bookType*> &bookInfo)
 
     for (int idx = startingIndex; idx < endingIndex; ++idx)
     {
-      const bookType* book = *bookInfo.get(idx);
-      cout << "█  " << left << setw(30) << book->getBookTitle().substr(0, 30)
-      << setw(12) << book->getIsbn().substr(0, 12)
-      << setw(12) << book->getDateAdded()
-      << setw(9) << book->getQtyOnHand()
-      << "$" << right << setw(10) << fixed << setprecision(2) << book->getWholesale()
-      << "  $" << right << setw(10) << book->getRetail()
+      const bookType& book = *books[idx];
+      cout << "█  " << left << setw(30) << book.getBookTitle().substr(0, 30)
+      << setw(12) << book.getIsbn().substr(0, 12)
+      << setw(12) << book.getDateAdded()
+      << setw(9) << book.getQtyOnHand()
+      << "$" << right << setw(10) << fixed << setprecision(2) << book.getWholesale()
+      << "  $" << right << setw(10) << book.getRetail()
       << setw(REP_LISTING_TAIL_PADDING + 27) << "█" << endl;
     }
 

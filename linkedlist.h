@@ -99,8 +99,7 @@ bool linkedListIterator<Type>::operator==
 template <typename Type>
 bool linkedListIterator<Type>::operator!=
                  (const linkedListIterator<Type>& right) const
-{
-  return (current != right.current);
+{    return (current != right.current);
 }
 
 

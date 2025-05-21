@@ -60,21 +60,4 @@ void selectionSort(RandomIt first, RandomIt last, Compare comp)
   }
 }
 
-// Overload for linkedListIterator<T*>
-template <typename T>
-void selectionSort(linkedListIterator<T*>& first, linkedListIterator<T*>& last, function<bool(const T*, const T*)> compare)
-{
-  for (auto i = first; i != last; ++i) {
-    auto minIt = i;
-    for (auto j = i; j != last; ++j) {
-      if (compare(*j, *minIt)) {
-        minIt = j;
-      }
-    }
-    if (minIt != i) {
-      std::swap(**i, **minIt);
-    }
-  }
-}
-
 #endif // SELSORT_H
