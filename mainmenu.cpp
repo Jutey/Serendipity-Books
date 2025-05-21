@@ -98,6 +98,17 @@ int main()
   cout << "\033[2J\033[1;1H";
   } while(choice != 4);
 
-  return 0;
+  // Memory cleanup: Delete all dynamically allocated bookType objects
+  while (!bookInfo.isEmptyList()) {
+      bookType* book = bookInfo.front(); // Get the first book pointer
+      bookInfo.deleteNode(book);        // Remove the node from the list
+      delete book;                      // Delete the dynamically allocated book
+  }
 
+  bookInfo.destroyList(); // Clean up the linked list structure
+  cout << "Goodbye!" << endl;
+  cout << "Press Enter to exit...";
+  cin.ignore(numeric_limits<streamsize>::max(), '\n');
+  cout << "\033[2J\033[1;1H";
+  return 0;
 }
