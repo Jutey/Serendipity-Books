@@ -4,6 +4,7 @@
 #include "lookUpBook.h"
 #include "book_info_deref.h" // for bookInfoDeref
 #include "orderedLinkedList.h"
+#include "setw_consts.h"
 
 using namespace std;
 
@@ -125,41 +126,43 @@ void cashier(orderedLinkedList<bookType*> &bookInfo)
 
     // Print the sales slip
     cout << setprecision(2) << fixed;
-    cout << "████████████████████████████████████████████████████████████████████████████████\n";
-    cout << "█Serendipity Book Sellers                            █\n"
-         << "█                                        █\n";
-    cout << "█ Date: " << left << setw(70) << date << " █\n"
-         << "█                                        █\n";
-    cout << left << "█" << setw(5) << "Qty"
-         << setw(14) << "ISBN"
-         << setw(38) << "Title"
-         << setw(12) << "Price"
-         << setw(8) << "Total" << " █\n";
-    cout << "█" << setfill('-') << setw(78) << '-' << setfill(' ') << "█\n";
+    cout << "███████████████████████████████████████████████████████████████████████████████████\n";
+    cout << "█" << setw((WINDOW_OUTER - 25) / 2) << "" << "Serendipity Book Sellers" 
+       << setw((WINDOW_OUTER - 25) / 2 + (WINDOW_OUTER - 25) % 2 + 2) << "" << "█\n";
+    cout << "█" << setw(WINDOW_OUTER + 1) << "" << "█\n";
+    cout << "█ Date: " << left << setw(WINDOW_OUTER - 6) << " " << date << "█\n";
+    cout << "█" << setw(WINDOW_OUTER + 1) << "" << "█\n";
+    cout << left << "█" << setw(6) << "Qty"
+       << setw(14) << "ISBN"
+       << setw(WINDOW_OUTER - 40) << "Title"
+       << setw(12) << "Price"
+       << setw(9) << "Total" << "█\n";
+    cout << "█" << setfill('-') << setw(WINDOW_OUTER + 1) << '-' << setfill(' ') << "█\n";
 
     for (linkedListIterator<Purchase> it = shoppingCart.begin(); it != shoppingCart.end(); ++it) {
       const Purchase &item = *it;
-      cout << "█" << right << setw(3) << item.quantity << "  "
-           << left << setw(14) << item.isbn
-           << setw(38) << item.title.substr(0, 37)
-           << '$' << right << setw(7) << item.price << "  "
-           << left << '$' << right << setw(7) << item.quantity * item.price << " █\n";
+      cout << "█" << right << setw(4) << item.quantity << "  "
+         << left << setw(14) << item.isbn
+         << setw(WINDOW_OUTER - 40) << item.title.substr(0, WINDOW_OUTER - 41)
+         << '$' << right << setw(8) << item.price << " "
+         << '$' << right << setw(9) << item.quantity * item.price << " █\n";
     }
 
-    cout << "█                                        █\n"
-         << "█                                        █\n";
-    cout << left << setw(60) << "█" << left << setw(13)
-         << "Subtotal  $" << right << setw(7)
-         << totalPrice << " █\n";
-    cout << left << setw(60) << "█" << left << setw(13)
-         << "Tax     $" << right << setw(7)
-         << totalPrice * SALESTAX << " █\n";
-    cout << left << setw(60) << "█" << left << setw(13)
-         << "Total     $" << right << setw(7)
-         << totalSale << left << " █\n";
-    cout << "█                                        █\n";
-    cout << "█ Thank You for Shopping at Serendipity!                     █\n";
-    cout << "████████████████████████████████████████████████████████████████████████████████\n";
+    cout << "█" << setw(WINDOW_OUTER + 1) << "" << "█\n";
+    cout << "█" << setw(WINDOW_OUTER + 1) << "" << "█\n";
+    cout << left << setw(WINDOW_OUTER - 19) << "█" << left << setw(13)
+       << "Subtotal  $" << right << setw(9)
+       << totalPrice << " █\n";
+    cout << left << setw(WINDOW_OUTER - 19) << "█" << left << setw(13)
+       << "Tax     $" << right << setw(9)
+       << totalPrice * SALESTAX << " █\n";
+    cout << left << setw(WINDOW_OUTER - 19) << "█" << left << setw(13)
+       << "Total     $" << right << setw(9)
+       << totalSale << left << " █\n";
+    cout << "█" << setw(WINDOW_OUTER + 1) << "" << "█\n";
+    cout << "█" << setw((WINDOW_OUTER - 36) / 2) << "" << "Thank You for Shopping at Serendipity!" 
+       << setw((WINDOW_OUTER - 36) / 2 + (WINDOW_OUTER - 36) % 2 - 1) << "" << "█\n";
+    cout << "███████████████████████████████████████████████████████████████████████████████████\n";
 
     // Ask the user if they would like to make another purchase
     cout << "Would you like to make another purchase? (\033[32mY\033[0m/\033[31mN\033[0m): ";
