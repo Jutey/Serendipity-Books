@@ -47,12 +47,15 @@ void repListing(orderedLinkedList<bookType*> &bookInfo)
     cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "SERENDIPITY BOOKSELLERS" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
     cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "REPORT LISTING" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
     cout << "█" << setw(REP_LISTING_WIDTH - 3) << right << " " << "█" << endl;
+    
+    // Adjust padding dynamically based on the length of the page count and database/book count
+    int pagePadding = REP_LISTING_WIDTH - (12 + 6 + to_string(currentPage).length() + 4 + to_string(totalPages).length() + 16 + to_string(bookInfo.length()).length() * 2 + 28);
     cout << "█  Date: " << left << setw(12) << date 
-       << "PAGE: " << setw(2) << currentPage 
-       << " of " << setw(2) << totalPages 
-       << " DATABASE SIZE: " << setw(5) << bookInfo.length()
-       << " CURRENT BOOK COUNT: " << setw(5) << bookInfo.length()
-       << setw(REP_LISTING_WIDTH - 84) << " " << "█" << endl;
+       << "PAGE: " << currentPage << " of " << totalPages 
+       << " DATABASE SIZE: " << bookInfo.length()
+       << " CURRENT BOOK COUNT: " << bookInfo.length()
+       << setw(pagePadding) << " " << "█" << endl;
+
     cout << "█" << setw(REP_LISTING_WIDTH - 3) << right << " " << "█" << endl;
 
     cout << "█  " << setw(31) << left << "TITLE"
@@ -156,7 +159,13 @@ void repWholesale(orderedLinkedList<bookType*> &bookInfo)
     cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "SERENDIPITY BOOKSELLERS" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
     cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "WHOLESALE VALUE REPORT" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
     cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
-    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(REP_LISTING_TITLE_WIDTH + 28) << " " << "█" << endl;
+
+    // Adjust padding dynamically based on the length of the page count
+    int pagePadding = REP_LISTING_WIDTH - (12 + 6 + to_string(currentPage).length() + 4 + to_string(totalPages).length() + 28);
+    cout << "█  Date: " << left << setw(12) << date 
+         << "PAGE: " << currentPage << " of " << totalPages 
+         << setw(pagePadding) << " " << "█" << endl;
+
     cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
 
     cout << "█  " << setw(31) << left << "TITLE"
@@ -246,8 +255,12 @@ void repRetail(orderedLinkedList<bookType*> &bookInfo)
     cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "SERENDIPITY BOOKSELLERS" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
     cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "RETAIL VALUE REPORT" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
     cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
-    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(REP_LISTING_TITLE_WIDTH + 28) << " " << "█" << endl;
-    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
+    
+    // Adjust padding dynamically based on the length of the page count
+    int pagePadding = REP_LISTING_WIDTH - (12 + 6 + to_string(currentPage).length() + 4 + to_string(totalPages).length() + 28);
+    cout << "█  Date: " << left << setw(12) << date 
+         << "PAGE: " << currentPage << " of " << totalPages 
+         << setw(pagePadding) << " " << "█" << endl;
 
     cout << "█  " << setw(31) << left << "TITLE"
        << setw(12) << "ISBN"
@@ -335,8 +348,12 @@ void repQty(orderedLinkedList<bookType*> &bookInfo)
     cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "SERENDIPITY BOOKSELLERS" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
     cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "LISTING BY QUANTITY" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
     cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
-    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(REP_LISTING_TITLE_WIDTH + 28) << " " << "█" << endl;
-    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
+    
+    // Adjust padding dynamically based on the length of the page count
+    int pagePadding = REP_LISTING_WIDTH - (12 + 6 + to_string(currentPage).length() + 4 + to_string(totalPages).length() + 28);
+    cout << "█  Date: " << left << setw(12) << date 
+         << "PAGE: " << currentPage << " of " << totalPages 
+         << setw(pagePadding) << " " << "█" << endl;
 
     cout << "█  " << setw(31) << left << "TITLE"
        << setw(12) << "ISBN"
@@ -420,8 +437,12 @@ void repCost(orderedLinkedList<bookType*> &bookInfo)
     cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "SERENDIPITY BOOKSELLERS" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
     cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "LISTING BY COST" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
     cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
-    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(REP_LISTING_TITLE_WIDTH + 28) << " " << "█" << endl;
-    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
+    
+    // Adjust padding dynamically based on the length of the page count
+    int pagePadding = REP_LISTING_WIDTH - (12 + 6 + to_string(currentPage).length() + 4 + to_string(totalPages).length() + 28);
+    cout << "█  Date: " << left << setw(12) << date 
+         << "PAGE: " << currentPage << " of " << totalPages 
+         << setw(pagePadding) << " " << "█" << endl;
 
     cout << "█  " << setw(31) << left << "TITLE"
        << setw(12) << "ISBN"
@@ -505,8 +526,12 @@ void repAge(orderedLinkedList<bookType*> &bookInfo)
     cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "SERENDIPITY BOOKSELLERS" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
     cout << "█" << setw(REP_LISTING_TITLE_WIDTH) << right << "LISTING BY AGE" << setw(REP_LISTING_TITLE_WIDTH + 1) << right << "█" << endl;
     cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
-    cout << "█  Date: " << left << setw(12) << date << "PAGE: " << currentPage << " of " << totalPages << setw(REP_LISTING_TITLE_WIDTH + 28) << " " << "█" << endl;
-    cout << "█" << setw(REP_LISTING_WIDTH) << right << "█" << endl;
+    
+    // Adjust padding dynamically based on the length of the page count
+    int pagePadding = REP_LISTING_WIDTH - (12 + 6 + to_string(currentPage).length() + 4 + to_string(totalPages).length() + 28);
+    cout << "█  Date: " << left << setw(12) << date 
+         << "PAGE: " << currentPage << " of " << totalPages 
+         << setw(pagePadding) << " " << "█" << endl;
 
     cout << "█  " << setw(31) << left << "TITLE"
        << setw(12) << "ISBN"
